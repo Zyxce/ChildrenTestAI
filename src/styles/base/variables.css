@@ -33,4 +33,11 @@
   --color-outline-focus: #6447CF;
   --radius-base: 6px;
   --radius-full: 100%;
+  --border-width: 1px;
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-xxl: 48px;
 }/*# sourceMappingURL=variables.css.map */
