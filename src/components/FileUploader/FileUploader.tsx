@@ -1,52 +1,67 @@
+// src/components/FileUploader.tsx
 import React, { useState, useCallback } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import FileUploadField from './FileUploadField'
+import { uploadFiles } from '../../store/uploadSlice'
+import type { RootState, AppDispatch } from '../../store'
 
+// Определяем набор ID-полей строго из константы
 const UPLOAD_FIELDS = [
   { id: 'house-tree-person', label: 'Дом/Дерево/Человек' },
   { id: 'imaginary-animal', label: 'Несуществующее животное' },
   { id: 'self-portrait', label: 'Автопортрет' },
-]
+] as const
+
+type FieldId = (typeof UPLOAD_FIELDS)[number]['id']
+
+type FileEntry = { file: File; preview: string }
+type FilesState = Record<FieldId, FileEntry | null>
 
 const FileUploader: React.FC = () => {
-  const [files, setFiles] = useState<
-    Record<string, { file: File; preview: string } | null>
-  >({
-    'house-tree-person': null,
-    'imaginary-animal': null,
-    'self-portrait': null,
-  })
+  const dispatch = useDispatch<AppDispatch>()
+  const navigate = useNavigate()
+  const { loading, error } = useSelector((state: RootState) => state.upload)
 
-  const handleFileChange = useCallback((fieldId: string, file: File) => {
+  // Инициализируем state с нужными ключами
+  const initialFiles: FilesState = UPLOAD_FIELDS.reduce((acc, field) => {
+    acc[field.id] = null
+    return acc
+  }, {} as FilesState)
+
+  const [files, setFiles] = useState<FilesState>(initialFiles)
+
+  const handleFileChange = useCallback((fieldId: FieldId, file: File) => {
     const preview = URL.createObjectURL(file)
     setFiles((prev) => ({ ...prev, [fieldId]: { file, preview } }))
   }, [])
 
-  const handleRemove = useCallback((fieldId: string) => {
+  const handleRemove = useCallback((fieldId: FieldId) => {
     setFiles((prev) => {
-      if (prev[fieldId]?.preview) {
-        URL.revokeObjectURL(prev[fieldId]!.preview)
+      const entry = prev[fieldId]
+      if (entry?.preview) {
+        URL.revokeObjectURL(entry.preview)
       }
       return { ...prev, [fieldId]: null }
     })
   }, [])
 
-  const allFilesUploaded = Object.values(files).every((file) => file !== null)
+  const allFilesUploaded = Object.values(files).every((entry) => entry !== null)
 
-  const handleSubmit = useCallback(() => {
-    // Отправка файлов на сервер
-    const formData = new FormData()
-    Object.entries(files).forEach(([fieldId, fileData]) => {
-      if (fileData) {
-        formData.append(fieldId, fileData.file)
-      }
-    })
-
-    // Здесь будет вызов API (реализуем в services/api.ts)
-  }, [files])
+  const handleSubmit = useCallback(async () => {
+    if (!allFilesUploaded) return
+    const fileList = Object.values(files).map((e) => e!.file)
+    try {
+      await dispatch(uploadFiles(fileList)).unwrap()
+      navigate('/survey')
+    } catch (err) {
+      console.error('Upload failed:', err)
+    }
+  }, [dispatch, files, navigate, allFilesUploaded])
 
   return (
-    <div className="file-uploader">
-      <h2>Загрузите рисунки</h2>
+    <div className="max-w-md mx-auto p-6 bg-white rounded shadow">
+      <h2 className="text-xl font-semibold mb-4">Загрузите рисунки</h2>
 
       {UPLOAD_FIELDS.map((field) => (
         <FileUploadField
@@ -58,13 +73,25 @@ const FileUploader: React.FC = () => {
         />
       ))}
 
+      {error && (
+        <p className="mt-2 text-sm text-red-600">Ошибка загрузки: {error}</p>
+      )}
+
       <button
-        color="primary"
-        disabled={!allFilesUploaded}
         onClick={handleSubmit}
-        className="submit-button"
+        disabled={!allFilesUploaded || loading}
+        className={`
+          mt-6 w-full py-2 rounded text-white
+          ${
+            loading
+              ? 'bg-gray-400 cursor-not-allowed'
+              : allFilesUploaded
+              ? 'bg-blue-500 hover:bg-blue-600'
+              : 'bg-blue-200 cursor-not-allowed'
+          }
+        `}
       >
-        Отправить фото
+        {loading ? 'Загрузка...' : 'Отправить фото'}
       </button>
     </div>
   )

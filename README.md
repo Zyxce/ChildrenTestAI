@@ -103,6 +103,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 │  ├─ index.tsx
 │  ├─ pages
 │  │  ├─ QuestionnairePage.tsx
+│  │  ├─ ReportPage.tsx
 │  │  ├─ UploadPhotosPage.tsx
 │  │  └─ WelcomePage.tsx
 │  ├─ Routes.tsx
