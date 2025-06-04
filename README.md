@@ -66,3 +66,54 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+```
+33-AI-children-test
+├─ package-lock.json
+├─ package.json
+├─ public
+│  ├─ about.txt
+│  ├─ android-chrome-192x192.png
+│  ├─ android-chrome-512x512.png
+│  ├─ apple-touch-icon.png
+│  ├─ favicon-16x16.png
+│  ├─ favicon-32x32.png
+│  ├─ favicon.ico
+│  ├─ index.html
+│  └─ site.webmanifest
+├─ README.md
+├─ src
+│  ├─ assets
+│  ├─ components
+│  │  ├─ App.tsx
+│  │  └─ FileUploader
+│  │     ├─ FileUploader.tsx
+│  │     └─ FileUploadField.tsx
+│  ├─ data
+│  ├─ global.d.ts
+│  ├─ hooks
+│  ├─ index.tsx
+│  ├─ pages
+│  │  └─ UploadPhotosPage.tsx
+│  ├─ services
+│  │  └─ api.ts
+│  ├─ store
+│  │  └─ uploadSlice.ts
+│  ├─ styles
+│  │  ├─ base
+│  │  │  ├─ normalize.css
+│  │  │  ├─ variables.css
+│  │  │  ├─ variables.css.map
+│  │  │  └─ variables.sass
+│  │  ├─ components
+│  │  │  ├─ App.css
+│  │  │  ├─ App.css.map
+│  │  │  └─ App.sass
+│  │  ├─ index.css
+│  │  ├─ index.css.map
+│  │  └─ index.sass
+│  ├─ types.ts
+│  └─ utils
+└─ tsconfig.json
+
+```
