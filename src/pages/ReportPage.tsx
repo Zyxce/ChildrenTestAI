@@ -2,7 +2,10 @@
 import React, { useEffect, useState, useCallback } from 'react'
 import { useSelector } from 'react-redux'
 import { RootState } from '../store'
+import { useDispatch } from 'react-redux'
+import { resetUploadState } from '../store/uploadSlice'
 import { getReportStatus, ReportResponse } from '../services/api'
+import { useNavigate } from 'react-router-dom'
 
 // Переименовали, чтобы не путать с интерфейсом из API:
 type LoadingStatus = 'processing' | 'ready' | 'error'
@@ -12,6 +15,21 @@ export const ReportPage: React.FC = () => {
   const [status, setStatus] = useState<LoadingStatus>('processing')
   const [reportUrl, setReportUrl] = useState<string>('')
   const [errorMessage, setErrorMessage] = useState<string>('')
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      if (status === 'processing') {
+        setErrorMessage(
+          'Отчет готовится дольше обычного. Пожалуйста, попробуйте позже.'
+        )
+        setStatus('error')
+      }
+    }, 300000) // 5 минут
+
+    return () => clearTimeout(timeoutId)
+  }, [status])
 
   const fetchStatus = useCallback(async () => {
     if (!taskId) {
@@ -46,6 +64,11 @@ export const ReportPage: React.FC = () => {
     const interval = setInterval(fetchStatus, 15000)
     return () => clearInterval(interval)
   }, [fetchStatus])
+
+  const handleReset = () => {
+    dispatch(resetUploadState())
+    navigate('/')
+  }
 
   return (
     <div className="max-w-xl mx-auto p-4">
@@ -96,11 +119,13 @@ export const ReportPage: React.FC = () => {
         </div>
       )}
 
-      {status === 'error' && (
-        <div className="text-red-600">
-          <p>Произошла ошибка:</p>
-          <p>{errorMessage}</p>
-        </div>
+      {(status === 'error' || status === 'ready') && (
+        <button
+          onClick={handleReset}
+          className="mt-4 px-4 py-2 bg-gray-200 rounded hover:bg-gray-300"
+        >
+          Начать новый тест
+        </button>
       )}
     </div>
   )

@@ -1,10 +1,11 @@
 // src/components/FileUploader.tsx
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import FileUploadField from './FileUploadField'
 import { uploadFiles } from '../../store/uploadSlice'
 import type { RootState, AppDispatch } from '../../store'
+import { handleApiError } from '../../services/api'
 
 // Определяем набор ID-полей строго из константы
 const UPLOAD_FIELDS = [
@@ -46,6 +47,17 @@ const FileUploader: React.FC = () => {
     })
   }, [])
 
+  useEffect(() => {
+    return () => {
+      // Очистка при размонтировании компонента
+      Object.values(files).forEach((fileEntry) => {
+        if (fileEntry?.preview) {
+          URL.revokeObjectURL(fileEntry.preview)
+        }
+      })
+    }
+  }, [files])
+
   const allFilesUploaded = Object.values(files).every((entry) => entry !== null)
 
   const handleSubmit = useCallback(async () => {
@@ -55,7 +67,7 @@ const FileUploader: React.FC = () => {
       await dispatch(uploadFiles(fileList)).unwrap()
       navigate('/survey')
     } catch (err) {
-      console.error('Upload failed:', err)
+      const errorMessage = handleApiError(err)
     }
   }, [dispatch, files, navigate, allFilesUploaded])
 
