@@ -6,6 +6,8 @@ export interface ReportResponse {
   status: 'processing' | 'ready'
   url?: string
 }
+// ... существующий код ...
+
 export const uploadPhotos = async (
   formData: FormData
 ): Promise<TaskIdResponse> => {
@@ -15,12 +17,24 @@ export const uploadPhotos = async (
   })
 
   if (!response.ok) {
+    // Детализация ошибки 422
+    if (response.status === 422) {
+      try {
+        const errorData = await response.json()
+        throw new Error(
+          errorData.detail || `Validation error: ${JSON.stringify(errorData)}`
+        )
+      } catch (parseError) {
+        throw new Error(`Unprocessable Entity: ${response.statusText}`)
+      }
+    }
     throw new Error(`Ошибка загрузки: ${response.status}`)
   }
 
   return response.json()
 }
 
+// ... остальной код ...
 export const submitSurvey = async (
   taskId: string,
   answers: Record<string, any>

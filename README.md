@@ -86,9 +86,12 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 │  ├─ assets
 │  ├─ components
 │  │  ├─ App.tsx
+│  │  ├─ AuthRoute.tsx
 │  │  ├─ FileUploader
 │  │  │  ├─ FileUploader.tsx
 │  │  │  └─ FileUploadField.tsx
+│  │  ├─ Header.tsx
+│  │  ├─ Layout.tsx
 │  │  └─ Questions
 │  │     ├─ DateQuestion.tsx
 │  │     ├─ EmojiQuestion.tsx

@@ -16,12 +16,22 @@ const initialState: UploadState = {
 
 export const uploadFiles = createAsyncThunk(
   'upload/uploadFiles',
-  async (files: File[], { rejectWithValue }) => {
+  async (
+    files: {
+      'house-tree-person': File
+      'imaginary-animal': File
+      'self-portrait': File
+    },
+    { rejectWithValue }
+  ) => {
+    // Изменён тип параметра
     try {
       const formData = new FormData()
-      files.forEach((file, index) => {
-        formData.append(`image_${index}`, file)
-      })
+
+      // Используем правильные имена полей согласно API
+      formData.append('house_tree_person', files['house-tree-person'])
+      formData.append('imaginary_animal', files['imaginary-animal'])
+      formData.append('self_portrait', files['self-portrait'])
 
       return await uploadPhotos(formData)
     } catch (error) {

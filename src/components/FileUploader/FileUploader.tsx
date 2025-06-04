@@ -22,6 +22,7 @@ type FilesState = Record<FieldId, FileEntry | null>
 const FileUploader: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>()
   const navigate = useNavigate()
+  const [uploadError, setUploadError] = useState<string | null>(null) // Добавляем состояние ошибки
   const { loading, error } = useSelector((state: RootState) => state.upload)
 
   // Инициализируем state с нужными ключами
@@ -62,15 +63,22 @@ const FileUploader: React.FC = () => {
 
   const handleSubmit = useCallback(async () => {
     if (!allFilesUploaded) return
-    const fileList = Object.values(files).map((e) => e!.file)
+    setUploadError(null) // Сбрасываем ошибку перед отправкой
+
+    const filesToSend = {
+      'house-tree-person': files['house-tree-person']!.file,
+      'imaginary-animal': files['imaginary-animal']!.file,
+      'self-portrait': files['self-portrait']!.file,
+    }
+
     try {
-      await dispatch(uploadFiles(fileList)).unwrap()
+      await dispatch(uploadFiles(filesToSend)).unwrap()
       navigate('/survey')
     } catch (err) {
       const errorMessage = handleApiError(err)
+      setUploadError(errorMessage) // Устанавливаем ошибку для отображения
     }
   }, [dispatch, files, navigate, allFilesUploaded])
-
   return (
     <div className="max-w-md mx-auto p-6 bg-white rounded shadow">
       <h2 className="text-xl font-semibold mb-4">Загрузите рисунки</h2>
@@ -85,8 +93,10 @@ const FileUploader: React.FC = () => {
         />
       ))}
 
-      {error && (
-        <p className="mt-2 text-sm text-red-600">Ошибка загрузки: {error}</p>
+      {uploadError && (
+        <p className="mt-2 text-sm text-red-600">
+          Ошибка загрузки: {uploadError}
+        </p>
       )}
 
       <button
