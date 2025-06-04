@@ -9,29 +9,35 @@ export interface ReportResponse {
 // ... существующий код ...
 
 export const uploadPhotos = async (
-  formData: FormData
+  files: File[] // Принимаем массив файлов
 ): Promise<TaskIdResponse> => {
-  const response = await fetch(`${API_BASE_URL}/upload`, {
-    method: 'POST',
-    body: formData,
-  })
+  try {
+    const formData = new FormData()
 
-  if (!response.ok) {
-    // Детализация ошибки 422
-    if (response.status === 422) {
-      try {
-        const errorData = await response.json()
-        throw new Error(
-          errorData.detail || `Validation error: ${JSON.stringify(errorData)}`
-        )
-      } catch (parseError) {
-        throw new Error(`Unprocessable Entity: ${response.statusText}`)
-      }
+    // Добавляем все файлы в поле "files"
+    files.forEach((file) => {
+      formData.append('files', file)
+    })
+
+    const response = await fetch(`${API_BASE_URL}/upload`, {
+      method: 'POST',
+      body: formData,
+    })
+
+    if (!response.ok) {
+      const errorData = await response.json()
+      throw new Error(
+        errorData.detail || `Ошибка ${response.status}: ${response.statusText}`
+      )
     }
-    throw new Error(`Ошибка загрузки: ${response.status}`)
-  }
 
-  return response.json()
+    return response.json()
+  } catch (error) {
+    if (error instanceof Error) {
+      throw new Error(`Ошибка загрузки: ${error.message}`)
+    }
+    throw new Error('Неизвестная ошибка при загрузке')
+  }
 }
 
 // ... остальной код ...

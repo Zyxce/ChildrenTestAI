@@ -24,16 +24,15 @@ export const uploadFiles = createAsyncThunk(
     },
     { rejectWithValue }
   ) => {
-    // Изменён тип параметра
     try {
-      const formData = new FormData()
+      // Преобразуем объект в массив файлов
+      const filesArray = [
+        files['house-tree-person'],
+        files['imaginary-animal'],
+        files['self-portrait'],
+      ]
 
-      // Используем правильные имена полей согласно API
-      formData.append('house_tree_person', files['house-tree-person'])
-      formData.append('imaginary_animal', files['imaginary-animal'])
-      formData.append('self_portrait', files['self-portrait'])
-
-      return await uploadPhotos(formData)
+      return await uploadPhotos(filesArray)
     } catch (error) {
       if (error instanceof Error) {
         return rejectWithValue(error.message)

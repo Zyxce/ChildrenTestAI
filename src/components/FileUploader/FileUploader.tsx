@@ -24,6 +24,7 @@ const FileUploader: React.FC = () => {
   const navigate = useNavigate()
   const [uploadError, setUploadError] = useState<string | null>(null) // Добавляем состояние ошибки
   const { loading, error } = useSelector((state: RootState) => state.upload)
+  const [isSuccess, setIsSuccess] = useState(false)
 
   // Инициализируем state с нужными ключами
   const initialFiles: FilesState = UPLOAD_FIELDS.reduce((acc, field) => {
@@ -63,7 +64,6 @@ const FileUploader: React.FC = () => {
 
   const handleSubmit = useCallback(async () => {
     if (!allFilesUploaded) return
-    setUploadError(null) // Сбрасываем ошибку перед отправкой
 
     const filesToSend = {
       'house-tree-person': files['house-tree-person']!.file,
@@ -74,9 +74,11 @@ const FileUploader: React.FC = () => {
     try {
       await dispatch(uploadFiles(filesToSend)).unwrap()
       navigate('/survey')
+      setIsSuccess(true)
+      setTimeout(() => navigate('/survey'), 1500)
     } catch (err) {
       const errorMessage = handleApiError(err)
-      setUploadError(errorMessage) // Устанавливаем ошибку для отображения
+      setUploadError(errorMessage)
     }
   }, [dispatch, files, navigate, allFilesUploaded])
   return (
@@ -97,6 +99,11 @@ const FileUploader: React.FC = () => {
         <p className="mt-2 text-sm text-red-600">
           Ошибка загрузки: {uploadError}
         </p>
+      )}
+      {isSuccess && (
+        <div className="success-message">
+          Фото успешно загружены! Переходим к опросу...
+        </div>
       )}
 
       <button
