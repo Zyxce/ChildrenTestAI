@@ -86,18 +86,30 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 │  ├─ assets
 │  ├─ components
 │  │  ├─ App.tsx
-│  │  └─ FileUploader
-│  │     ├─ FileUploader.tsx
-│  │     └─ FileUploadField.tsx
+│  │  ├─ FileUploader
+│  │  │  ├─ FileUploader.tsx
+│  │  │  └─ FileUploadField.tsx
+│  │  └─ Questions
+│  │     ├─ DateQuestion.tsx
+│  │     ├─ EmojiQuestion.tsx
+│  │     ├─ QuestionContainer.tsx
+│  │     ├─ RadioQuestion.tsx
+│  │     ├─ RatingQuestion.tsx
+│  │     └─ TextQuestion.tsx
 │  ├─ data
+│  │  └─ questions.json
 │  ├─ global.d.ts
 │  ├─ hooks
 │  ├─ index.tsx
 │  ├─ pages
-│  │  └─ UploadPhotosPage.tsx
+│  │  ├─ QuestionnairePage.tsx
+│  │  ├─ UploadPhotosPage.tsx
+│  │  └─ WelcomePage.tsx
+│  ├─ Routes.tsx
 │  ├─ services
 │  │  └─ api.ts
 │  ├─ store
+│  │  ├─ index.ts
 │  │  └─ uploadSlice.ts
 │  ├─ styles
 │  │  ├─ base

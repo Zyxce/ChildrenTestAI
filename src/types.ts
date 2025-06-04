@@ -1,11 +1,29 @@
-// Типы для API ответов
+// src/types.ts
+export interface Question {
+  id: string
+  type: 'rating' | 'emoji' | 'text' | 'date' | 'radio'
+  question: string
+  required?: boolean
+  options?: string[] // Для radio вопросов
+}
+
+export type AnswerValue = string | number | Date | null
+
+export interface Answers {
+  [key: string]: AnswerValue
+}
+
+// Типы для API
 export type TaskIdResponse = {
   task_id: string
 }
 
-export type FileUploadField = {
-  id: string
-  label: string
-  file: File | null
-  previewUrl: string | null
+export type SurveySubmission = {
+  taskId: string
+  answers: Answers
+}
+
+export type ReportStatus = {
+  status: 'processing' | 'ready' | 'error'
+  pdf_url?: string
 }

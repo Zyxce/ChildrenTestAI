@@ -1,4 +1,6 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+// src/store/uploadSlice.ts
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { uploadPhotos } from '../services/api'
 
 interface UploadState {
   taskId: string | null
@@ -12,24 +14,47 @@ const initialState: UploadState = {
   error: null,
 }
 
+export const uploadFiles = createAsyncThunk(
+  'upload/uploadFiles',
+  async (files: File[], { rejectWithValue }) => {
+    try {
+      const formData = new FormData()
+      files.forEach((file, index) => {
+        formData.append(`image_${index}`, file)
+      })
+
+      return await uploadPhotos(formData)
+    } catch (error) {
+      if (error instanceof Error) {
+        return rejectWithValue(error.message)
+      }
+      return rejectWithValue('Unknown error')
+    }
+  }
+)
+
 const uploadSlice = createSlice({
   name: 'upload',
   initialState,
   reducers: {
-    uploadStart(state) {
-      state.loading = true
-      state.error = null
-    },
-    uploadSuccess(state, action: PayloadAction<string>) {
-      state.loading = false
-      state.taskId = action.payload
-    },
-    uploadFailure(state, action: PayloadAction<string>) {
-      state.loading = false
-      state.error = action.payload
-    },
+    resetUploadState: () => initialState,
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(uploadFiles.pending, (state) => {
+        state.loading = true
+        state.error = null
+      })
+      .addCase(uploadFiles.fulfilled, (state, action) => {
+        state.loading = false
+        state.taskId = action.payload.task_id
+      })
+      .addCase(uploadFiles.rejected, (state, action) => {
+        state.loading = false
+        state.error = action.payload as string
+      })
   },
 })
 
-export const { uploadStart, uploadSuccess, uploadFailure } = uploadSlice.actions
+export const { resetUploadState } = uploadSlice.actions
 export default uploadSlice.reducer
