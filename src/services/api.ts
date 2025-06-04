@@ -2,7 +2,10 @@
 import { TaskIdResponse, SurveySubmission, ReportStatus } from '../types'
 
 const API_BASE_URL = 'https://sirius-draw-test-94500a1b4a2f.herokuapp.com'
-
+export interface ReportResponse {
+  status: 'processing' | 'ready'
+  url?: string
+}
 export const uploadPhotos = async (
   formData: FormData
 ): Promise<TaskIdResponse> => {
@@ -37,7 +40,7 @@ export const submitSurvey = async (
 
 export const getReportStatus = async (
   taskId: string
-): Promise<ReportStatus> => {
+): Promise<ReportResponse> => {
   const response = await fetch(`${API_BASE_URL}/report/${taskId}`)
 
   if (!response.ok) {
