@@ -1,0 +1,20 @@
+.page
+    background-color: var(--color-bg)
+    box-sizing: border-box
+    max-width: 904px
+    width: 100%
+    margin: 0 auto
+    border-radius: var(--radius-container)
+    overflow: hidden
+    .progress
+        display: flex
+        height: 16px
+        margin-bottom: var(--spacing-big)
+        .completed
+            width: 30%
+            background-color: var(--color-progress-completed)
+        .noCompleted
+            background-color: var(--color-progress-nocompleted)
+            flex: 1
+    .pageWrapper
+        padding: 0 var(--spacing-ultra) var(--spacing-xl) var(--spacing-ultra)

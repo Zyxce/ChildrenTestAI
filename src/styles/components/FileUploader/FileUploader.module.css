@@ -1,0 +1,34 @@
+.uploaderContainer .uploaderTop .uploaderTitle {
+  font-size: var(--font-size-header);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-uploader);
+}
+.uploaderContainer .uploaderTop .uploaderAttention {
+  margin-top: var(--spacing-sm);
+  display: flex;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: var(--spacing-sm) var(--spacing-mds);
+  background-color: var(--color-surface-attention);
+  gap: var(--spacing-sm);
+  border-radius: var(--radius-full);
+}
+.uploaderContainer .uploaderTop .uploaderAttention img {
+  width: var(--scale-icon);
+  height: var(--scale-icon);
+}
+.uploaderContainer .uploaderTop .uploaderAttention p {
+  color: var(--color-text-attention);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-base);
+}
+.uploaderContainer .uploaderBottom {
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--spacing-ultra);
+}
+.uploaderContainer .uploaderBottom p {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+}/*# sourceMappingURL=FileUploader.module.css.map */

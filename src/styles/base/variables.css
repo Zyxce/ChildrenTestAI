@@ -1,5 +1,6 @@
+@import './fonts.css';
 :root {
-  --font-primary: "Inter", sans-serif;
+  --font-primary: "Circe Rounded", sans-serif;
   --font-secondary: "Roboto", sans-serif;
   --font-size-header: 1.25rem;
   --font-size-lg: 1rem;
@@ -10,12 +11,13 @@
   --color-text-primary: #000000;
   --color-text-secondary: #293244;
   --color-text-muted: #A0A9B8;
-  --color-text-warning: #E12828;
+  --color-text-attention: #E12828;
+  --color-text-uploader: #3A353E;
   --color-bg: #fff;
   --color-accent: #6447CF;
   --color-surface-card: #F6F6F8;
   --color-surface-load: #DAEDFD;
-  --color-surface-warning: #FDEEEF;
+  --color-surface-attention: #FDEEEF;
   --color-progress-completed: #7ABEF8;
   --color-progress-nocompleted: #DAEDFD;
   --color-btn-text: #fff;
@@ -32,12 +34,17 @@
   --color-outline-default: #A0A9B8;
   --color-outline-focus: #6447CF;
   --radius-base: 6px;
-  --radius-full: 100%;
+  --radius-container: 20px;
+  --radius-full: 100px;
   --border-width: 1px;
   --spacing-xs: 4px;
   --spacing-sm: 8px;
+  --spacing-mds: 12px;
   --spacing-md: 16px;
   --spacing-lg: 24px;
   --spacing-xl: 32px;
-  --spacing-xxl: 48px;
+  --spacing-big: 48px;
+  --spacing-ultra: 64px;
+  --scale-icon: 16px;
+  --transition-base: 0.3s;
 }/*# sourceMappingURL=variables.css.map */

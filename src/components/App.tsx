@@ -9,7 +9,9 @@ const App: React.FC = () => {
   return (
     <Provider store={store}>
       <BrowserRouter>
-        <AppRoutes />
+        <div className="App">
+          <AppRoutes />
+        </div>
       </BrowserRouter>
     </Provider>
   )

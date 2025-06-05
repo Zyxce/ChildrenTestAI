@@ -6,6 +6,8 @@ import FileUploadField from './FileUploadField'
 import { uploadFiles } from '../../store/uploadSlice'
 import type { RootState, AppDispatch } from '../../store'
 import { handleApiError } from '../../services/api'
+import attentionIcon from '../../assets/images/attention.svg'
+import style from '../../styles/components/FileUploader/FileUploader.module.css'
 
 // Определяем набор ID-полей строго из константы
 const UPLOAD_FIELDS = [
@@ -82,8 +84,16 @@ const FileUploader: React.FC = () => {
     }
   }, [dispatch, files, navigate, allFilesUploaded])
   return (
-    <div className="max-w-md mx-auto p-6 bg-white rounded shadow">
-      <h2 className="text-xl font-semibold mb-4">Загрузите рисунки</h2>
+    <div className={style.uploaderContainer}>
+      <div className={style.uploaderTop}>
+        <h2 className={style.uploaderTitle}>Загрузите фотографии рисунков</h2>
+        <div className={style.uploaderAttention}>
+          <img src={attentionIcon} alt={'Attention'}></img>
+          <p>
+            Допустимые форматы файлов: jpg, jpeg, png, pdf. Размер не более 5 Мб
+          </p>
+        </div>
+      </div>
 
       {UPLOAD_FIELDS.map((field) => (
         <FileUploadField
@@ -106,22 +116,12 @@ const FileUploader: React.FC = () => {
         </div>
       )}
 
-      <button
-        onClick={handleSubmit}
-        disabled={!allFilesUploaded || loading}
-        className={`
-          mt-6 w-full py-2 rounded text-white
-          ${
-            loading
-              ? 'bg-gray-400 cursor-not-allowed'
-              : allFilesUploaded
-              ? 'bg-blue-500 hover:bg-blue-600'
-              : 'bg-blue-200 cursor-not-allowed'
-          }
-        `}
-      >
-        {loading ? 'Загрузка...' : 'Отправить фото'}
-      </button>
+      <div className={style.uploaderBottom}>
+        <p>Шаг 1/3</p>
+        <button onClick={handleSubmit} disabled={!allFilesUploaded || loading}>
+          Далее
+        </button>
+      </div>
     </div>
   )
 }

@@ -1,0 +1,25 @@
+.page {
+  background-color: var(--color-bg);
+  box-sizing: border-box;
+  max-width: 904px;
+  width: 100%;
+  margin: 0 auto;
+  border-radius: var(--radius-container);
+  overflow: hidden;
+}
+.page .progress {
+  display: flex;
+  height: 16px;
+  margin-bottom: var(--spacing-big);
+}
+.page .progress .completed {
+  width: 30%;
+  background-color: var(--color-progress-completed);
+}
+.page .progress .noCompleted {
+  background-color: var(--color-progress-nocompleted);
+  flex: 1;
+}
+.page .pageWrapper {
+  padding: 0 var(--spacing-ultra) var(--spacing-xl) var(--spacing-ultra);
+}/*# sourceMappingURL=UploadPhotosPage.module.css.map */

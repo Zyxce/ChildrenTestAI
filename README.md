@@ -84,6 +84,13 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 ├─ README.md
 ├─ src
 │  ├─ assets
+│  │  └─ fonts
+│  │     ├─ CirceRounded-Bold.otf
+│  │     ├─ CirceRounded-ExtraBold.otf
+│  │     ├─ CirceRounded-ExtraLight.otf
+│  │     ├─ CirceRounded-Light.otf
+│  │     ├─ CirceRounded-Regular.otf
+│  │     └─ CirceRounded-Thin.otf
 │  ├─ components
 │  │  ├─ App.tsx
 │  │  ├─ AuthRoute.tsx
@@ -91,7 +98,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 │  │  │  ├─ FileUploader.tsx
 │  │  │  └─ FileUploadField.tsx
 │  │  ├─ Header.tsx
-│  │  ├─ Layout.tsx
 │  │  └─ Questions
 │  │     ├─ DateQuestion.tsx
 │  │     ├─ EmojiQuestion.tsx
@@ -112,11 +118,13 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 │  ├─ Routes.tsx
 │  ├─ services
 │  │  └─ api.ts
+│  ├─ setupProxy.js
 │  ├─ store
 │  │  ├─ index.ts
 │  │  └─ uploadSlice.ts
 │  ├─ styles
 │  │  ├─ base
+│  │  │  ├─ fonts.css
 │  │  │  ├─ normalize.css
 │  │  │  ├─ variables.css
 │  │  │  ├─ variables.css.map
@@ -127,7 +135,11 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 │  │  │  └─ App.sass
 │  │  ├─ index.css
 │  │  ├─ index.css.map
-│  │  └─ index.sass
+│  │  ├─ index.sass
+│  │  └─ pages
+│  │     ├─ UploadPhotosPage.module.css
+│  │     ├─ UploadPhotosPage.module.css.map
+│  │     └─ UploadPhotosPage.module.sass
 │  ├─ types.ts
 │  └─ utils
 └─ tsconfig.json
