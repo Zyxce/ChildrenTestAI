@@ -22,6 +22,11 @@
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-base);
 }
+.uploaderContainer .uploadField {
+  display: flex;
+  margin-top: var(--spacing-xl);
+  justify-content: space-between;
+}
 .uploaderContainer .uploaderBottom {
   display: flex;
   justify-content: space-between;

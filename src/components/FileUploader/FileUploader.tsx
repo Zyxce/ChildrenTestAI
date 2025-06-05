@@ -11,7 +11,7 @@ import style from '../../styles/components/FileUploader/FileUploader.module.css'
 
 // Определяем набор ID-полей строго из константы
 const UPLOAD_FIELDS = [
-  { id: 'house-tree-person', label: 'Дом/Дерево/Человек' },
+  { id: 'house-tree-person', label: 'Дом, дерево, человек' },
   { id: 'imaginary-animal', label: 'Несуществующее животное' },
   { id: 'self-portrait', label: 'Автопортрет' },
 ] as const
@@ -24,9 +24,7 @@ type FilesState = Record<FieldId, FileEntry | null>
 const FileUploader: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>()
   const navigate = useNavigate()
-  const [uploadError, setUploadError] = useState<string | null>(null) // Добавляем состояние ошибки
   const { loading, error } = useSelector((state: RootState) => state.upload)
-  const [isSuccess, setIsSuccess] = useState(false)
 
   // Инициализируем state с нужными ключами
   const initialFiles: FilesState = UPLOAD_FIELDS.reduce((acc, field) => {
@@ -76,11 +74,9 @@ const FileUploader: React.FC = () => {
     try {
       await dispatch(uploadFiles(filesToSend)).unwrap()
       navigate('/survey')
-      setIsSuccess(true)
       setTimeout(() => navigate('/survey'), 1500)
     } catch (err) {
       const errorMessage = handleApiError(err)
-      setUploadError(errorMessage)
     }
   }, [dispatch, files, navigate, allFilesUploaded])
   return (
@@ -95,26 +91,17 @@ const FileUploader: React.FC = () => {
         </div>
       </div>
 
-      {UPLOAD_FIELDS.map((field) => (
-        <FileUploadField
-          key={field.id}
-          label={field.label}
-          previewUrl={files[field.id]?.preview}
-          onFileChange={(file) => handleFileChange(field.id, file)}
-          onRemove={() => handleRemove(field.id)}
-        />
-      ))}
-
-      {uploadError && (
-        <p className="mt-2 text-sm text-red-600">
-          Ошибка загрузки: {uploadError}
-        </p>
-      )}
-      {isSuccess && (
-        <div className="success-message">
-          Фото успешно загружены! Переходим к опросу...
-        </div>
-      )}
+      <div className={style.uploadField}>
+        {UPLOAD_FIELDS.map((field) => (
+          <FileUploadField
+            key={field.id}
+            label={field.label}
+            previewUrl={files[field.id]?.preview}
+            onFileChange={(file) => handleFileChange(field.id, file)}
+            onRemove={() => handleRemove(field.id)}
+          />
+        ))}
+      </div>
 
       <div className={style.uploaderBottom}>
         <p>Шаг 1/3</p>

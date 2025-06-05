@@ -1,0 +1,50 @@
+.fieldContaner
+    display: flex
+    flex-direction: column
+    text-align: center
+    .uploadContainer
+        background-color: var(--color-surface-card)
+        width: 216px
+        height: 161px
+        border-radius: var(--radius-base)
+        overflow: hidden
+        position: relative
+        .previewImage
+            max-width: 100%
+            object-fit: contain
+        .inputContainer
+            width: 64px
+            height: 64px
+            position: absolute
+            top: 50%
+            left: 50%
+            transform: translate(-50%, -50%)
+            background-color: var(--color-btn-secondary-default)
+            border: none
+            border-radius: var(--radius-base)
+            transition: var(--transition-base)
+            &:hover
+                background-color: var(--color-btn-secondary-hover)
+                cursor: pointer
+            .inputField
+                width: 64px
+                height: 64px
+                opacity: 0
+                z-index: 10
+                &:hover
+                    cursor: pointer
+            img
+                position: absolute
+                top: 50%
+                left: 50%
+                transform: translate(-50%, -50%)
+                width: 36px
+                height: 36px
+                z-index: -1
+                &:hover
+                    cursor: pointer
+    .fieldLabel
+        margin-top: var(--spacing-sm)
+        font-size: var(--font-size-lg)
+        font-weight: var(--font-weight-base)
+        color: var(--color-text-secondary)

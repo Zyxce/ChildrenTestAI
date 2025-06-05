@@ -1,4 +1,7 @@
 import React, { useCallback } from 'react'
+import uploadPhotoIcon from '../../assets/images/uploadPhotos.svg'
+import removePhotoIcon from '../../assets/images/removePhotos.svg'
+import style from '../../styles/components/FileUploader/FileUploadField.module.css'
 
 interface FileUploadFieldProps {
   label: string
@@ -37,29 +40,40 @@ const FileUploadField: React.FC<FileUploadFieldProps> = ({
   )
 
   return (
-    <div className="file-upload-field">
-      <label className="field-label">{label}</label>
-
-      <div className="preview-container">
-        {previewUrl ? (
-          <>
-            <img src={previewUrl} alt="Preview" className="preview-image" />
-            <button type="button" onClick={onRemove} className="remove-button">
-              ×
-            </button>
-          </>
-        ) : (
-          <div className="upload-placeholder">
-            <span>+ Загрузить фото</span>
+    <div className={style.fieldContaner}>
+      {previewUrl ? (
+        <div className={style.uploadContainer}>
+          <img src={previewUrl} alt="Preview" className={style.previewImage} />
+          <div className={style.inputContainer}>
             <input
               type="file"
               accept="image/*"
+              onClick={(e) => {
+                e.currentTarget.value = ''
+              }}
               onChange={handleFileChange}
-              className="file-input"
-            />
+              className={style.inputField}
+            ></input>
+            <img src={removePhotoIcon} alt={'upload'}></img>
           </div>
-        )}
-      </div>
+        </div>
+      ) : (
+        <div className={style.uploadContainer}>
+          <div className={style.inputContainer}>
+            <input
+              type="file"
+              accept="image/*"
+              onClick={(e) => {
+                e.currentTarget.value = ''
+              }}
+              onChange={handleFileChange}
+              className={style.inputField}
+            ></input>
+            <img src={uploadPhotoIcon} alt={'upload'}></img>
+          </div>
+        </div>
+      )}
+      <p className={style.fieldLabel}>{label}</p>
     </div>
   )
 }
