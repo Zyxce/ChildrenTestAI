@@ -78,6 +78,7 @@ export const submitSurvey = async (
   }
 }
 
+// В src/services/api.ts обновите getReportStatus:
 export const getReportStatus = async (
   taskId: string
 ): Promise<ReportStatus> => {
@@ -85,15 +86,23 @@ export const getReportStatus = async (
     const response = await fetch(`${API_BASE_URL}/report/${taskId}`)
 
     if (!response.ok) {
-      const errorData = await response.json()
-      throw new Error(
-        errorData.detail || `Ошибка ${response.status}: ${response.statusText}`
-      )
+      if (response.status === 404) {
+        return { status: 'processing' }
+      }
+
+      const errorText = await response.text()
+      throw new Error(`Ошибка ${response.status}: ${errorText}`)
+    }
+
+    // Если ответ PDF - считаем готовым
+    if (response.headers.get('content-type')?.includes('application/pdf')) {
+      return { status: 'ready' }
     }
 
     return response.json()
   } catch (error) {
-    throw new Error(handleApiError(error))
+    console.error('Ошибка при проверке статуса:', error)
+    return { status: 'processing' }
   }
 }
 

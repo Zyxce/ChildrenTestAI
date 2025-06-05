@@ -52,5 +52,4 @@ export type SurveySubmission = {
 
 export type ReportStatus = {
   status: 'processing' | 'ready' | 'error'
-  pdf_url?: string
 }

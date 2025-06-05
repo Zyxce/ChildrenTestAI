@@ -2,15 +2,15 @@ const { createProxyMiddleware } = require('http-proxy-middleware')
 
 module.exports = function (app) {
   app.use(
-    '/upload',
+    '/report',
     createProxyMiddleware({
       target: 'https://sirius-draw-test-94500a1b4a2f.herokuapp.com',
       changeOrigin: true,
       secure: false,
-      onProxyReq: (proxyReq) => {
-        proxyReq.setHeader('Access-Control-Allow-Origin', '*')
-        proxyReq.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS')
-        proxyReq.setHeader('Access-Control-Allow-Headers', 'Content-Type')
+      onProxyRes: (proxyRes) => {
+        // Разрешаем CORS для PDF
+        proxyRes.headers['Access-Control-Allow-Origin'] = '*'
+        proxyRes.headers['Content-Type'] = 'application/pdf'
       },
     })
   )
