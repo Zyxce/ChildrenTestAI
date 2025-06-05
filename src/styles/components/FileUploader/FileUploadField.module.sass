@@ -9,6 +9,7 @@
         border-radius: var(--radius-base)
         overflow: hidden
         position: relative
+        transition: var(--transition-base)
         .previewImage
             max-width: 100%
             object-fit: contain
@@ -48,3 +49,47 @@
         font-size: var(--font-size-lg)
         font-weight: var(--font-weight-base)
         color: var(--color-text-secondary)
+
+@media (max-width: 1200px)
+    .fieldContaner
+        width: 168px
+        .uploadContainer
+            width: 168px
+            height: 64px
+            .previewImage
+            .inputContainer
+                width: 32px
+                height: 32px
+                &:hover
+                .inputField
+                    width: 32px
+                    height: 32px
+                    &:hover
+                img
+                    width: 16px
+                    height: 16px
+                    &:hover
+
+        .fieldLabel
+
+@media (max-width: 640px)
+    .fieldContaner
+        width: 100%
+        .uploadContainer
+            width: 100%
+            height: 64px
+            .previewImage
+            .inputContainer
+                width: 32px
+                height: 32px
+                &:hover
+                .inputField
+                    width: 32px
+                    height: 32px
+                    &:hover
+                img
+                    width: 16px
+                    height: 16px
+                    &:hover
+
+        .fieldLabel

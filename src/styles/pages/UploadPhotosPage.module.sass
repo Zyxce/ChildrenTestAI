@@ -6,6 +6,7 @@
     margin: 0 auto
     border-radius: var(--radius-container)
     overflow: hidden
+    transition: var(--transition-base)
     .progress
         display: flex
         height: 16px
@@ -18,3 +19,23 @@
             flex: 1
     .pageWrapper
         padding: 0 var(--spacing-ultra) var(--spacing-xl) var(--spacing-ultra)
+
+@media (max-width: 1200px)
+    .page
+        max-width: 600px
+        .progress
+            margin-bottom: var(--spacing-xl)
+            .completed
+            .noCompleted
+        .pageWrapper
+            padding: 0 var(--spacing-lg) var(--spacing-lg) var(--spacing-lg)
+
+@media (max-width: 640px)
+    .page
+        max-width: 296px
+        .progress
+            margin-bottom: var(--spacing-xl)
+            .completed
+            .noCompleted
+        .pageWrapper
+            padding: 0 var( --spacing-md) var( --spacing-md) var( --spacing-md)

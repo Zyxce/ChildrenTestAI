@@ -1,6 +1,7 @@
 
 .uploaderContainer
     .uploaderTop
+
         .uploaderTitle
             font-size: var(--font-size-header)
             font-weight: var(--font-weight-bold)
@@ -36,7 +37,7 @@
         .btnMuted
             border: none
             border-radius: var(--radius-full)
-            padding: var(--spacing-sm) var(--spacing-md)
+            padding: var(--spacing-sm) var(--spacing-lg)
             gap: var(--spacing-sm)
             background-color: var(--color-btn-disabled)
             transition: var(--transition-base)
@@ -57,7 +58,7 @@
         .btnDefault
             border: none
             border-radius: var(--radius-full)
-            padding: var(--spacing-sm) var(--spacing-md)
+            padding: var(--spacing-sm) var(--spacing-lg)
             gap: var(--spacing-sm)
             background-color: var(--color-btn-default)
             transition: var(--transition-base)
@@ -78,3 +79,46 @@
             &:hover
                 cursor: pointer
                 background-color: var(--color-btn-hover)
+
+@media (max-width: 1200px)
+    .uploaderContainer
+        .uploaderTop
+            .uploaderTitle
+            .uploaderAttention
+                p
+        .uploadField
+        .uploaderBottom
+            margin-top: var(--spacing-big)
+            p
+            .btnMuted
+                svg
+                    path
+            .btnDefault
+                svg
+                    path
+                &:hover
+
+@media (max-width: 640px)
+    .uploaderContainer
+        .uploaderTop
+            .uploaderTitle
+            .uploaderAttention
+                border-radius: var(--radius-base)
+                align-items: center
+                img
+                p
+        .uploadField
+            flex-direction: column
+            align-items: center
+            margin-top: var(--spacing-lg)
+            gap: var(--spacing-md)
+        .uploaderBottom
+            margin-top: var(--spacing-xl)
+            p
+            .btnMuted
+                svg
+                    path
+            .btnDefault
+                svg
+                    path
+                &:hover
