@@ -7,7 +7,7 @@ export interface Question {
   options?: string[] // Для radio вопросов
 }
 
-export type AnswerValue = string | number | null
+export type AnswerValue = string | null
 
 export interface Answers {
   [key: string]: AnswerValue

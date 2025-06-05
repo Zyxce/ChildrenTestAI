@@ -2,8 +2,8 @@ import React from 'react'
 
 interface RatingQuestionProps {
   question: string
-  value: number | null
-  onChange: (value: number) => void
+  value: string | null // Изменяем тип на string | null
+  onChange: (value: string) => void // Изменяем тип принимаемого значения
 }
 
 const RatingQuestion: React.FC<RatingQuestionProps> = ({
@@ -19,8 +19,10 @@ const RatingQuestion: React.FC<RatingQuestionProps> = ({
           <button
             key={num}
             type="button"
-            className={`rating-button ${value === num ? 'selected' : ''}`}
-            onClick={() => onChange(num)}
+            className={`rating-button ${
+              value === num.toString() ? 'selected' : ''
+            }`}
+            onClick={() => onChange(num.toString())} // Преобразуем число в строку
           >
             {num}
           </button>

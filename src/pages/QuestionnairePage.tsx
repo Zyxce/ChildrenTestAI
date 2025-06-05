@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import { RootState } from '../store'
 import rawQuestions from '../data/questions.json'
 import { submitSurvey } from '../services/api'
-import { Question } from '../types'
+import { Question, Answers } from '../types'
 import TextQuestion from '../components/Questions/TextQuestion'
 import DateQuestion from '../components/Questions/DateQuestion'
 import RadioQuestion from '../components/Questions/RadioQuestion'
@@ -54,7 +54,18 @@ const QuestionnairePage: React.FC = () => {
 
     try {
       setIsSubmitting(true)
-      await submitSurvey(taskId, answers)
+
+      // Преобразуем числовые значения в строки перед отправкой
+      const stringAnswers: Answers = {}
+      Object.entries(answers).forEach(([key, value]) => {
+        if (typeof value === 'number') {
+          stringAnswers[key] = value.toString()
+        } else {
+          stringAnswers[key] = value
+        }
+      })
+
+      await submitSurvey(taskId, stringAnswers) // Используем преобразованные ответы
       navigate('/report')
     } catch (err) {
       console.error('Ошибка при отправке:', err)
@@ -69,13 +80,13 @@ const QuestionnairePage: React.FC = () => {
     if (!q.required) return true
     const answer = answers[q.id]
 
-    if (q.type === 'rating') return typeof answer === 'number'
+    // Обновляем проверки для всех типов вопросов
+    if (q.type === 'rating') return typeof answer === 'string' && answer !== ''
     if (q.type === 'date') return typeof answer === 'string' && answer !== ''
     if (q.type === 'emoji') return typeof answer === 'string' && answer !== ''
     if (q.type === 'radio') return typeof answer === 'string' && answer !== ''
     return answer !== null && answer !== ''
   })
-
   // Функция для безопасного получения строковых значений
   const getStringValue = (id: string): string => {
     const value = answers[id]
@@ -136,7 +147,7 @@ const QuestionnairePage: React.FC = () => {
                 <RatingQuestion
                   key={question.id}
                   question={question.question}
-                  value={(answers[question.id] as number | null) || null}
+                  value={(answers[question.id] as string | null) || null}
                   onChange={(value) => handleAnswerChange(question.id, value)}
                 />
               ))}
