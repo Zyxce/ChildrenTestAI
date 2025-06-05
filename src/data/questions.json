@@ -1,273 +1,373 @@
-[
-  {
-    "id": "childName",
-    "type": "text",
-    "question": "Имя ребенка",
-    "required": true
-  },
-  {
-    "id": "childDOB",
-    "type": "date",
-    "question": "Дата рождения ребенка",
-    "required": true
-  },
-  {
-    "id": "childGender",
-    "type": "radio",
-    "question": "Пол ребенка",
-    "required": true,
-    "options": ["Мальчик", "Девочка"]
-  },
-  {
-    "id": "parentName",
-    "type": "text",
-    "question": "Ваше имя (родителя)",
-    "required": true
-  },
-  {
-    "id": "q1_1",
-    "type": "rating",
-    "question": "Вопрос 1.1",
-    "required": true
-  },
-  {
-    "id": "q1_2",
-    "type": "rating",
-    "question": "Вопрос 1.2",
-    "required": true
-  },
-  {
-    "id": "q1_3",
-    "type": "rating",
-    "question": "Вопрос 1.3",
-    "required": true
-  },
-  {
-    "id": "q1_4",
-    "type": "rating",
-    "question": "Вопрос 1.4",
-    "required": true
-  },
-  {
-    "id": "q1_5",
-    "type": "rating",
-    "question": "Вопрос 1.5",
-    "required": true
-  },
-  {
-    "id": "q1_6",
-    "type": "rating",
-    "question": "Вопрос 1.6",
-    "required": true
-  },
-  {
-    "id": "q1_7",
-    "type": "rating",
-    "question": "Вопрос 1.7",
-    "required": true
-  },
-  {
-    "id": "q1_8",
-    "type": "rating",
-    "question": "Вопрос 1.8",
-    "required": true
-  },
-  {
-    "id": "q1_9",
-    "type": "rating",
-    "question": "Вопрос 1.9",
-    "required": true
-  },
-  {
-    "id": "q1_10",
-    "type": "rating",
-    "question": "Вопрос 1.10",
-    "required": true
-  },
-  {
-    "id": "q2_1",
-    "type": "rating",
-    "question": "Вопрос 2.1",
-    "required": true
-  },
-  {
-    "id": "q2_2",
-    "type": "rating",
-    "question": "Вопрос 2.2",
-    "required": true
-  },
-  {
-    "id": "q2_3",
-    "type": "rating",
-    "question": "Вопрос 2.3",
-    "required": true
-  },
-  {
-    "id": "q2_4",
-    "type": "rating",
-    "question": "Вопрос 2.4",
-    "required": true
-  },
-  {
-    "id": "q2_5",
-    "type": "rating",
-    "question": "Вопрос 2.5",
-    "required": true
-  },
-  {
-    "id": "q2_6",
-    "type": "rating",
-    "question": "Вопрос 2.6",
-    "required": true
-  },
-  {
-    "id": "q2_7",
-    "type": "rating",
-    "question": "Вопрос 2.7",
-    "required": true
-  },
-  {
-    "id": "q2_8",
-    "type": "rating",
-    "question": "Вопрос 2.8",
-    "required": true
-  },
-  {
-    "id": "q2_9",
-    "type": "rating",
-    "question": "Вопрос 2.9",
-    "required": true
-  },
-  {
-    "id": "q2_10",
-    "type": "rating",
-    "question": "Вопрос 2.10",
-    "required": true
-  },
-  {
-    "id": "q3_1",
-    "type": "rating",
-    "question": "Вопрос 3.1",
-    "required": true
-  },
-  {
-    "id": "q3_2",
-    "type": "rating",
-    "question": "Вопрос 3.2",
-    "required": true
-  },
-  {
-    "id": "q3_3",
-    "type": "rating",
-    "question": "Вопрос 3.3",
-    "required": true
-  },
-  {
-    "id": "q3_4",
-    "type": "rating",
-    "question": "Вопрос 3.4",
-    "required": true
-  },
-  {
-    "id": "q3_5",
-    "type": "rating",
-    "question": "Вопрос 3.5",
-    "required": true
-  },
-  {
-    "id": "q3_6",
-    "type": "rating",
-    "question": "Вопрос 3.6",
-    "required": true
-  },
-  {
-    "id": "q3_7",
-    "type": "rating",
-    "question": "Вопрос 3.7",
-    "required": true
-  },
-  {
-    "id": "q3_8",
-    "type": "rating",
-    "question": "Вопрос 3.8",
-    "required": true
-  },
-  {
-    "id": "q3_9",
-    "type": "rating",
-    "question": "Вопрос 3.9",
-    "required": true
-  },
-  {
-    "id": "q3_10",
-    "type": "rating",
-    "question": "Вопрос 3.10",
-    "required": true
-  },
-  {
-    "id": "q4_1",
-    "type": "rating",
-    "question": "Вопрос 4.1",
-    "required": true
-  },
-  {
-    "id": "q4_2",
-    "type": "rating",
-    "question": "Вопрос 4.2",
-    "required": true
-  },
-  {
-    "id": "q4_3",
-    "type": "rating",
-    "question": "Вопрос 4.3",
-    "required": true
-  },
-  {
-    "id": "q4_4",
-    "type": "rating",
-    "question": "Вопрос 4.4",
-    "required": true
-  },
-  {
-    "id": "q4_5",
-    "type": "rating",
-    "question": "Вопрос 4.5",
-    "required": true
-  },
-  {
-    "id": "q4_6",
-    "type": "rating",
-    "question": "Вопрос 4.6",
-    "required": true
-  },
-  {
-    "id": "q4_7",
-    "type": "rating",
-    "question": "Вопрос 4.7",
-    "required": true
-  },
-  {
-    "id": "q4_8",
-    "type": "rating",
-    "question": "Вопрос 4.8",
-    "required": true
-  },
-  {
-    "id": "q4_9",
-    "type": "rating",
-    "question": "Вопрос 4.9",
-    "required": true
-  },
-  {
-    "id": "q4_10",
-    "type": "rating",
-    "question": "Вопрос 4.10",
-    "required": true
-  },
-  {
-    "id": "emotionalState",
-    "type": "emoji",
-    "question": "Эмоциональное состояние ребенка",
-    "required": true
-  }
-]
+{
+  "sections": [
+    {
+      "title": "Общая информация о ребёнке",
+      "fields": [
+        {
+          "id": "childName",
+          "type": "text",
+          "question": "Имя ребёнка",
+          "required": true
+        },
+        {
+          "id": "childDOB",
+          "type": "date",
+          "question": "Дата рождения ребёнка",
+          "required": true
+        },
+        {
+          "id": "childGender",
+          "type": "radio",
+          "question": "Пол ребёнка",
+          "required": true,
+          "options": ["Мальчик", "Девочка"]
+        },
+        {
+          "id": "parentName",
+          "type": "text",
+          "question": "Имя родителя",
+          "required": true
+        }
+      ]
+    },
+    {
+      "title": "Раздел 1. Эмоциональная сфера",
+      "fields": [
+        {
+          "id": "q1_1",
+          "type": "radio",
+          "question": "Ребёнок часто выражает радость и удовольствие",
+          "required": true,
+          "options": ["Очень редко", "Редко", "Иногда", "Часто", "Всегда"]
+        },
+        {
+          "id": "q1_2",
+          "type": "radio",
+          "question": "Ребёнок часто грустит или плачет без видимой причины",
+          "required": true,
+          "options": ["Очень редко", "Редко", "Иногда", "Часто", "Всегда"]
+        },
+        {
+          "id": "q1_3",
+          "type": "radio",
+          "question": "Ребёнок легко расстраивается из‑за мелочей",
+          "required": true,
+          "options": ["Очень редко", "Редко", "Иногда", "Часто", "Всегда"]
+        },
+        {
+          "id": "q1_4",
+          "type": "radio",
+          "question": "Ребёнок быстро успокаивается после расстройства",
+          "required": true,
+          "options": ["Очень редко", "Редко", "Иногда", "Часто", "Всегда"]
+        },
+        {
+          "id": "q1_5",
+          "type": "radio",
+          "question": "Ребёнок проявляет страх в новых или незнакомых ситуациях",
+          "required": true,
+          "options": ["Очень редко", "Редко", "Иногда", "Часто", "Всегда"]
+        },
+        {
+          "id": "q1_6",
+          "type": "radio",
+          "question": "Ребёнок выражает злость или раздражение",
+          "required": true,
+          "options": ["Очень редко", "Редко", "Иногда", "Часто", "Всегда"]
+        },
+        {
+          "id": "q1_7",
+          "type": "radio",
+          "question": "Ребёнок проявляет интерес к новым занятиям",
+          "required": true,
+          "options": ["Очень редко", "Редко", "Иногда", "Часто", "Всегда"]
+        },
+        {
+          "id": "q1_8",
+          "type": "radio",
+          "question": "Ребёнок демонстрирует сочувствие к другим",
+          "required": true,
+          "options": ["Очень редко", "Редко", "Иногда", "Часто", "Всегда"]
+        },
+        {
+          "id": "q1_9",
+          "type": "radio",
+          "question": "Ребёнок легко обижается из‑за незначительных замечаний",
+          "required": true,
+          "options": ["Очень редко", "Редко", "Иногда", "Часто", "Всегда"]
+        },
+        {
+          "id": "q1_10",
+          "type": "radio",
+          "question": "Ребёнок выражает благодарность и признательность",
+          "required": true,
+          "options": ["Очень редко", "Редко", "Иногда", "Часто", "Всегда"]
+        }
+      ]
+    },
+    {
+      "title": "Раздел 2. Социальное взаимодействие",
+      "fields": [
+        {
+          "id": "q2_1",
+          "type": "radio",
+          "question": "Ребёнок умеет следовать правилам и инструкциям",
+          "required": true,
+          "options": ["Очень редко", "Редко", "Иногда", "Часто", "Всегда"]
+        },
+        {
+          "id": "q2_2",
+          "type": "radio",
+          "question": "Ребёнку трудно начинать и поддерживать разговор",
+          "required": true,
+          "options": ["Очень редко", "Редко", "Иногда", "Часто", "Всегда"]
+        },
+        {
+          "id": "q2_3",
+          "type": "radio",
+          "question": "Ребёнок поддерживает зрительный контакт при общении",
+          "required": true,
+          "options": ["Очень редко", "Редко", "Иногда", "Часто", "Всегда"]
+        },
+        {
+          "id": "q2_4",
+          "type": "radio",
+          "question": "Ребёнку трудно контролировать импульсы в большой группе",
+          "required": true,
+          "options": ["Очень редко", "Редко", "Иногда", "Часто", "Всегда"]
+        },
+        {
+          "id": "q2_5",
+          "type": "radio",
+          "question": "Ребёнок умеет работать в команде",
+          "required": true,
+          "options": ["Очень редко", "Редко", "Иногда", "Часто", "Всегда"]
+        },
+        {
+          "id": "q2_6",
+          "type": "radio",
+          "question": "Ребёнок делится игрушками и материалами",
+          "required": true,
+          "options": ["Очень редко", "Редко", "Иногда", "Часто", "Всегда"]
+        },
+        {
+          "id": "q2_7",
+          "type": "radio",
+          "question": "Ребёнок понимает эмоции сверстников",
+          "required": true,
+          "options": ["Очень редко", "Редко", "Иногда", "Часто", "Всегда"]
+        },
+        {
+          "id": "q2_8",
+          "type": "radio",
+          "question": "Ребёнок любит совместные игры",
+          "required": true,
+          "options": ["Очень редко", "Редко", "Иногда", "Часто", "Всегда"]
+        },
+        {
+          "id": "q2_9",
+          "type": "radio",
+          "question": "Ребёнок адекватно реагирует на критику",
+          "required": true,
+          "options": ["Очень редко", "Редко", "Иногда", "Часто", "Всегда"]
+        },
+        {
+          "id": "q2_10",
+          "type": "radio",
+          "question": "Ребёнок проявляет инициативу в общении",
+          "required": true,
+          "options": ["Очень редко", "Редко", "Иногда", "Часто", "Всегда"]
+        }
+      ]
+    },
+    {
+      "title": "Раздел 3. Саморегуляция и поведение",
+      "fields": [
+        {
+          "id": "q3_1",
+          "type": "radio",
+          "question": "Ребёнок контролирует эмоции в стрессовых ситуациях",
+          "required": true,
+          "options": ["Очень редко", "Редко", "Иногда", "Часто", "Всегда"]
+        },
+        {
+          "id": "q3_2",
+          "type": "radio",
+          "question": "Ребёнку трудно ждать своей очереди",
+          "required": true,
+          "options": ["Очень редко", "Редко", "Иногда", "Часто", "Всегда"]
+        },
+        {
+          "id": "q3_3",
+          "type": "radio",
+          "question": "Ребёнок следует режиму дня",
+          "required": true,
+          "options": ["Очень редко", "Редко", "Иногда", "Часто", "Всегда"]
+        },
+        {
+          "id": "q3_4",
+          "type": "radio",
+          "question": "Ребёнок выполняет поручения без напоминаний",
+          "required": true,
+          "options": ["Очень редко", "Редко", "Иногда", "Часто", "Всегда"]
+        },
+        {
+          "id": "q3_5",
+          "type": "radio",
+          "question": "Ребёнок устойчив к отвлекающим факторам",
+          "required": true,
+          "options": ["Очень редко", "Редко", "Иногда", "Часто", "Всегда"]
+        },
+        {
+          "id": "q3_6",
+          "type": "radio",
+          "question": "Ребёнок соблюдает личные границы других",
+          "required": true,
+          "options": ["Очень редко", "Редко", "Иногда", "Часто", "Всегда"]
+        },
+        {
+          "id": "q3_7",
+          "type": "radio",
+          "question": "Ребёнок признаёт свои ошибки",
+          "required": true,
+          "options": ["Очень редко", "Редко", "Иногда", "Часто", "Всегда"]
+        },
+        {
+          "id": "q3_8",
+          "type": "radio",
+          "question": "Ребёнок соблюдает правила безопасности",
+          "required": true,
+          "options": ["Очень редко", "Редко", "Иногда", "Часто", "Всегда"]
+        },
+        {
+          "id": "q3_9",
+          "type": "radio",
+          "question": "Ребёнок самостоятельно решает простые задачи",
+          "required": true,
+          "options": ["Очень редко", "Редко", "Иногда", "Часто", "Всегда"]
+        },
+        {
+          "id": "q3_10",
+          "type": "radio",
+          "question": "Ребёнок контролирует импульсивные реакции",
+          "required": true,
+          "options": ["Очень редко", "Редко", "Иногда", "Часто", "Всегда"]
+        }
+      ]
+    },
+    {
+      "title": "Раздел 4. Самооценка и уверенность в себе",
+      "fields": [
+        {
+          "id": "q4_1",
+          "type": "rating",
+          "question": "Насколько ребёнок уверен в своих силах и способностях?",
+          "required": true,
+          "scale": { "min": 1, "max": 5 }
+        },
+        {
+          "id": "q4_2",
+          "type": "rating",
+          "question": "Насколько часто ребёнок сомневается в себе?",
+          "required": true,
+          "scale": { "min": 1, "max": 5 }
+        },
+        {
+          "id": "q4_3",
+          "type": "rating",
+          "question": "Насколько ребёнок открыт к новым вызовам?",
+          "required": true,
+          "scale": { "min": 1, "max": 5 }
+        },
+        {
+          "id": "q4_4",
+          "type": "rating",
+          "question": "Насколько ребёнок доволен своими достижениями?",
+          "required": true,
+          "scale": { "min": 1, "max": 5 }
+        },
+        {
+          "id": "q4_5",
+          "type": "rating",
+          "question": "Насколько ребёнок позитивно оценивает свой внешний вид?",
+          "required": true,
+          "scale": { "min": 1, "max": 5 }
+        },
+        {
+          "id": "q4_6",
+          "type": "rating",
+          "question": "Насколько ребёнок готов отстаивать свою точку зрения?",
+          "required": true,
+          "scale": { "min": 1, "max": 5 }
+        },
+        {
+          "id": "q4_7",
+          "type": "rating",
+          "question": "Насколько ребёнок уверен в общении со сверстниками?",
+          "required": true,
+          "scale": { "min": 1, "max": 5 }
+        },
+        {
+          "id": "q4_8",
+          "type": "rating",
+          "question": "Насколько ребёнок доволен своим поведением?",
+          "required": true,
+          "scale": { "min": 1, "max": 5 }
+        },
+        {
+          "id": "q4_9",
+          "type": "rating",
+          "question": "Насколько ребёнок верит в успех своих начинаний?",
+          "required": true,
+          "scale": { "min": 1, "max": 5 }
+        },
+        {
+          "id": "q4_10",
+          "type": "rating",
+          "question": "Насколько ребёнок быстро восстанавливается после неудач?",
+          "required": true,
+          "scale": { "min": 1, "max": 5 }
+        }
+      ]
+    },
+    {
+      "title": "Раздел 5. Общие вопросы",
+      "fields": [
+        {
+          "id": "emotionalState",
+          "type": "emoji",
+          "question": "Как вы оцениваете общее эмоциональное состояние вашего ребёнка?",
+          "required": true
+        },
+        {
+          "id": "developmentNotes",
+          "type": "textarea",
+          "question": "Есть ли у вашего ребёнка особенности развития или поведения, о которых вы хотели бы сообщить дополнительно?",
+          "required": false,
+          "rows": 4
+        },
+        {
+          "id": "strengths",
+          "type": "textarea",
+          "question": "Какие, на ваш взгляд, сильные стороны и таланты есть у вашего ребёнка?",
+          "required": false,
+          "rows": 4
+        },
+        {
+          "id": "areasForDevelopment",
+          "type": "textarea",
+          "question": "Какие, на ваш взгляд, области требуют особого внимания и развития у вашего ребёнка?",
+          "required": false,
+          "rows": 4
+        },
+        {
+          "id": "consultedSpecialists",
+          "type": "radio",
+          "question": "Обращались ли вы ранее к специалистам (психологу, неврологу, логопеду)?",
+          "required": true,
+          "options": ["Да", "Нет"]
+        }
+      ]
+    }
+  ]
+}

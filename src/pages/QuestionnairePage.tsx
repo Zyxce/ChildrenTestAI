@@ -1,15 +1,15 @@
+// src/pages/QuestionnairePage.tsx
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { RootState } from '../store'
-import rawQuestions from '../data/questions.json'
 import { submitSurvey } from '../services/api'
-import { Question, Answers } from '../types'
-import TextQuestion from '../components/Questions/TextQuestion'
-import DateQuestion from '../components/Questions/DateQuestion'
-import RadioQuestion from '../components/Questions/RadioQuestion'
-import RatingQuestion from '../components/Questions/RatingQuestion'
-import EmojiQuestion from '../components/Questions/EmojiQuestion'
+import { Section, Question } from '../types' // Импортируем Question
+import QuestionContainer from '../components/Questions/QuestionContainer'
+import rawQuestionsData from '../data/questions.json'
+
+// Явно утверждаем тип импортированных данных
+const questionsData = rawQuestionsData as { sections: Section[] }
 
 const QuestionnairePage: React.FC = () => {
   const navigate = useNavigate()
@@ -18,18 +18,8 @@ const QuestionnairePage: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  const questionsData = rawQuestions as Question[]
-
-  // Фильтрация вопросов по категориям
-  const personalQuestions = questionsData.filter((q) =>
-    ['childName', 'childDOB', 'childGender', 'parentName'].includes(q.id)
-  )
-
-  const sectionQuestions = questionsData.filter(
-    (q) => q.id.startsWith('q') && q.type === 'rating'
-  )
-
-  const emotionalQuestion = questionsData.find((q) => q.id === 'emotionalState')
+  // Используем статически импортированные данные с утверждением типа
+  const [sections] = useState<Section[]>(questionsData.sections)
 
   useEffect(() => {
     if (!taskId) {
@@ -38,10 +28,7 @@ const QuestionnairePage: React.FC = () => {
   }, [taskId, navigate])
 
   const handleAnswerChange = (questionId: string, value: any) => {
-    setAnswers((prev) => ({
-      ...prev,
-      [questionId]: value,
-    }))
+    setAnswers((prev) => ({ ...prev, [questionId]: value }))
   }
 
   const handleSubmit = async () => {
@@ -55,20 +42,16 @@ const QuestionnairePage: React.FC = () => {
     try {
       setIsSubmitting(true)
 
-      // Преобразуем числовые значения в строки перед отправкой
-      const stringAnswers: Answers = {}
+      // Преобразуем значения в строки
+      const stringAnswers: Record<string, string> = {}
       Object.entries(answers).forEach(([key, value]) => {
-        if (typeof value === 'number') {
-          stringAnswers[key] = value.toString()
-        } else {
-          stringAnswers[key] = value
-        }
+        stringAnswers[key] = value?.toString() || ''
       })
 
-      await submitSurvey(taskId, stringAnswers) // Используем преобразованные ответы
+      await submitSurvey(taskId, stringAnswers)
       navigate('/report')
     } catch (err) {
-      console.error('Ошибка при отправке:', err)
+      console.error('Ошибка при отправке ответов:', err)
       setError('Ошибка при отправке ответов. Пожалуйста, попробуйте снова.')
     } finally {
       setIsSubmitting(false)
@@ -76,98 +59,40 @@ const QuestionnairePage: React.FC = () => {
   }
 
   // Проверка заполнения всех обязательных вопросов
-  const allRequiredAnswered = questionsData.every((q) => {
-    if (!q.required) return true
-    const answer = answers[q.id]
-
-    // Обновляем проверки для всех типов вопросов
-    if (q.type === 'rating') return typeof answer === 'string' && answer !== ''
-    if (q.type === 'date') return typeof answer === 'string' && answer !== ''
-    if (q.type === 'emoji') return typeof answer === 'string' && answer !== ''
-    if (q.type === 'radio') return typeof answer === 'string' && answer !== ''
-    return answer !== null && answer !== ''
-  })
-  // Функция для безопасного получения строковых значений
-  const getStringValue = (id: string): string => {
-    const value = answers[id]
-    return typeof value === 'string' ? value : ''
-  }
+  const allRequiredAnswered = sections.every((section) =>
+    section.fields.every(
+      (field) =>
+        !field.required ||
+        (answers[field.id] !== undefined &&
+          answers[field.id] !== null &&
+          answers[field.id] !== '')
+    )
+  )
 
   return (
     <div className="questionnaire-page">
       <h2>Психологический опросник</h2>
 
-      {/* Блок личных данных */}
-      <div className="personal-info-section">
-        <h3>Основная информация</h3>
-        {personalQuestions.map((question) => {
-          switch (question.type) {
-            case 'text':
-              return (
-                <TextQuestion
-                  key={question.id}
-                  question={question.question}
-                  value={getStringValue(question.id)}
-                  onChange={(value) => handleAnswerChange(question.id, value)}
-                />
-              )
-            case 'date':
-              return (
-                <DateQuestion
-                  key={question.id}
-                  question={question.question}
-                  value={getStringValue(question.id)}
-                  onChange={(value) => handleAnswerChange(question.id, value)}
-                />
-              )
-            case 'radio':
-              return (
-                <RadioQuestion
-                  key={question.id}
-                  question={question.question}
-                  options={question.options || []}
-                  value={getStringValue(question.id)}
-                  onChange={(value) => handleAnswerChange(question.id, value)}
-                />
-              )
-            default:
-              return null
-          }
-        })}
-      </div>
-
-      {/* Блоки с вопросами по разделам */}
-      {[1, 2, 3, 4].map((section) => (
-        <div key={section} className="question-section">
-          <h3>Раздел {section}</h3>
+      {sections.map((section, index) => (
+        <div key={`section-${index}`} className="question-section">
+          <h3>{section.title}</h3>
           <div className="questions-grid">
-            {sectionQuestions
-              .filter((q) => q.id.startsWith(`q${section}_`))
-              .map((question) => (
-                <RatingQuestion
-                  key={question.id}
-                  question={question.question}
-                  value={(answers[question.id] as string | null) || null}
-                  onChange={(value) => handleAnswerChange(question.id, value)}
-                />
-              ))}
+            {section.fields.map((field) => (
+              <QuestionContainer
+                key={`question-${field.id}`}
+                question={field}
+                value={
+                  answers[field.id] ??
+                  (field.type === 'text' || field.type === 'textarea'
+                    ? ''
+                    : null)
+                }
+                onChange={(value) => handleAnswerChange(field.id, value)}
+              />
+            ))}
           </div>
         </div>
       ))}
-
-      {/* Блок эмоционального состояния */}
-      {emotionalQuestion && (
-        <div className="emotional-section">
-          <h3>Эмоциональное состояние</h3>
-          <EmojiQuestion
-            question={emotionalQuestion.question}
-            value={getStringValue(emotionalQuestion.id)}
-            onChange={(value) =>
-              handleAnswerChange(emotionalQuestion.id, value)
-            }
-          />
-        </div>
-      )}
 
       {error && <div className="error-message">{error}</div>}
 

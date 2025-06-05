@@ -1,15 +1,18 @@
+// src/components/Questions/TextQuestion.tsx
 import React from 'react'
 
 interface TextQuestionProps {
   question: string
-  value: string // Теперь только строка
+  value: string
   onChange: (value: string) => void
+  rows?: number
 }
 
 const TextQuestion: React.FC<TextQuestionProps> = ({
   question,
   value,
   onChange,
+  rows = 4,
 }) => {
   return (
     <div className="text-question">
@@ -17,7 +20,7 @@ const TextQuestion: React.FC<TextQuestionProps> = ({
       <textarea
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        rows={4}
+        rows={rows}
         placeholder="Введите ваш ответ..."
       />
     </div>

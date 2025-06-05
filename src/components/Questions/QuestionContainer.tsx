@@ -1,3 +1,4 @@
+// src/components/Questions/QuestionContainer.tsx
 import React from 'react'
 import RatingQuestion from './RatingQuestion'
 import EmojiQuestion from './EmojiQuestion'
@@ -7,72 +8,65 @@ import RadioQuestion from './RadioQuestion'
 import { Question } from '../../types'
 
 interface QuestionContainerProps {
-  questions: Question[]
-  answers: Record<string, any>
-  onAnswerChange: (id: string, value: any) => void
+  question: Question
+  value: any
+  onChange: (value: any) => void
 }
 
 const QuestionContainer: React.FC<QuestionContainerProps> = ({
-  questions,
-  answers,
-  onAnswerChange,
+  question,
+  value,
+  onChange,
 }) => {
-  const renderQuestion = (q: Question) => {
-    switch (q.type) {
-      case 'rating':
-        return (
-          <RatingQuestion
-            key={q.id}
-            question={q.question}
-            value={answers[q.id] || null}
-            onChange={(value) => onAnswerChange(q.id, value)}
-          />
-        )
-      case 'emoji':
-        return (
-          <EmojiQuestion
-            key={q.id}
-            question={q.question}
-            value={answers[q.id] || null}
-            onChange={(value) => onAnswerChange(q.id, value)}
-          />
-        )
-      case 'text':
-        return (
-          <TextQuestion
-            key={q.id}
-            question={q.question}
-            value={answers[q.id] || ''}
-            onChange={(value) => onAnswerChange(q.id, value)}
-          />
-        )
-      case 'date':
-        return (
-          <DateQuestion
-            key={q.id}
-            question={q.question}
-            value={answers[q.id] || null}
-            onChange={(value) => onAnswerChange(q.id, value)}
-          />
-        )
-      case 'radio':
-        return (
-          <RadioQuestion
-            key={q.id}
-            question={q.question}
-            options={q.options || []}
-            value={answers[q.id] || null}
-            onChange={(value) => onAnswerChange(q.id, value)}
-          />
-        )
-      default:
-        return <div key={q.id}>Неизвестный тип вопроса: {q.type}</div>
-    }
+  switch (question.type) {
+    case 'rating':
+      return (
+        <RatingQuestion
+          question={question.question}
+          value={value}
+          onChange={onChange}
+          min={question.scale?.min || 1}
+          max={question.scale?.max || 5}
+        />
+      )
+    case 'emoji':
+      return (
+        <EmojiQuestion
+          question={question.question}
+          value={value}
+          onChange={onChange}
+        />
+      )
+    case 'text':
+    case 'textarea':
+      return (
+        <TextQuestion
+          question={question.question}
+          value={value || ''}
+          onChange={onChange}
+          rows={question.rows || (question.type === 'textarea' ? 5 : 4)}
+        />
+      )
+    case 'date':
+      return (
+        <DateQuestion
+          question={question.question}
+          value={value}
+          onChange={onChange}
+        />
+      )
+    case 'radio':
+      return (
+        <RadioQuestion
+          question={question.question}
+          options={question.options || []}
+          value={value}
+          onChange={onChange}
+        />
+      )
+    default:
+      return <div>Неизвестный тип вопроса: {question.type}</div>
   }
-
-  return (
-    <div className="question-container">{questions.map(renderQuestion)}</div>
-  )
 }
 
 export default QuestionContainer
