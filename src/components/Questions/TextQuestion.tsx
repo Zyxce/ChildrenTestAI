@@ -2,7 +2,7 @@ import React from 'react'
 
 interface TextQuestionProps {
   question: string
-  value: string
+  value: string // Теперь только строка
   onChange: (value: string) => void
 }
 

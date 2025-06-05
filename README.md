@@ -84,13 +84,18 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 ├─ README.md
 ├─ src
 │  ├─ assets
-│  │  └─ fonts
-│  │     ├─ CirceRounded-Bold.otf
-│  │     ├─ CirceRounded-ExtraBold.otf
-│  │     ├─ CirceRounded-ExtraLight.otf
-│  │     ├─ CirceRounded-Light.otf
-│  │     ├─ CirceRounded-Regular.otf
-│  │     └─ CirceRounded-Thin.otf
+│  │  ├─ fonts
+│  │  │  ├─ CirceRounded-Bold.otf
+│  │  │  ├─ CirceRounded-ExtraBold.otf
+│  │  │  ├─ CirceRounded-ExtraLight.otf
+│  │  │  ├─ CirceRounded-Light.otf
+│  │  │  ├─ CirceRounded-Regular.otf
+│  │  │  └─ CirceRounded-Thin.otf
+│  │  └─ images
+│  │     ├─ arrowRight.svg
+│  │     ├─ attention.svg
+│  │     ├─ removePhotos.svg
+│  │     └─ uploadPhotos.svg
 │  ├─ components
 │  │  ├─ App.tsx
 │  │  ├─ AuthRoute.tsx
@@ -132,7 +137,14 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 │  │  ├─ components
 │  │  │  ├─ App.css
 │  │  │  ├─ App.css.map
-│  │  │  └─ App.sass
+│  │  │  ├─ App.sass
+│  │  │  └─ FileUploader
+│  │  │     ├─ FileUploader.module.css
+│  │  │     ├─ FileUploader.module.css.map
+│  │  │     ├─ FileUploader.module.sass
+│  │  │     ├─ FileUploadField.module.css
+│  │  │     ├─ FileUploadField.module.css.map
+│  │  │     └─ FileUploadField.module.sass
 │  │  ├─ index.css
 │  │  ├─ index.css.map
 │  │  ├─ index.sass

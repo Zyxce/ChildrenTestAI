@@ -1,5 +1,5 @@
 // src/services/api.ts
-import { TaskIdResponse, SurveySubmission, ReportStatus } from '../types'
+import { TaskIdResponse, Answers, ReportStatus } from '../types'
 
 const API_BASE_URL = 'https://sirius-draw-test-94500a1b4a2f.herokuapp.com'
 export interface ReportResponse {
@@ -43,31 +43,58 @@ export const uploadPhotos = async (
 // ... остальной код ...
 export const submitSurvey = async (
   taskId: string,
-  answers: Record<string, any>
+  answers: Answers
 ): Promise<void> => {
-  const response = await fetch(`${API_BASE_URL}/submit-survey`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ taskId, answers }),
-  })
+  try {
+    const response = await fetch(`${API_BASE_URL}/submit-survey`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        task_id: taskId, // Ключ изменен на task_id
+        survey: answers,
+      }),
+    })
 
-  if (!response.ok) {
-    throw new Error(`Ошибка отправки опроса: ${response.status}`)
+    if (!response.ok) {
+      let errorMessage = `Ошибка ${response.status}: ${response.statusText}`
+      try {
+        const errorData = await response.json()
+        console.error('Детали ошибки сервера:', errorData) // Добавлено логирование
+        if (errorData.detail) {
+          errorMessage = errorData.detail
+        } else if (errorData.message) {
+          errorMessage = errorData.message
+        }
+      } catch (e) {
+        console.error('Ошибка парсинга JSON:', e)
+      }
+      throw new Error(errorMessage)
+    }
+  } catch (error) {
+    console.error('Полная ошибка API:', error) // Добавлено логирование
+    throw new Error(handleApiError(error))
   }
 }
 
 export const getReportStatus = async (
   taskId: string
-): Promise<ReportResponse> => {
-  const response = await fetch(`${API_BASE_URL}/report/${taskId}`)
+): Promise<ReportStatus> => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/report/${taskId}`)
 
-  if (!response.ok) {
-    throw new Error(`Ошибка получения статуса: ${response.status}`)
+    if (!response.ok) {
+      const errorData = await response.json()
+      throw new Error(
+        errorData.detail || `Ошибка ${response.status}: ${response.statusText}`
+      )
+    }
+
+    return response.json()
+  } catch (error) {
+    throw new Error(handleApiError(error))
   }
-
-  return response.json()
 }
 
 export const handleApiError = (error: unknown): string => {

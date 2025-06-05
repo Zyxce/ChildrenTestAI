@@ -7,7 +7,7 @@ export interface Question {
   options?: string[] // Для radio вопросов
 }
 
-export type AnswerValue = string | number | Date | null
+export type AnswerValue = string | number | null
 
 export interface Answers {
   [key: string]: AnswerValue
@@ -20,7 +20,7 @@ export type TaskIdResponse = {
 
 export type SurveySubmission = {
   taskId: string
-  answers: Answers
+  survey: Answers
 }
 
 export type ReportStatus = {

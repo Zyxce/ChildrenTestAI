@@ -2,10 +2,14 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { RootState } from '../store'
-import QuestionContainer from '../components/Questions/QuestionContainer'
 import rawQuestions from '../data/questions.json'
 import { submitSurvey } from '../services/api'
 import { Question } from '../types'
+import TextQuestion from '../components/Questions/TextQuestion'
+import DateQuestion from '../components/Questions/DateQuestion'
+import RadioQuestion from '../components/Questions/RadioQuestion'
+import RatingQuestion from '../components/Questions/RatingQuestion'
+import EmojiQuestion from '../components/Questions/EmojiQuestion'
 
 const QuestionnairePage: React.FC = () => {
   const navigate = useNavigate()
@@ -13,7 +17,20 @@ const QuestionnairePage: React.FC = () => {
   const [answers, setAnswers] = useState<Record<string, any>>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
+
   const questionsData = rawQuestions as Question[]
+
+  // Фильтрация вопросов по категориям
+  const personalQuestions = questionsData.filter((q) =>
+    ['childName', 'childDOB', 'childGender', 'parentName'].includes(q.id)
+  )
+
+  const sectionQuestions = questionsData.filter(
+    (q) => q.id.startsWith('q') && q.type === 'rating'
+  )
+
+  const emotionalQuestion = questionsData.find((q) => q.id === 'emotionalState')
+
   useEffect(() => {
     if (!taskId) {
       navigate('/upload')
@@ -28,46 +45,127 @@ const QuestionnairePage: React.FC = () => {
   }
 
   const handleSubmit = async () => {
-    if (!taskId) return
-
-    setIsSubmitting(true)
-    setError(null)
+    if (!taskId) {
+      setError(
+        'Отсутствует идентификатор задачи. Пожалуйста, начните тест заново.'
+      )
+      return
+    }
 
     try {
+      setIsSubmitting(true)
       await submitSurvey(taskId, answers)
       navigate('/report')
     } catch (err) {
+      console.error('Ошибка при отправке:', err)
       setError('Ошибка при отправке ответов. Пожалуйста, попробуйте снова.')
-      console.error('Survey submission error:', err)
     } finally {
       setIsSubmitting(false)
     }
   }
 
+  // Проверка заполнения всех обязательных вопросов
   const allRequiredAnswered = questionsData.every((q) => {
     if (!q.required) return true
-    return (
-      answers[q.id] !== undefined &&
-      answers[q.id] !== null &&
-      answers[q.id] !== ''
-    )
+    const answer = answers[q.id]
+
+    if (q.type === 'rating') return typeof answer === 'number'
+    if (q.type === 'date') return typeof answer === 'string' && answer !== ''
+    if (q.type === 'emoji') return typeof answer === 'string' && answer !== ''
+    if (q.type === 'radio') return typeof answer === 'string' && answer !== ''
+    return answer !== null && answer !== ''
   })
+
+  // Функция для безопасного получения строковых значений
+  const getStringValue = (id: string): string => {
+    const value = answers[id]
+    return typeof value === 'string' ? value : ''
+  }
 
   return (
     <div className="questionnaire-page">
       <h2>Психологический опросник</h2>
 
-      <QuestionContainer
-        questions={questionsData}
-        answers={answers}
-        onAnswerChange={handleAnswerChange}
-      />
+      {/* Блок личных данных */}
+      <div className="personal-info-section">
+        <h3>Основная информация</h3>
+        {personalQuestions.map((question) => {
+          switch (question.type) {
+            case 'text':
+              return (
+                <TextQuestion
+                  key={question.id}
+                  question={question.question}
+                  value={getStringValue(question.id)}
+                  onChange={(value) => handleAnswerChange(question.id, value)}
+                />
+              )
+            case 'date':
+              return (
+                <DateQuestion
+                  key={question.id}
+                  question={question.question}
+                  value={getStringValue(question.id)}
+                  onChange={(value) => handleAnswerChange(question.id, value)}
+                />
+              )
+            case 'radio':
+              return (
+                <RadioQuestion
+                  key={question.id}
+                  question={question.question}
+                  options={question.options || []}
+                  value={getStringValue(question.id)}
+                  onChange={(value) => handleAnswerChange(question.id, value)}
+                />
+              )
+            default:
+              return null
+          }
+        })}
+      </div>
+
+      {/* Блоки с вопросами по разделам */}
+      {[1, 2, 3, 4].map((section) => (
+        <div key={section} className="question-section">
+          <h3>Раздел {section}</h3>
+          <div className="questions-grid">
+            {sectionQuestions
+              .filter((q) => q.id.startsWith(`q${section}_`))
+              .map((question) => (
+                <RatingQuestion
+                  key={question.id}
+                  question={question.question}
+                  value={(answers[question.id] as number | null) || null}
+                  onChange={(value) => handleAnswerChange(question.id, value)}
+                />
+              ))}
+          </div>
+        </div>
+      ))}
+
+      {/* Блок эмоционального состояния */}
+      {emotionalQuestion && (
+        <div className="emotional-section">
+          <h3>Эмоциональное состояние</h3>
+          <EmojiQuestion
+            question={emotionalQuestion.question}
+            value={getStringValue(emotionalQuestion.id)}
+            onChange={(value) =>
+              handleAnswerChange(emotionalQuestion.id, value)
+            }
+          />
+        </div>
+      )}
 
       {error && <div className="error-message">{error}</div>}
 
       <button
         onClick={handleSubmit}
         disabled={!allRequiredAnswered || isSubmitting}
+        className={`submit-btn ${
+          !allRequiredAnswered || isSubmitting ? 'disabled' : ''
+        }`}
       >
         {isSubmitting ? 'Отправка...' : 'Отправить ответы'}
       </button>

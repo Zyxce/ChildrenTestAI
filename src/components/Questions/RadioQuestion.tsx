@@ -3,7 +3,7 @@ import React from 'react'
 interface RadioQuestionProps {
   question: string
   options: string[]
-  value: string | null
+  value: string // Теперь только строка
   onChange: (value: string) => void
 }
 

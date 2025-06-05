@@ -8,9 +8,8 @@ module.exports = function (app) {
       changeOrigin: true,
       secure: false,
       onProxyReq: (proxyReq) => {
-        // Добавляем заголовки для CORS
         proxyReq.setHeader('Access-Control-Allow-Origin', '*')
-        proxyReq.setHeader('Access-Control-Allow-Methods', 'PUT, OPTIONS')
+        proxyReq.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS')
         proxyReq.setHeader('Access-Control-Allow-Headers', 'Content-Type')
       },
     })

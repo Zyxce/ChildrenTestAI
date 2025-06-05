@@ -2,7 +2,7 @@ import React from 'react'
 
 interface DateQuestionProps {
   question: string
-  value: string | null
+  value: string // Теперь только строка
   onChange: (value: string) => void
 }
 
@@ -16,7 +16,7 @@ const DateQuestion: React.FC<DateQuestionProps> = ({
       <h3>{question}</h3>
       <input
         type="date"
-        value={value || ''}
+        value={value}
         onChange={(e) => onChange(e.target.value)}
       />
     </div>

@@ -4,7 +4,7 @@ const EMOJIS = ['😊', '😐', '😢', '😠', '😴']
 
 interface EmojiQuestionProps {
   question: string
-  value: string | null
+  value: string // Теперь только строка
   onChange: (value: string) => void
 }
 

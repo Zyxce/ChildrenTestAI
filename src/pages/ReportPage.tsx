@@ -33,28 +33,29 @@ export const ReportPage: React.FC = () => {
 
   const fetchStatus = useCallback(async () => {
     if (!taskId) {
-      setErrorMessage(
-        'Task ID не найден. Пожалуйста, пройдите загрузку фотографий заново.'
-      )
+      setErrorMessage('Task ID не найден. Пожалуйста, начните тест заново.')
       setStatus('error')
       return
     }
+
     try {
-      const res: ReportResponse = await getReportStatus(taskId)
+      const res = await getReportStatus(taskId)
+
+      // Исправлено: используем status и pdf_url из ответа
       if (res.status === 'processing') {
         setStatus('processing')
       } else if (res.status === 'ready') {
         setStatus('ready')
-        if (res.url) {
-          setReportUrl(res.url)
+        if (res.pdf_url) {
+          // Исправлено: pdf_url вместо url
+          setReportUrl(res.pdf_url)
         } else {
-          setErrorMessage('Ссылка на отчёт не пришла от сервера.')
+          setErrorMessage('Ссылка на отчёт недоступна')
           setStatus('error')
         }
       }
     } catch (err: any) {
-      console.error(err)
-      setErrorMessage(err.message || 'Ошибка при получении статуса отчёта')
+      setErrorMessage(err.message || 'Ошибка при получении статуса')
       setStatus('error')
     }
   }, [taskId])
@@ -99,20 +100,19 @@ export const ReportPage: React.FC = () => {
       )}
 
       {status === 'ready' && reportUrl && (
-        <div className="space-y-4">
-          <p className="text-green-600">Отчёт готов!</p>
+        <div className="report-actions">
           <a
             href={reportUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="block px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+            className="view-report-btn"
           >
             Просмотреть отчет
           </a>
           <a
             href={reportUrl}
-            download={`report_${taskId}.pdf`}
-            className="block px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
+            download={`psychology_report_${taskId}.pdf`}
+            className="download-report-btn"
           >
             Скачать отчет
           </a>
