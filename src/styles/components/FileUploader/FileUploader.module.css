@@ -25,10 +25,63 @@
 .uploaderContainer .uploaderBottom {
   display: flex;
   justify-content: space-between;
+  align-items: end;
   margin-top: var(--spacing-ultra);
 }
 .uploaderContainer .uploaderBottom p {
   color: var(--color-text-muted);
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-bold);
+}
+.uploaderContainer .uploaderBottom .btnMuted {
+  border: none;
+  border-radius: var(--radius-full);
+  padding: var(--spacing-sm) var(--spacing-md);
+  gap: var(--spacing-sm);
+  background-color: var(--color-btn-disabled);
+  transition: var(--transition-base);
+  display: flex;
+  color: var(--color-text-muted);
+  font-weight: var(--font-weight-base);
+  font-size: var(--font-size-lg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  line-height: 1;
+}
+.uploaderContainer .uploaderBottom .btnMuted svg {
+  width: 24px;
+  height: 24px;
+}
+.uploaderContainer .uploaderBottom .btnMuted svg path {
+  stroke: var(--color-text-muted);
+}
+.uploaderContainer .uploaderBottom .btnDefault {
+  border: none;
+  border-radius: var(--radius-full);
+  padding: var(--spacing-sm) var(--spacing-md);
+  gap: var(--spacing-sm);
+  background-color: var(--color-btn-default);
+  transition: var(--transition-base);
+  display: flex;
+  color: var(--color-text-btn);
+  font-weight: var(--font-weight-base);
+  font-size: var(--font-size-lg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  line-height: 1;
+}
+.uploaderContainer .uploaderBottom .btnDefault svg {
+  width: 24px;
+  height: 24px;
+}
+.uploaderContainer .uploaderBottom .btnDefault svg path {
+  stroke: var(--color-text-btn);
+}
+.uploaderContainer .uploaderBottom .btnDefault:hover {
+  cursor: pointer;
+  background-color: var(--color-btn-hover);
 }/*# sourceMappingURL=FileUploader.module.css.map */

@@ -118,8 +118,22 @@ const FileUploader: React.FC = () => {
 
       <div className={style.uploaderBottom}>
         <p>Шаг 1/3</p>
-        <button onClick={handleSubmit} disabled={!allFilesUploaded || loading}>
+        <button
+          onClick={handleSubmit}
+          disabled={!allFilesUploaded || loading}
+          className={
+            !allFilesUploaded || loading ? style.btnMuted : style.btnDefault
+          }
+        >
           Далее
+          <svg viewBox="0 0 24 24" fill="none">
+            <path
+              d="M5 12H19M19 12L13 6M19 12L13 18"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
         </button>
       </div>
     </div>

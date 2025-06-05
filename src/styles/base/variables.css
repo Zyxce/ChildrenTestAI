@@ -13,6 +13,7 @@
   --color-text-muted: #A0A9B8;
   --color-text-attention: #E12828;
   --color-text-uploader: #3A353E;
+  --color-text-btn: #fff;
   --color-bg: #fff;
   --color-accent: #6447CF;
   --color-surface-card: #F6F6F8;
@@ -20,7 +21,6 @@
   --color-surface-attention: #FDEEEF;
   --color-progress-completed: #7ABEF8;
   --color-progress-nocompleted: #DAEDFD;
-  --color-btn-text: #fff;
   --color-btn-default: #45A5F6;
   --color-btn-hover: #007EE5;
   --color-btn-disabled: #4453711A;
