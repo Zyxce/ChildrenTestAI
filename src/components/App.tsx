@@ -8,7 +8,7 @@ import store from '../store'
 const App: React.FC = () => {
   return (
     <Provider store={store}>
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <div className="App">
           <AppRoutes />
         </div>
