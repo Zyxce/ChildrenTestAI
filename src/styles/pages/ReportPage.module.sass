@@ -7,6 +7,7 @@
     border-radius: var(--radius-container)
     overflow: hidden
     transition: var(--transition-base)
+    min-height: 418px
     .progress
         display: flex
         height: 16px
@@ -18,9 +19,49 @@
             background-color: var(--color-progress-nocompleted)
             flex: 1
     .pageWrapper
+        min-height: 300px
         padding: 0 var(--spacing-ultra) var(--spacing-xl) var(--spacing-ultra)
         .pageTitle
             font-size: var(--font-size-header)
+            font-size: var(--font-size-header)
+            font-weight: var(--font-weight-bold)
+            color: var(--color-text-primary)
+        .processСontainer
+            display: flex
+            .analysisText
+                font-size: var(--font-size-base)
+                font-weight: var(--font-weight-base)
+                color: var(--color-text-secondary)
+            .icon
+                width: 16px
+                height: 16px
+                margin-left: var(--spacing-sm)
+                color: var(--color-btn-hover)
+                -webkit-animation: spin 1s linear infinite
+                animation: spin 1s linear infinite
+        .downloadBtn
+            margin-top: auto
+            .btnSubmitDefault
+                max-width: 100px
+                border: none
+                border-radius: var(--radius-full)
+                padding: var(--spacing-sm) var(--spacing-lg)
+                gap: var(--spacing-sm)
+                background-color: var(--color-btn-default)
+                transition: var(--transition-base)
+                display: flex
+                color: var(--color-text-btn)
+                font-weight: var(--font-weight-base)
+                font-size: var(--font-size-lg)
+                display: flex
+                justify-content: center
+                align-items: center
+                text-align: center
+                line-height: 1
+                text-decoration: none
+                &:hover
+                    cursor: pointer
+                    background-color: var(--color-btn-hover)
 
 @media (max-width: 1200px)
     .page
@@ -41,3 +82,19 @@
             .noCompleted
         .pageWrapper
             padding: 0 var( --spacing-md) var( --spacing-md) var( --spacing-md)
+
+@-webkit-keyframes spin
+  from
+    -webkit-transform: rotate(0deg)
+    transform: rotate(0deg)
+  to
+    -webkit-transform: rotate(360deg)
+    transform: rotate(360deg)
+
+@keyframes spin
+    from
+        -webkit-transform: rotate(0deg)
+        transform: rotate(0deg)
+    to
+        -webkit-transform: rotate(360deg)
+        transform: rotate(360deg)

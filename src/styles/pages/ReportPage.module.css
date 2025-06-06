@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .page {
   background-color: var(--color-bg);
   box-sizing: border-box;
@@ -7,6 +8,7 @@
   border-radius: var(--radius-container);
   overflow: hidden;
   transition: var(--transition-base);
+  min-height: 418px;
 }
 .page .progress {
   display: flex;
@@ -22,10 +24,55 @@
   flex: 1;
 }
 .page .pageWrapper {
+  min-height: 300px;
   padding: 0 var(--spacing-ultra) var(--spacing-xl) var(--spacing-ultra);
 }
 .page .pageWrapper .pageTitle {
   font-size: var(--font-size-header);
+  font-size: var(--font-size-header);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+}
+.page .pageWrapper .processСontainer {
+  display: flex;
+}
+.page .pageWrapper .processСontainer .analysisText {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-base);
+  color: var(--color-text-secondary);
+}
+.page .pageWrapper .processСontainer .icon {
+  width: 16px;
+  height: 16px;
+  margin-left: var(--spacing-sm);
+  color: var(--color-btn-hover);
+  animation: spin 1s linear infinite;
+}
+.page .pageWrapper .downloadBtn {
+  margin-top: auto;
+}
+.page .pageWrapper .downloadBtn .btnSubmitDefault {
+  max-width: 100px;
+  border: none;
+  border-radius: var(--radius-full);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  gap: var(--spacing-sm);
+  background-color: var(--color-btn-default);
+  transition: var(--transition-base);
+  display: flex;
+  color: var(--color-text-btn);
+  font-weight: var(--font-weight-base);
+  font-size: var(--font-size-lg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  line-height: 1;
+  text-decoration: none;
+}
+.page .pageWrapper .downloadBtn .btnSubmitDefault:hover {
+  cursor: pointer;
+  background-color: var(--color-btn-hover);
 }
 
 @media (max-width: 1200px) {
@@ -48,5 +95,13 @@
   }
   .page .pageWrapper {
     padding: 0 var(--spacing-md) var(--spacing-md) var(--spacing-md);
+  }
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }/*# sourceMappingURL=ReportPage.module.css.map */

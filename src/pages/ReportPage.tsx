@@ -6,6 +6,8 @@ import { useNavigate } from 'react-router-dom'
 import { resetUploadState } from '../store/uploadSlice'
 import { Document, Page, pdfjs } from 'react-pdf'
 import style from '../styles/pages/ReportPage.module.css'
+import { useMediaQuery } from 'react-responsive'
+import { VscLoading } from 'react-icons/vsc'
 
 // Воркер из public
 pdfjs.GlobalWorkerOptions.workerSrc = `${process.env.PUBLIC_URL}/pdf.worker.min.js`
@@ -27,16 +29,31 @@ export const ReportPage: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null)
   const [containerWidth, setContainerWidth] = useState<number>(600)
 
-  // Подгоняем ширину под контейнер
+  const isDesktop = useMediaQuery({ minWidth: 1200 })
+  const isTablet = useMediaQuery({ minWidth: 641, maxWidth: 1199 })
+  const isMobile = useMediaQuery({ maxWidth: 640 })
+
+  //через респонсив
   useEffect(() => {
-    const updateWidth = () => {
-      const w = containerRef.current?.offsetWidth
-      if (w) setContainerWidth(w)
+    if (isDesktop) {
+      setContainerWidth(776)
+    } else if (isTablet) {
+      setContainerWidth(552)
+    } else if (isMobile) {
+      setContainerWidth(264)
     }
-    updateWidth()
-    window.addEventListener('resize', updateWidth)
-    return () => window.removeEventListener('resize', updateWidth)
-  }, [])
+  }, [isDesktop, isTablet, isMobile])
+
+  // // Подгоняем ширину под контейнер
+  // useEffect(() => {
+  //   const updateWidth = () => {
+  //     const w = containerRef.current?.offsetWidth
+  //     if (w) setContainerWidth(w)
+  //   }
+  //   updateWidth()
+  //   window.addEventListener('resize', updateWidth)
+  //   return () => window.removeEventListener('resize', updateWidth)
+  // }, [])
 
   // Проверка наличия taskId
   useEffect(() => {
@@ -111,87 +128,70 @@ export const ReportPage: React.FC = () => {
 
   return (
     <div className={style.page} ref={containerRef}>
-      <h1 className="text-2xl font-semibold mb-6">Ваш отчёт</h1>
-
-      {status === 'processing' && !errorMessage && (
-        <div className="text-center py-10">
-          <div className="animate-spin inline-block mb-4">
-            <svg className="w-12 h-12" viewBox="0 0 50 50">
-              <circle
-                className="opacity-25"
-                cx="25"
-                cy="25"
-                r="20"
-                stroke="currentColor"
-                strokeWidth="5"
-                fill="none"
-              />
-              <path
-                className="opacity-75"
-                fill="currentColor"
-                d="M25 5a20 20 0 1 0 20 20"
-              />
-            </svg>
+      <div className={style.progress}>
+        <div className={style.completed}></div>
+        <div className={style.noCompleted}></div>
+      </div>
+      <div className={style.pageWrapper}>
+        <h1 className={style.pageTitle}>Ваш отчёт</h1>
+        {status === 'processing' && !errorMessage && (
+          <div className={style.processСontainer}>
+            <p className={style.analysisText}>Анализ в процессе...</p>
+            <VscLoading className={style.icon} />
           </div>
-          <p className="text-lg">Анализ в процессе...</p>
-        </div>
-      )}
+        )}
+        {status === 'ready' && (
+          <>
+            {!pdfUrl && (
+              <div className={style.processСontainer}>
+                <p className={style.analysisText}>Загрузка документа...</p>
+                <VscLoading className={style.icon} />
+              </div>
+            )}
 
-      {status === 'ready' && (
-        <>
-          {!pdfUrl && <p>Загрузка документа...</p>}
+            {pdfUrl && (
+              <Document
+                file={pdfUrl}
+                onLoadSuccess={onDocumentLoadSuccess}
+                loading={null}
+                error={<p>Не удалось отобразить PDF.</p>}
+              >
+                {Array.from({ length: numPages }).map((_, i) => (
+                  <Page
+                    key={i}
+                    pageNumber={i + 1}
+                    width={containerWidth}
+                    renderTextLayer={false}
+                    renderAnnotationLayer={false}
+                    className="mb-4"
+                  />
+                ))}
+              </Document>
+            )}
 
-          {pdfUrl && (
-            <Document
-              file={pdfUrl}
-              onLoadSuccess={onDocumentLoadSuccess}
-              loading={null}
-              error={<p>Не удалось отобразить PDF.</p>}
+            <div className={style.downloadBtn}>
+              <a
+                href={`${API_BASE_URL}/report/${taskId}`}
+                download={`psychology_report_${taskId}.pdf`}
+                className={style.btnSubmitDefault}
+              >
+                Скачать PDF
+              </a>
+            </div>
+          </>
+        )}
+        {status === 'error' && (
+          <div className="text-center py-6">
+            <p className="text-red-500 mb-4">{errorMessage}</p>
+            <button
+              onClick={handleReset}
+              className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300"
             >
-              {Array.from({ length: numPages }).map((_, i) => (
-                <Page
-                  key={i}
-                  pageNumber={i + 1}
-                  width={containerWidth}
-                  renderTextLayer={false}
-                  renderAnnotationLayer={false}
-                  className="mb-4"
-                />
-              ))}
-            </Document>
-          )}
-
-          <div className="flex gap-4 mt-4">
-            <a
-              href={`${API_BASE_URL}/report/${taskId}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-            >
-              Открыть в новой вкладке
-            </a>
-            <a
-              href={`${API_BASE_URL}/report/${taskId}`}
-              download={`psychology_report_${taskId}.pdf`}
-              className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
-            >
-              Скачать PDF
-            </a>
+              Начать новый тест
+            </button>
           </div>
-        </>
-      )}
-
-      {status === 'error' && (
-        <div className="text-center py-6">
-          <p className="text-red-500 mb-4">{errorMessage}</p>
-          <button
-            onClick={handleReset}
-            className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300"
-          >
-            Начать новый тест
-          </button>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   )
 }
