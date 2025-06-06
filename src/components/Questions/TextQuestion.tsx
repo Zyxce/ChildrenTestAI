@@ -1,5 +1,6 @@
 // src/components/Questions/TextQuestion.tsx
 import React from 'react'
+import style from '../../styles/components/Questions/TextQuestion.module.css'
 
 interface TextQuestionProps {
   question: string
@@ -14,14 +15,17 @@ const TextQuestion: React.FC<TextQuestionProps> = ({
   onChange,
   rows = 4,
 }) => {
+  const inputClasses = `${style.questionInput} ${
+    value.trim() ? style.questionInputValue : ''
+  }`
   return (
-    <div className="text-question">
-      <h3>{question}</h3>
+    <div className={style.questionContainer}>
+      <h3 className={style.questionTitle}>{question}</h3>
       <textarea
         value={value}
+        className={inputClasses}
         onChange={(e) => onChange(e.target.value)}
         rows={rows}
-        placeholder="Введите ваш ответ..."
       />
     </div>
   )

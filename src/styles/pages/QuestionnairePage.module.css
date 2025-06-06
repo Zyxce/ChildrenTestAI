@@ -1,0 +1,35 @@
+.page {
+  background-color: var(--color-bg);
+  box-sizing: border-box;
+  max-width: 904px;
+  width: 100%;
+  margin: 0 auto;
+  border-radius: var(--radius-container);
+  overflow: hidden;
+  transition: var(--transition-base);
+}
+.page .progress {
+  display: flex;
+  height: 16px;
+  margin-bottom: var(--spacing-big);
+}
+.page .progress .completed {
+  width: 60%;
+  background-color: var(--color-progress-completed);
+}
+.page .progress .noCompleted {
+  background-color: var(--color-progress-nocompleted);
+  flex: 1;
+}
+.page .pageWrapper {
+  padding: 0 var(--spacing-ultra) var(--spacing-xl) var(--spacing-ultra);
+}
+.page .pageWrapper .questionSection .sectionTitle {
+  font-size: var(--font-size-header);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+}
+.page .pageWrapper .questionSection .questionsContainer {
+  margin-top: var(--spacing-lg);
+  width: 100%;
+}/*# sourceMappingURL=QuestionnairePage.module.css.map */

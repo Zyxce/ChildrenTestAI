@@ -1,6 +1,7 @@
+// src/components/Questions/RadioQuestion.tsx
 import React from 'react'
+import style from '../../styles/components/Questions/RadioQuestion.module.css'
 
-// Объект для отображения числовых значений на текстовые
 const optionsMap: Record<string, string> = {
   '1': 'Очень редко',
   '2': 'Редко',
@@ -11,7 +12,7 @@ const optionsMap: Record<string, string> = {
 
 interface RadioQuestionProps {
   question: string
-  options: string[] // Принимаем числовые опции ["1", "2", "3", "4", "5"]
+  options: string[]
   value: string
   onChange: (value: string) => void
 }
@@ -23,19 +24,32 @@ const RadioQuestion: React.FC<RadioQuestionProps> = ({
   onChange,
 }) => {
   return (
-    <div className="radio-question">
-      <h3>{question}</h3>
-      <div className="radio-options">
+    <div className={style.questionContainer}>
+      <h3 className={style.questionTitle}>{question}</h3>
+      <div className={style.questionOptions}>
         {options.map((option) => (
-          <label key={option} className="radio-option">
+          <label key={option} className={style.questionLabel}>
+            {/* Скрытый нативный инпут */}
             <input
               type="radio"
               name={question}
               value={option}
               checked={value === option}
               onChange={() => onChange(option)}
+              className={style.hiddenInput}
             />
-            <span>{optionsMap[option] || option}</span>
+
+            {/* Кастомный радио-индикатор */}
+            <span
+              className={`
+              ${style.customRadio} 
+              ${value === option ? style.customRadioChecked : ''}
+            `}
+            />
+
+            <span className={style.questionOption}>
+              {optionsMap[option] || option}
+            </span>
           </label>
         ))}
       </div>

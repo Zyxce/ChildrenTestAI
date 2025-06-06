@@ -1,0 +1,63 @@
+.questionContainer
+    width: 100%
+    .questionTitle
+        font-size: var(--font-size-lg)
+        font-weight: var(--font-weight-base)
+        color: var(--color-text-secondary)
+    .questionOptions
+        margin-top: var(--spacing-sm)
+        display: flex
+        .questionLabel
+            cursor: pointer
+            display: flex
+            align-items: center
+            position: relative
+
+            .hiddenInput
+                position: absolute
+                opacity: 0
+                width: 0
+                height: 0
+            .customRadio
+                display: inline-block
+                width: 20px
+                height: 20px
+                border-radius: var(--radius-full)
+                margin-right: var(--spacing-sm)
+                transition: var(--transition-base)
+                position: relative
+                box-sizing: border-box
+                background-color: var(--color-checkbox-nochecked-default)
+                &::after
+                    content: ''
+                    position: absolute
+                    top: 50%
+                    left: 50%
+                    transform: translate(-50%, -50%)
+                    width: 6px
+                    height: 6px
+                    border-radius: 50%
+                    opacity: 0
+                    transition: opacity var(--transition-base) ease
+                    background-color: var(--color-bg)
+            .customRadioChecked
+                background-color: var(--color-checkbox-checked-default)
+                &::after
+                    opacity: 1
+        .questionLabel:hover
+            .customRadio
+                background-color: var(--color-checkbox-nochecked-hover)
+                &::after
+                    opacity: 0
+            .customRadioChecked
+                background-color: var(--color-checkbox-checked-hover)
+                &::after
+                    opacity: 1
+        .questionOption
+            margin-left: var(--spacing-xs)
+            font-size: var(--font-size-sm)
+            font-weight: var(--font-weight-base)
+            color: var(--color-text-secondary)
+            line-height: 1rem
+        .questionLabel:not(:first-child)
+            margin-left: var(--spacing-lg)

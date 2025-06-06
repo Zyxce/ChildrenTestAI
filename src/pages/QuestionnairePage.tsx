@@ -6,6 +6,7 @@ import { submitSurvey } from '../services/api'
 import { Section, Question } from '../types'
 import QuestionContainer from '../components/Questions/QuestionContainer'
 import rawQuestionsData from '../data/questions.json'
+import style from '../styles/pages/QuestionnairePage.module.css'
 
 const questionsData = rawQuestionsData as { sections: Section[] }
 
@@ -102,41 +103,49 @@ const QuestionnairePage: React.FC = () => {
   )
 
   return (
-    <div className="questionnaire-page">
-      <h2>Психологический опросник</h2>
-
-      {sections.map((section, index) => (
-        <div key={`section-${index}`} className="question-section">
-          <h3>{section.title}</h3>
-          <div className="questions-grid">
-            {section.fields.map((field) => (
-              <QuestionContainer
-                key={`question-${field.id}`}
-                question={field}
-                value={
-                  answers[field.id] ??
-                  (field.type === 'text' || field.type === 'textarea'
-                    ? ''
-                    : null)
-                }
-                onChange={(value) => handleAnswerChange(field.id, value)}
-              />
-            ))}
+    <div className={style.page}>
+      <div className={style.progress}>
+        <div className={style.completed}></div>
+        <div className={style.noCompleted}></div>
+      </div>
+      <div className={style.pageWrapper}>
+        {sections.map((section, index) => (
+          <div key={`section-${index}`} className={style.questionSection}>
+            <h3 className={style.sectionTitle}>{section.title}</h3>
+            <div className={style.questionsContainer}>
+              {section.fields.map((field) => (
+                <QuestionContainer
+                  key={`question-${field.id}`}
+                  question={field}
+                  value={
+                    answers[field.id] ??
+                    (field.type === 'text' || field.type === 'textarea'
+                      ? ''
+                      : null)
+                  }
+                  onChange={(value) => handleAnswerChange(field.id, value)}
+                />
+              ))}
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
 
-      {error && <div className="error-message">{error}</div>}
+        {error && <div className="error-message">{error}</div>}
 
-      <button
-        onClick={handleSubmit}
-        disabled={!allRequiredAnswered || isSubmitting}
-        className={`submit-btn ${
-          !allRequiredAnswered || isSubmitting ? 'disabled' : ''
-        }`}
-      >
-        {isSubmitting ? 'Отправка...' : 'Отправить ответы'}
-      </button>
+        <button onClick={() => navigate('/upload')} className={style.backBtn}>
+          К загрузке рисунков
+        </button>
+
+        <button
+          onClick={handleSubmit}
+          disabled={!allRequiredAnswered || isSubmitting}
+          className={`submit-btn ${
+            !allRequiredAnswered || isSubmitting ? 'disabled' : ''
+          }`}
+        >
+          Узнать результаты
+        </button>
+      </div>
     </div>
   )
 }

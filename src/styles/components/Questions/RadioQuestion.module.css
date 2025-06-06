@@ -1,0 +1,76 @@
+.questionContainer {
+  width: 100%;
+}
+.questionContainer .questionTitle {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-base);
+  color: var(--color-text-secondary);
+}
+.questionContainer .questionOptions {
+  margin-top: var(--spacing-sm);
+  display: flex;
+}
+.questionContainer .questionOptions .questionLabel {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.questionContainer .questionOptions .questionLabel .hiddenInput {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.questionContainer .questionOptions .questionLabel .customRadio {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: var(--radius-full);
+  margin-right: var(--spacing-sm);
+  transition: var(--transition-base);
+  position: relative;
+  box-sizing: border-box;
+  background-color: var(--color-checkbox-nochecked-default);
+}
+.questionContainer .questionOptions .questionLabel .customRadio::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity var(--transition-base) ease;
+  background-color: var(--color-bg);
+}
+.questionContainer .questionOptions .questionLabel .customRadioChecked {
+  background-color: var(--color-checkbox-checked-default);
+}
+.questionContainer .questionOptions .questionLabel .customRadioChecked::after {
+  opacity: 1;
+}
+.questionContainer .questionOptions .questionLabel:hover .customRadio {
+  background-color: var(--color-checkbox-nochecked-hover);
+}
+.questionContainer .questionOptions .questionLabel:hover .customRadio::after {
+  opacity: 0;
+}
+.questionContainer .questionOptions .questionLabel:hover .customRadioChecked {
+  background-color: var(--color-checkbox-checked-hover);
+}
+.questionContainer .questionOptions .questionLabel:hover .customRadioChecked::after {
+  opacity: 1;
+}
+.questionContainer .questionOptions .questionOption {
+  margin-left: var(--spacing-xs);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-base);
+  color: var(--color-text-secondary);
+  line-height: 1rem;
+}
+.questionContainer .questionOptions .questionLabel:not(:first-child) {
+  margin-left: var(--spacing-lg);
+}/*# sourceMappingURL=RadioQuestion.module.css.map */

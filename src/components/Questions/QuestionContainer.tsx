@@ -6,6 +6,7 @@ import TextQuestion from './TextQuestion'
 import DateQuestion from './DateQuestion'
 import RadioQuestion from './RadioQuestion'
 import { Question } from '../../types'
+import style from '../../styles/components/Questions/QuestionContainer.module.css'
 
 interface QuestionContainerProps {
   question: Question
@@ -57,12 +58,14 @@ const QuestionContainer: React.FC<QuestionContainerProps> = ({
       )
     case 'radio':
       return (
-        <RadioQuestion
-          question={question.question}
-          options={question.options || []}
-          value={value}
-          onChange={onChange}
-        />
+        <div className={style.radioContainer}>
+          <RadioQuestion
+            question={question.question}
+            options={question.options || []}
+            value={value}
+            onChange={onChange}
+          />
+        </div>
       )
     default:
       return <div>Неизвестный тип вопроса: {question.type}</div>
