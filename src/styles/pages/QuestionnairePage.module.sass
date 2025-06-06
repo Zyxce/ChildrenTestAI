@@ -60,3 +60,144 @@
                         margin-left: var(--spacing-md)
                 .attentionBottom
                     margin-top: var(--spacing-md)
+        .pageBottom
+            display: flex
+            justify-content: space-between
+            align-items: end
+            margin-top: var(--spacing-ultra)
+            .stepMobile,.stepDesktop
+                color: var(--color-text-muted)
+                font-size: var(--font-size-base)
+                font-weight: var(--font-weight-bold)
+            .stepMobile
+                display: none
+            .buttonsContainer
+                display: flex
+                gap: var(--spacing-sm)
+                .btnSubmitMuted
+                    border: none
+                    border-radius: var(--radius-full)
+                    padding: var(--spacing-sm) var(--spacing-lg)
+                    gap: var(--spacing-sm)
+                    background-color: var(--color-btn-disabled)
+                    transition: var(--transition-base)
+                    display: flex
+                    color: var(--color-text-muted)
+                    font-weight: var(--font-weight-base)
+                    font-size: var(--font-size-lg)
+                    display: flex
+                    justify-content: center
+                    align-items: center
+                    text-align: center
+                    line-height: 1
+                    svg
+                        width: 24px
+                        height: 24px
+                        path
+                            stroke: var(--color-text-muted)
+                .btnSubmitDefault
+                    border: none
+                    border-radius: var(--radius-full)
+                    padding: var(--spacing-sm) var(--spacing-lg)
+                    gap: var(--spacing-sm)
+                    background-color: var(--color-btn-default)
+                    transition: var(--transition-base)
+                    display: flex
+                    color: var(--color-text-btn)
+                    font-weight: var(--font-weight-base)
+                    font-size: var(--font-size-lg)
+                    display: flex
+                    justify-content: center
+                    align-items: center
+                    text-align: center
+                    line-height: 1
+                    svg
+                        width: 24px
+                        height: 24px
+                        path
+                            stroke: var(--color-text-btn)
+                    &:hover
+                        cursor: pointer
+                        background-color: var(--color-btn-hover)
+                .backBtn
+                    border: none
+                    border-radius: var(--radius-full)
+                    padding: var(--spacing-sm) var(--spacing-lg)
+                    gap: var(--spacing-sm)
+                    background-color: var(--color-btn-secondary-default)
+                    transition: var(--transition-base)
+                    display: flex
+                    color: var(--color-text-secondary)
+                    font-weight: var(--font-weight-base)
+                    font-size: var(--font-size-lg)
+                    display: flex
+                    justify-content: center
+                    align-items: center
+                    text-align: center
+                    line-height: 1
+                    svg
+                        width: 24px
+                        height: 24px
+                        path
+                            stroke: var(--color-text-muted)
+                    &:hover
+                        cursor: pointer
+                        background-color: var(--color-btn-secondary-hover)
+
+@media (max-width: 1200px)
+    .page
+        max-width: 600px
+        .progress
+            margin-bottom: var(--spacing-xl)
+            .completed
+            .noCompleted
+        .pageWrapper
+            padding: 0 var(--spacing-lg) var(--spacing-lg) var(--spacing-lg)
+            .firstSection
+                .attention
+                    margin-top: var(--spacing-big)
+
+@media (max-width: 640px)
+    .page
+        max-width: 296px
+        .progress
+            margin-bottom: var(--spacing-xl)
+            .completed
+            .noCompleted
+        .pageWrapper
+            padding: 0 var( --spacing-md) var( --spacing-md) var( --spacing-md)
+            .firstSection
+                margin-top: var(--spacing-xl)
+                .attention
+                    margin-top: var(--spacing-xl)
+                    .attentionTop, .attentionBottom
+                        flex-direction: column
+                        align-items: start
+                        .attentionText
+                            margin-left: 0
+                            margin-top: var(--spacing-xs)
+            .questionSection
+                .sectionTitle
+                    margin-top: var(--spacing-xl)
+                .questionsContainer
+                    gap: var(--spacing-md)
+                    margin-top: var(--spacing-md)
+                    width: 100%
+                .sectionTitle:not(:first-child)
+                    margin-top: var(--spacing-ultra)
+            .pageBottom
+                display: flex
+                flex-direction: column
+                justify-content: space-between
+                align-items: end
+                margin-top: var(--spacing-big)
+                .stepDesktop
+                    display: none
+                .stepMobile
+                    display: block
+                    margin-top: var(--spacing-lg)
+                .buttonsContainer
+                    display: flex
+                    flex-direction: column
+                    gap: var(--spacing-sm)
+                    width: 100%

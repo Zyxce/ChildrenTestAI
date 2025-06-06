@@ -30,4 +30,15 @@
 .quectionContainer .quectionOptions .quectionScaleActive {
   background-color: var(--color-btn-default);
   color: var(--color-text-btn);
+}
+
+@media (max-width: 640px) {
+  .quectionContainer .quectionOptions {
+    overflow: hidden;
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+  .quectionContainer .quectionOptions .quectionScale, .quectionContainer .quectionOptions .quectionScaleActive {
+    padding: var(--spacing-xs) var(--spacing-md);
+  }
 }/*# sourceMappingURL=RatingQuestion.module.css.map */

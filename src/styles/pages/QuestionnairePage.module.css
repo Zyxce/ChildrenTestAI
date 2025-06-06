@@ -71,4 +71,173 @@
 }
 .page .pageWrapper .firstSection .attention .attentionBottom {
   margin-top: var(--spacing-md);
+}
+.page .pageWrapper .pageBottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-top: var(--spacing-ultra);
+}
+.page .pageWrapper .pageBottom .stepMobile, .page .pageWrapper .pageBottom .stepDesktop {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+}
+.page .pageWrapper .pageBottom .stepMobile {
+  display: none;
+}
+.page .pageWrapper .pageBottom .buttonsContainer {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+.page .pageWrapper .pageBottom .buttonsContainer .btnSubmitMuted {
+  border: none;
+  border-radius: var(--radius-full);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  gap: var(--spacing-sm);
+  background-color: var(--color-btn-disabled);
+  transition: var(--transition-base);
+  display: flex;
+  color: var(--color-text-muted);
+  font-weight: var(--font-weight-base);
+  font-size: var(--font-size-lg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  line-height: 1;
+}
+.page .pageWrapper .pageBottom .buttonsContainer .btnSubmitMuted svg {
+  width: 24px;
+  height: 24px;
+}
+.page .pageWrapper .pageBottom .buttonsContainer .btnSubmitMuted svg path {
+  stroke: var(--color-text-muted);
+}
+.page .pageWrapper .pageBottom .buttonsContainer .btnSubmitDefault {
+  border: none;
+  border-radius: var(--radius-full);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  gap: var(--spacing-sm);
+  background-color: var(--color-btn-default);
+  transition: var(--transition-base);
+  display: flex;
+  color: var(--color-text-btn);
+  font-weight: var(--font-weight-base);
+  font-size: var(--font-size-lg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  line-height: 1;
+}
+.page .pageWrapper .pageBottom .buttonsContainer .btnSubmitDefault svg {
+  width: 24px;
+  height: 24px;
+}
+.page .pageWrapper .pageBottom .buttonsContainer .btnSubmitDefault svg path {
+  stroke: var(--color-text-btn);
+}
+.page .pageWrapper .pageBottom .buttonsContainer .btnSubmitDefault:hover {
+  cursor: pointer;
+  background-color: var(--color-btn-hover);
+}
+.page .pageWrapper .pageBottom .buttonsContainer .backBtn {
+  border: none;
+  border-radius: var(--radius-full);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  gap: var(--spacing-sm);
+  background-color: var(--color-btn-secondary-default);
+  transition: var(--transition-base);
+  display: flex;
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-base);
+  font-size: var(--font-size-lg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  line-height: 1;
+}
+.page .pageWrapper .pageBottom .buttonsContainer .backBtn svg {
+  width: 24px;
+  height: 24px;
+}
+.page .pageWrapper .pageBottom .buttonsContainer .backBtn svg path {
+  stroke: var(--color-text-muted);
+}
+.page .pageWrapper .pageBottom .buttonsContainer .backBtn:hover {
+  cursor: pointer;
+  background-color: var(--color-btn-secondary-hover);
+}
+
+@media (max-width: 1200px) {
+  .page {
+    max-width: 600px;
+  }
+  .page .progress {
+    margin-bottom: var(--spacing-xl);
+  }
+  .page .pageWrapper {
+    padding: 0 var(--spacing-lg) var(--spacing-lg) var(--spacing-lg);
+  }
+  .page .pageWrapper .firstSection .attention {
+    margin-top: var(--spacing-big);
+  }
+}
+@media (max-width: 640px) {
+  .page {
+    max-width: 296px;
+  }
+  .page .progress {
+    margin-bottom: var(--spacing-xl);
+  }
+  .page .pageWrapper {
+    padding: 0 var(--spacing-md) var(--spacing-md) var(--spacing-md);
+  }
+  .page .pageWrapper .firstSection {
+    margin-top: var(--spacing-xl);
+  }
+  .page .pageWrapper .firstSection .attention {
+    margin-top: var(--spacing-xl);
+  }
+  .page .pageWrapper .firstSection .attention .attentionTop, .page .pageWrapper .firstSection .attention .attentionBottom {
+    flex-direction: column;
+    align-items: start;
+  }
+  .page .pageWrapper .firstSection .attention .attentionTop .attentionText, .page .pageWrapper .firstSection .attention .attentionBottom .attentionText {
+    margin-left: 0;
+    margin-top: var(--spacing-xs);
+  }
+  .page .pageWrapper .questionSection .sectionTitle {
+    margin-top: var(--spacing-xl);
+  }
+  .page .pageWrapper .questionSection .questionsContainer {
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+    width: 100%;
+  }
+  .page .pageWrapper .questionSection .sectionTitle:not(:first-child) {
+    margin-top: var(--spacing-ultra);
+  }
+  .page .pageWrapper .pageBottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: end;
+    margin-top: var(--spacing-big);
+  }
+  .page .pageWrapper .pageBottom .stepDesktop {
+    display: none;
+  }
+  .page .pageWrapper .pageBottom .stepMobile {
+    display: block;
+    margin-top: var(--spacing-lg);
+  }
+  .page .pageWrapper .pageBottom .buttonsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    width: 100%;
+  }
 }/*# sourceMappingURL=QuestionnairePage.module.css.map */

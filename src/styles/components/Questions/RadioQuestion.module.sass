@@ -61,3 +61,28 @@
             line-height: 1rem
         .questionLabel:not(:first-child)
             margin-left: var(--spacing-lg)
+
+@media (max-width: 640px)
+    .questionContainer
+        .questionTitle
+        .questionOptions
+            display: flex
+            flex-direction: column
+            .questionLabel
+                .hiddenInput
+                .customRadio
+                    margin-right: 0
+                    transition: var(--transition-base)
+                    &::after
+                .customRadioChecked
+                    &::after
+            .questionLabel:hover
+                .customRadio
+                    &::after
+                .customRadioChecked
+                    &::after
+            .questionOption
+                margin-left: var(--spacing-xs)
+            .questionLabel:not(:first-child)
+                margin-left: 0
+                margin-top: var(--spacing-sm)

@@ -37,4 +37,10 @@
 }
 .questionContainer .questionOptions .optionContainerActive .questionText {
   color: var(--color-bg);
+}
+
+@media (max-width: 640px) {
+  .questionContainer .questionOptions .optionContainer {
+    width: 100%;
+  }
 }/*# sourceMappingURL=EmojiQuestion.module.css.map */

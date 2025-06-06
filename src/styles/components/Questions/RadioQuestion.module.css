@@ -73,4 +73,22 @@
 }
 .questionContainer .questionOptions .questionLabel:not(:first-child) {
   margin-left: var(--spacing-lg);
+}
+
+@media (max-width: 640px) {
+  .questionContainer .questionOptions {
+    display: flex;
+    flex-direction: column;
+  }
+  .questionContainer .questionOptions .questionLabel .customRadio {
+    margin-right: 0;
+    transition: var(--transition-base);
+  }
+  .questionContainer .questionOptions .questionOption {
+    margin-left: var(--spacing-xs);
+  }
+  .questionContainer .questionOptions .questionLabel:not(:first-child) {
+    margin-left: 0;
+    margin-top: var(--spacing-sm);
+  }
 }/*# sourceMappingURL=RadioQuestion.module.css.map */

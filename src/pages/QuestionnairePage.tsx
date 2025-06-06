@@ -9,6 +9,8 @@ import rawQuestionsData from '../data/questions.json'
 import style from '../styles/pages/QuestionnairePage.module.css'
 import handIcon from '../assets/images/hand.svg'
 import flagIcon from '../assets/images/flag.svg'
+import nextIcon from '../assets/images/nextIcon.svg'
+import backIcon from '../assets/images/backIcon.svg'
 
 const questionsData = rawQuestionsData as { sections: Section[] }
 
@@ -179,20 +181,29 @@ const QuestionnairePage: React.FC = () => {
 
         {error && <div className="error-message">{error}</div>}
 
-        <div className={style.buttonsContainer}>
-          <button onClick={() => navigate('/upload')} className={style.backBtn}>
-            К загрузке рисунков
-          </button>
+        <div className={style.pageBottom}>
+          <p className={style.stepDesktop}>Шаг 2/3</p>
+          <div className={style.buttonsContainer}>
+            <button
+              onClick={() => navigate('/upload')}
+              className={style.backBtn}
+            >
+              К загрузке рисунков
+            </button>
 
-          <button
-            onClick={handleSubmit}
-            disabled={!allRequiredAnswered || isSubmitting}
-            className={`${style.submitBtn} ${
-              !allRequiredAnswered || isSubmitting ? style.disabled : ''
-            }`}
-          >
-            Узнать результаты
-          </button>
+            <button
+              onClick={handleSubmit}
+              disabled={!allRequiredAnswered || isSubmitting}
+              className={` ${
+                !allRequiredAnswered || isSubmitting
+                  ? style.btnSubmitMuted
+                  : style.btnSubmitDefault
+              }`}
+            >
+              Узнать результаты
+            </button>
+            <p className={style.stepMobile}>Шаг 2/3</p>
+          </div>
         </div>
       </div>
     </div>
