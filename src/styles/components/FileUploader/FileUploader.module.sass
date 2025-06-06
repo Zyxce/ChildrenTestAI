@@ -1,19 +1,30 @@
 
 .uploaderContainer
     .uploaderTop
-
         .uploaderTitle
             font-size: var(--font-size-header)
             font-weight: var(--font-weight-bold)
             color: var(--color-text-uploader)
         .uploaderAttention
             margin-top: var(--spacing-sm)
+            display: -webkit-box
+            display: -moz-box
+            display: -ms-flexbox
+            display: -webkit-flex
             display: flex
+            width: -webkit-fit-content
+            width: -moz-fit-content
             width: fit-content
             padding: var(--spacing-sm) var(--spacing-mds)
             background-color: var(--color-surface-attention)
             gap: var(--spacing-sm)
+            -webkit-border-radius: var(--radius-full)
+            -moz-border-radius: var(--radius-full)
             border-radius: var(--radius-full)
+            -webkit-user-select: none
+            -moz-user-select: none
+            -ms-user-select: none
+            user-select: none
             img
                 width: var(--scale-icon)
                 height: var(--scale-icon)
@@ -22,13 +33,33 @@
                 font-size: var(--font-size-base)
                 font-weight: var(--font-weight-base)
     .uploadField
+        display: -webkit-box
+        display: -moz-box
+        display: -ms-flexbox
+        display: -webkit-flex
         display: flex
         margin-top: var(--spacing-xl)
+        -webkit-box-pack: justify
+        -moz-box-pack: justify
+        -ms-flex-pack: justify
+        -webkit-justify-content: space-between
         justify-content: space-between
     .uploaderBottom
+        display: -webkit-box
+        display: -moz-box
+        display: -ms-flexbox
+        display: -webkit-flex
         display: flex
+        -webkit-box-pack: justify
+        -moz-box-pack: justify
+        -ms-flex-pack: justify
+        -webkit-justify-content: space-between
         justify-content: space-between
-        align-items: end
+        -webkit-box-align: end
+        -moz-box-align: end
+        -ms-flex-align: end
+        -webkit-align-items: flex-end
+        align-items: flex-end
         margin-top: var(--spacing-ultra)
         p
             color: var(--color-text-muted)
@@ -36,20 +67,45 @@
             font-weight: var(--font-weight-bold)
         .btnMuted
             border: none
+            -webkit-border-radius: var(--radius-full)
+            -moz-border-radius: var(--radius-full)
             border-radius: var(--radius-full)
             padding: var(--spacing-sm) var(--spacing-lg)
             gap: var(--spacing-sm)
             background-color: var(--color-btn-disabled)
+            -webkit-transition: var(--transition-base)
+            -moz-transition: var(--transition-base)
+            -o-transition: var(--transition-base)
             transition: var(--transition-base)
+            display: -webkit-box
+            display: -moz-box
+            display: -ms-flexbox
+            display: -webkit-flex
             display: flex
             color: var(--color-text-muted)
             font-weight: var(--font-weight-base)
             font-size: var(--font-size-lg)
+            display: -webkit-box
+            display: -moz-box
+            display: -ms-flexbox
+            display: -webkit-flex
             display: flex
+            -webkit-box-pack: center
+            -moz-box-pack: center
+            -ms-flex-pack: center
+            -webkit-justify-content: center
             justify-content: center
+            -webkit-box-align: center
+            -moz-box-align: center
+            -ms-flex-align: center
+            -webkit-align-items: center
             align-items: center
             text-align: center
             line-height: 1
+            -webkit-user-select: none
+            -moz-user-select: none
+            -ms-user-select: none
+            user-select: none
             svg
                 width: 24px
                 height: 24px
@@ -57,20 +113,45 @@
                     stroke: var(--color-text-muted)
         .btnDefault
             border: none
+            -webkit-border-radius: var(--radius-full)
+            -moz-border-radius: var(--radius-full)
             border-radius: var(--radius-full)
             padding: var(--spacing-sm) var(--spacing-lg)
             gap: var(--spacing-sm)
             background-color: var(--color-btn-default)
+            -webkit-transition: var(--transition-base)
+            -moz-transition: var(--transition-base)
+            -o-transition: var(--transition-base)
             transition: var(--transition-base)
+            display: -webkit-box
+            display: -moz-box
+            display: -ms-flexbox
+            display: -webkit-flex
             display: flex
             color: var(--color-text-btn)
             font-weight: var(--font-weight-base)
             font-size: var(--font-size-lg)
+            display: -webkit-box
+            display: -moz-box
+            display: -ms-flexbox
+            display: -webkit-flex
             display: flex
+            -webkit-box-pack: center
+            -moz-box-pack: center
+            -ms-flex-pack: center
+            -webkit-justify-content: center
             justify-content: center
+            -webkit-box-align: center
+            -moz-box-align: center
+            -ms-flex-align: center
+            -webkit-align-items: center
             align-items: center
             text-align: center
             line-height: 1
+            -webkit-user-select: none
+            -moz-user-select: none
+            -ms-user-select: none
+            user-select: none
             svg
                 width: 24px
                 height: 24px
@@ -81,34 +162,50 @@
                 background-color: var(--color-btn-hover)
 
 @media (max-width: 1200px)
-    .uploaderContainer
-        .uploaderTop
-            .uploaderTitle
-            .uploaderAttention
-                p
-        .uploadField
-        .uploaderBottom
-            margin-top: var(--spacing-big)
+.uploaderContainer
+    .uploaderTop
+        .uploaderTitle
+        .uploaderAttention
             p
-            .btnMuted
-                svg
-                    path
-            .btnDefault
-                svg
-                    path
-                &:hover
+    .uploadField
+    .uploaderBottom
+        margin-top: var(--spacing-big)
+        p
+        .btnMuted
+            svg
+                path
+        .btnDefault
+            svg
+                path
+            &:hover
 
 @media (max-width: 640px)
     .uploaderContainer
         .uploaderTop
             .uploaderTitle
             .uploaderAttention
+                -webkit-border-radius: var(--radius-base)
+                -moz-border-radius: var(--radius-base)
                 border-radius: var(--radius-base)
+                -webkit-box-align: center
+                -moz-box-align: center
+                -ms-flex-align: center
+                -webkit-align-items: center
                 align-items: center
                 img
                 p
         .uploadField
+            -webkit-box-orient: vertical
+            -webkit-box-direction: normal
+            -moz-box-orient: vertical
+            -moz-box-direction: normal
+            -ms-flex-direction: column
+            -webkit-flex-direction: column
             flex-direction: column
+            -webkit-box-align: center
+            -moz-box-align: center
+            -ms-flex-align: center
+            -webkit-align-items: center
             align-items: center
             margin-top: var(--spacing-lg)
             gap: var(--spacing-md)
@@ -117,8 +214,8 @@
             p
             .btnMuted
                 svg
-                    path
+                path
             .btnDefault
                 svg
-                    path
+                path
                 &:hover

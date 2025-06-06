@@ -1,20 +1,41 @@
+.quectionContainer {
+  width: 100%;
+}
 .quectionContainer .quectionTitle {
+  -webkit-font-size: var(--font-size-lg);
+  -moz-font-size: var(--font-size-lg);
   font-size: var(--font-size-lg);
+  -webkit-font-weight: var(--font-weight-base);
+  -moz-font-weight: var(--font-weight-base);
   font-weight: var(--font-weight-base);
+  -webkit-color: var(--color-text-secondary);
+  -moz-color: var(--color-text-secondary);
   color: var(--color-text-secondary);
 }
 .quectionContainer .quectionOptions {
+  -webkit-margin-top: var(--spacing-sm);
+  -moz-margin-top: var(--spacing-sm);
   margin-top: var(--spacing-sm);
   border-radius: var(--radius-base);
+  -webkit-overflow: hidden;
+  -moz-overflow: hidden;
   overflow: hidden;
   width: -moz-fit-content;
   width: fit-content;
 }
 .quectionContainer .quectionOptions .quectionScale, .quectionContainer .quectionOptions .quectionScaleActive {
+  -webkit-padding: var(--spacing-xs) var(--spacing-xl);
+  -moz-padding: var(--spacing-xs) var(--spacing-xl);
   padding: var(--spacing-xs) var(--spacing-xl);
+  -webkit-font-size: var(--font-size-sm);
+  -moz-font-size: var(--font-size-sm);
   font-size: var(--font-size-sm);
+  -webkit-font-weight: var(--font-weight-base);
+  -moz-font-weight: var(--font-weight-base);
   font-weight: var(--font-weight-base);
   line-height: 1rem;
+  -webkit-border: var(--border-width) solid var(--color-bg);
+  -moz-border: var(--border-width) solid var(--color-bg);
   border: var(--border-width) solid var(--color-bg);
 }
 .quectionContainer .quectionOptions .quectionScale:hover, .quectionContainer .quectionOptions .quectionScaleActive:hover {
@@ -22,6 +43,8 @@
 }
 .quectionContainer .quectionOptions .quectionScale {
   background-color: var(--color-btn-disabled);
+  -webkit-color: var(--color-text-secondary);
+  -moz-color: var(--color-text-secondary);
   color: var(--color-text-secondary);
 }
 .quectionContainer .quectionOptions .quectionScale:hover {
@@ -29,16 +52,22 @@
 }
 .quectionContainer .quectionOptions .quectionScaleActive {
   background-color: var(--color-btn-default);
+  -webkit-color: var(--color-text-btn);
+  -moz-color: var(--color-text-btn);
   color: var(--color-text-btn);
 }
 
 @media (max-width: 640px) {
   .quectionContainer .quectionOptions {
+    -webkit-overflow: hidden;
+    -moz-overflow: hidden;
     overflow: hidden;
     width: -moz-fit-content;
     width: fit-content;
   }
   .quectionContainer .quectionOptions .quectionScale, .quectionContainer .quectionOptions .quectionScaleActive {
+    -webkit-padding: var(--spacing-xs) var(--spacing-md);
+    -moz-padding: var(--spacing-xs) var(--spacing-md);
     padding: var(--spacing-xs) var(--spacing-md);
   }
 }/*# sourceMappingURL=RatingQuestion.module.css.map */

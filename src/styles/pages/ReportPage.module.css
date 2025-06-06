@@ -6,6 +6,8 @@
   width: 100%;
   margin: 0 auto;
   border-radius: var(--radius-container);
+  -webkit-overflow: hidden;
+  -moz-overflow: hidden;
   overflow: hidden;
   transition: var(--transition-base);
   min-height: 418px;
@@ -13,6 +15,8 @@
 .page .progress {
   display: flex;
   height: 16px;
+  -webkit-margin-bottom: var(--spacing-big);
+  -moz-margin-bottom: var(--spacing-big);
   margin-bottom: var(--spacing-big);
 }
 .page .progress .completed {
@@ -25,46 +29,82 @@
 }
 .page .pageWrapper {
   min-height: 300px;
+  -webkit-padding: 0 var(--spacing-ultra) var(--spacing-xl) var(--spacing-ultra);
+  -moz-padding: 0 var(--spacing-ultra) var(--spacing-xl) var(--spacing-ultra);
   padding: 0 var(--spacing-ultra) var(--spacing-xl) var(--spacing-ultra);
 }
 .page .pageWrapper .pageTitle {
+  -webkit-font-size: var(--font-size-header);
+  -moz-font-size: var(--font-size-header);
   font-size: var(--font-size-header);
+  -webkit-font-size: var(--font-size-header);
+  -moz-font-size: var(--font-size-header);
   font-size: var(--font-size-header);
+  -webkit-font-weight: var(--font-weight-bold);
+  -moz-font-weight: var(--font-weight-bold);
   font-weight: var(--font-weight-bold);
+  -webkit-color: var(--color-text-primary);
+  -moz-color: var(--color-text-primary);
   color: var(--color-text-primary);
 }
 .page .pageWrapper .processСontainer {
   display: flex;
 }
 .page .pageWrapper .processСontainer .analysisText {
+  -webkit-font-size: var(--font-size-base);
+  -moz-font-size: var(--font-size-base);
   font-size: var(--font-size-base);
+  -webkit-font-weight: var(--font-weight-base);
+  -moz-font-weight: var(--font-weight-base);
   font-weight: var(--font-weight-base);
+  -webkit-color: var(--color-text-secondary);
+  -moz-color: var(--color-text-secondary);
   color: var(--color-text-secondary);
 }
 .page .pageWrapper .processСontainer .icon {
   width: 16px;
   height: 16px;
+  -webkit-margin-left: var(--spacing-sm);
+  -moz-margin-left: var(--spacing-sm);
   margin-left: var(--spacing-sm);
+  -webkit-color: var(--color-btn-hover);
+  -moz-color: var(--color-btn-hover);
   color: var(--color-btn-hover);
   animation: spin 1s linear infinite;
 }
 .page .pageWrapper .downloadBtn {
+  -webkit-margin-top: auto;
+  -moz-margin-top: auto;
   margin-top: auto;
 }
 .page .pageWrapper .downloadBtn .btnSubmitDefault {
-  max-width: 100px;
+  max-width: 150px;
+  -webkit-border: none;
+  -moz-border: none;
   border: none;
   border-radius: var(--radius-full);
+  -webkit-padding: var(--spacing-sm) var(--spacing-lg);
+  -moz-padding: var(--spacing-sm) var(--spacing-lg);
   padding: var(--spacing-sm) var(--spacing-lg);
   gap: var(--spacing-sm);
   background-color: var(--color-btn-default);
   transition: var(--transition-base);
   display: flex;
+  -webkit-color: var(--color-text-btn);
+  -moz-color: var(--color-text-btn);
   color: var(--color-text-btn);
+  -webkit-font-weight: var(--font-weight-base);
+  -moz-font-weight: var(--font-weight-base);
   font-weight: var(--font-weight-base);
+  -webkit-font-size: var(--font-size-lg);
+  -moz-font-size: var(--font-size-lg);
   font-size: var(--font-size-lg);
   display: flex;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
   justify-content: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
   align-items: center;
   text-align: center;
   line-height: 1;
@@ -80,9 +120,13 @@
     max-width: 600px;
   }
   .page .progress {
+    -webkit-margin-bottom: var(--spacing-xl);
+    -moz-margin-bottom: var(--spacing-xl);
     margin-bottom: var(--spacing-xl);
   }
   .page .pageWrapper {
+    -webkit-padding: 0 var(--spacing-lg) var(--spacing-lg) var(--spacing-lg);
+    -moz-padding: 0 var(--spacing-lg) var(--spacing-lg) var(--spacing-lg);
     padding: 0 var(--spacing-lg) var(--spacing-lg) var(--spacing-lg);
   }
 }
@@ -91,9 +135,13 @@
     max-width: 296px;
   }
   .page .progress {
+    -webkit-margin-bottom: var(--spacing-xl);
+    -moz-margin-bottom: var(--spacing-xl);
     margin-bottom: var(--spacing-xl);
   }
   .page .pageWrapper {
+    -webkit-padding: 0 var(--spacing-md) var(--spacing-md) var(--spacing-md);
+    -moz-padding: 0 var(--spacing-md) var(--spacing-md) var(--spacing-md);
     padding: 0 var(--spacing-md) var(--spacing-md) var(--spacing-md);
   }
 }

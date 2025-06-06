@@ -1,11 +1,13 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
   background-color: #f7f7f7;
   display: flex;
+  -moz-justify-content: center;
   justify-content: center;
   width: 100%;
   font-family: var(--font-primary);
@@ -13,4 +15,14 @@ body {
 
 input[type=file]::file-selector-button {
   display: none;
+}
+
+@-moz-document url-prefix() {
+  input[type=file] {
+    color: transparent;
+  }
+  input[type=file]::before {
+    content: attr(data-text);
+    color: #000;
+  }
 }/*# sourceMappingURL=index.css.map */

@@ -1,38 +1,75 @@
+
 .quectionContainer
+    width: 100%
     .quectionTitle
+        -webkit-font-size: var(--font-size-lg)
+        -moz-font-size: var(--font-size-lg)
         font-size: var(--font-size-lg)
+        -webkit-font-weight: var(--font-weight-base)
+        -moz-font-weight: var(--font-weight-base)
         font-weight: var(--font-weight-base)
+        -webkit-color: var(--color-text-secondary)
+        -moz-color: var(--color-text-secondary)
         color: var(--color-text-secondary)
+
     .quectionOptions
+        -webkit-margin-top: var(--spacing-sm)
+        -moz-margin-top: var(--spacing-sm)
         margin-top: var(--spacing-sm)
+        -webkit-border-radius: var(--radius-base)
+        -moz-border-radius: var(--radius-base)
         border-radius: var(--radius-base)
+        -webkit-overflow: hidden
+        -moz-overflow: hidden
         overflow: hidden
+        width: -moz-fit-content
+        width: -webkit-fit-content
         width: fit-content
+
         .quectionScale, .quectionScaleActive
+            -webkit-padding: var(--spacing-xs) var(--spacing-xl)
+            -moz-padding: var(--spacing-xs) var(--spacing-xl)
             padding: var(--spacing-xs) var(--spacing-xl)
+            -webkit-font-size: var(--font-size-sm)
+            -moz-font-size: var(--font-size-sm)
             font-size: var(--font-size-sm)
+            -webkit-font-weight: var(--font-weight-base)
+            -moz-font-weight: var(--font-weight-base)
             font-weight: var(--font-weight-base)
             line-height: 1rem
+            -webkit-border: var(--border-width) solid var(--color-bg)
+            -moz-border: var(--border-width) solid var(--color-bg)
             border: var(--border-width) solid var(--color-bg)
             &:hover
                 cursor: pointer
+
         .quectionScale
             background-color: var(--color-btn-disabled)
+            -webkit-color: var(--color-text-secondary)
+            -moz-color: var(--color-text-secondary)
             color: var(--color-text-secondary)
             &:hover
                 background-color: var(--color-btn-hover)
+
         .quectionScaleActive
             background-color: var(--color-btn-default)
+            -webkit-color: var(--color-text-btn)
+            -moz-color: var(--color-text-btn)
             color: var(--color-text-btn)
 
 @media (max-width: 640px)
     .quectionContainer
         .quectionTitle
         .quectionOptions
-
+            -webkit-overflow: hidden
+            -moz-overflow: hidden
             overflow: hidden
+            width: -moz-fit-content
+            width: -webkit-fit-content
             width: fit-content
             .quectionScale, .quectionScaleActive
+                -webkit-padding: var(--spacing-xs) var(--spacing-md)
+                -moz-padding: var(--spacing-xs) var(--spacing-md)
                 padding: var(--spacing-xs) var(--spacing-md)
                 &:hover
             .quectionScale

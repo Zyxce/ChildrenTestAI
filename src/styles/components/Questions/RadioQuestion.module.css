@@ -2,17 +2,27 @@
   width: 100%;
 }
 .questionContainer .questionTitle {
+  -webkit-font-size: var(--font-size-lg);
+  -moz-font-size: var(--font-size-lg);
   font-size: var(--font-size-lg);
+  -webkit-font-weight: var(--font-weight-base);
+  -moz-font-weight: var(--font-weight-base);
   font-weight: var(--font-weight-base);
+  -webkit-color: var(--color-text-secondary);
+  -moz-color: var(--color-text-secondary);
   color: var(--color-text-secondary);
 }
 .questionContainer .questionOptions {
+  -webkit-margin-top: var(--spacing-sm);
+  -moz-margin-top: var(--spacing-sm);
   margin-top: var(--spacing-sm);
   display: flex;
 }
 .questionContainer .questionOptions .questionLabel {
   cursor: pointer;
   display: flex;
+  -moz-align-items: center;
+  -ms-align-items: center;
   align-items: center;
   position: relative;
 }
@@ -27,6 +37,8 @@
   width: 20px;
   height: 20px;
   border-radius: var(--radius-full);
+  -webkit-margin-right: var(--spacing-sm);
+  -moz-margin-right: var(--spacing-sm);
   margin-right: var(--spacing-sm);
   transition: var(--transition-base);
   position: relative;
@@ -65,30 +77,49 @@
   opacity: 1;
 }
 .questionContainer .questionOptions .questionOption {
+  -webkit-margin-left: var(--spacing-xs);
+  -moz-margin-left: var(--spacing-xs);
   margin-left: var(--spacing-xs);
+  -webkit-font-size: var(--font-size-sm);
+  -moz-font-size: var(--font-size-sm);
   font-size: var(--font-size-sm);
+  -webkit-font-weight: var(--font-weight-base);
+  -moz-font-weight: var(--font-weight-base);
   font-weight: var(--font-weight-base);
+  -webkit-color: var(--color-text-secondary);
+  -moz-color: var(--color-text-secondary);
   color: var(--color-text-secondary);
   line-height: 1rem;
 }
 .questionContainer .questionOptions .questionLabel:not(:first-child) {
+  -webkit-margin-left: var(--spacing-lg);
+  -moz-margin-left: var(--spacing-lg);
   margin-left: var(--spacing-lg);
 }
 
 @media (max-width: 640px) {
   .questionContainer .questionOptions {
     display: flex;
+    -moz-flex-direction: column;
     flex-direction: column;
   }
   .questionContainer .questionOptions .questionLabel .customRadio {
+    -webkit-margin-right: 0;
+    -moz-margin-right: 0;
     margin-right: 0;
     transition: var(--transition-base);
   }
   .questionContainer .questionOptions .questionOption {
+    -webkit-margin-left: var(--spacing-xs);
+    -moz-margin-left: var(--spacing-xs);
     margin-left: var(--spacing-xs);
   }
   .questionContainer .questionOptions .questionLabel:not(:first-child) {
+    -webkit-margin-left: 0;
+    -moz-margin-left: 0;
     margin-left: 0;
+    -webkit-margin-top: var(--spacing-sm);
+    -moz-margin-top: var(--spacing-sm);
     margin-top: var(--spacing-sm);
   }
 }/*# sourceMappingURL=RadioQuestion.module.css.map */

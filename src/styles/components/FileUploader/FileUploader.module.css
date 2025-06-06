@@ -12,6 +12,9 @@
   background-color: var(--color-surface-attention);
   gap: var(--spacing-sm);
   border-radius: var(--radius-full);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
 }
 .uploaderContainer .uploaderTop .uploaderAttention img {
   width: var(--scale-icon);
@@ -30,7 +33,7 @@
 .uploaderContainer .uploaderBottom {
   display: flex;
   justify-content: space-between;
-  align-items: end;
+  align-items: flex-end;
   margin-top: var(--spacing-ultra);
 }
 .uploaderContainer .uploaderBottom p {
@@ -54,6 +57,9 @@
   align-items: center;
   text-align: center;
   line-height: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
 }
 .uploaderContainer .uploaderBottom .btnMuted svg {
   width: 24px;
@@ -78,6 +84,9 @@
   align-items: center;
   text-align: center;
   line-height: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
 }
 .uploaderContainer .uploaderBottom .btnDefault svg {
   width: 24px;
@@ -91,10 +100,8 @@
   background-color: var(--color-btn-hover);
 }
 
-@media (max-width: 1200px) {
-  .uploaderContainer .uploaderBottom {
-    margin-top: var(--spacing-big);
-  }
+.uploaderContainer .uploaderBottom {
+  margin-top: var(--spacing-big);
 }
 @media (max-width: 640px) {
   .uploaderContainer .uploaderTop .uploaderAttention {

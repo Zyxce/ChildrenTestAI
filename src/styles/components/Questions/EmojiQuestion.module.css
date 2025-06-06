@@ -1,32 +1,60 @@
 .questionContainer .questionTitle {
+  -webkit-font-size: var(--font-size-lg);
+  -moz-font-size: var(--font-size-lg);
   font-size: var(--font-size-lg);
+  -webkit-font-weight: var(--font-weight-base);
+  -moz-font-weight: var(--font-weight-base);
   font-weight: var(--font-weight-base);
+  -webkit-color: var(--color-text-secondary);
+  -moz-color: var(--color-text-secondary);
   color: var(--color-text-secondary);
 }
 .questionContainer .questionOptions {
+  -webkit-margin-top: var(--spacing-sm);
+  -moz-margin-top: var(--spacing-sm);
   margin-top: var(--spacing-sm);
 }
 .questionContainer .questionOptions .optionContainer {
   display: flex;
+  -moz-align-items: center;
+  -ms-align-items: center;
   align-items: center;
   width: 300px;
+  -webkit-margin-top: var(--spacing-sm);
+  -moz-margin-top: var(--spacing-sm);
   margin-top: var(--spacing-sm);
+  -webkit-border: var(--border-width) solid var(--color-btn-disabled);
+  -moz-border: var(--border-width) solid var(--color-btn-disabled);
   border: var(--border-width) solid var(--color-btn-disabled);
+  -webkit-padding: var(--spacing-xs);
+  -moz-padding: var(--spacing-xs);
   padding: var(--spacing-xs);
   border-radius: var(--radius-base);
   transition: var(--transition-base);
 }
 .questionContainer .questionOptions .optionContainer .questionEmoji {
+  -webkit-font-size: var(--font-size-header);
+  -moz-font-size: var(--font-size-header);
   font-size: var(--font-size-header);
 }
 .questionContainer .questionOptions .optionContainer .questionText {
+  -webkit-margin-left: var(--spacing-xs);
+  -moz-margin-left: var(--spacing-xs);
   margin-left: var(--spacing-xs);
+  -webkit-font-size: var(--font-size-sm);
+  -moz-font-size: var(--font-size-sm);
   font-size: var(--font-size-sm);
+  -webkit-font-weight: var(--font-weight-base);
+  -moz-font-weight: var(--font-weight-base);
   font-weight: var(--font-weight-base);
+  -webkit-color: var(--color-text-secondary);
+  -moz-color: var(--color-text-secondary);
   color: var(--color-text-secondary);
   line-height: 1rem;
 }
 .questionContainer .questionOptions .optionContainer:hover {
+  -webkit-border: var(--border-width) solid var(--color-btn-hover);
+  -moz-border: var(--border-width) solid var(--color-btn-hover);
   border: var(--border-width) solid var(--color-btn-hover);
   cursor: pointer;
 }
@@ -36,6 +64,8 @@
   transition: var(--transition-base);
 }
 .questionContainer .questionOptions .optionContainerActive .questionText {
+  -webkit-color: var(--color-bg);
+  -moz-color: var(--color-bg);
   color: var(--color-bg);
 }
 
