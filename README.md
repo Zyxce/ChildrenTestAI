@@ -94,8 +94,13 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 │  │  └─ images
 │  │     ├─ arrowRight.svg
 │  │     ├─ attention.svg
+│  │     ├─ backIcon.svg
+│  │     ├─ flag.svg
+│  │     ├─ hand.svg
+│  │     ├─ nextIcon.svg
 │  │     ├─ removePhotos.svg
-│  │     └─ uploadPhotos.svg
+│  │     ├─ uploadPhotos.svg
+│  │     └─ welcomeBg.jpg
 │  ├─ components
 │  │  ├─ App.tsx
 │  │  ├─ AuthRoute.tsx
@@ -138,20 +143,48 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 │  │  │  ├─ App.css
 │  │  │  ├─ App.css.map
 │  │  │  ├─ App.sass
-│  │  │  └─ FileUploader
-│  │  │     ├─ FileUploader.module.css
-│  │  │     ├─ FileUploader.module.css.map
-│  │  │     ├─ FileUploader.module.sass
-│  │  │     ├─ FileUploadField.module.css
-│  │  │     ├─ FileUploadField.module.css.map
-│  │  │     └─ FileUploadField.module.sass
+│  │  │  ├─ FileUploader
+│  │  │  │  ├─ FileUploader.module.css
+│  │  │  │  ├─ FileUploader.module.css.map
+│  │  │  │  ├─ FileUploader.module.sass
+│  │  │  │  ├─ FileUploadField.module.css
+│  │  │  │  ├─ FileUploadField.module.css.map
+│  │  │  │  └─ FileUploadField.module.sass
+│  │  │  └─ Questions
+│  │  │     ├─ DateQuestion.css
+│  │  │     ├─ DateQuestion.css.map
+│  │  │     ├─ DateQuestion.module.css
+│  │  │     ├─ DateQuestion.module.css.map
+│  │  │     ├─ DateQuestion.module.sass
+│  │  │     ├─ DateQuestion.sass
+│  │  │     ├─ EmojiQuestion.module.css
+│  │  │     ├─ EmojiQuestion.module.css.map
+│  │  │     ├─ EmojiQuestion.module.sass
+│  │  │     ├─ QuestionContainer.module.css
+│  │  │     ├─ QuestionContainer.module.css.map
+│  │  │     ├─ QuestionContainer.module.sass
+│  │  │     ├─ RadioQuestion.module.css
+│  │  │     ├─ RadioQuestion.module.css.map
+│  │  │     ├─ RadioQuestion.module.sass
+│  │  │     ├─ RatingQuestion.module.css
+│  │  │     ├─ RatingQuestion.module.css.map
+│  │  │     ├─ RatingQuestion.module.sass
+│  │  │     ├─ TextQuestion.module.css
+│  │  │     ├─ TextQuestion.module.css.map
+│  │  │     └─ TextQuestion.module.sass
 │  │  ├─ index.css
 │  │  ├─ index.css.map
 │  │  ├─ index.sass
 │  │  └─ pages
+│  │     ├─ QuestionnairePage.module.css
+│  │     ├─ QuestionnairePage.module.css.map
+│  │     ├─ QuestionnairePage.module.sass
 │  │     ├─ UploadPhotosPage.module.css
 │  │     ├─ UploadPhotosPage.module.css.map
-│  │     └─ UploadPhotosPage.module.sass
+│  │     ├─ UploadPhotosPage.module.sass
+│  │     ├─ WelcomePage.module.css
+│  │     ├─ WelcomePage.module.css.map
+│  │     └─ WelcomePage.module.sass
 │  ├─ types.ts
 │  └─ utils
 └─ tsconfig.json

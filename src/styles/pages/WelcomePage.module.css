@@ -1,0 +1,89 @@
+.page {
+  background-color: var(--color-bg);
+  box-sizing: border-box;
+  max-width: 904px;
+  height: 418px;
+  width: 100%;
+  margin: 0 auto;
+  border-radius: var(--radius-container);
+  overflow: hidden;
+  transition: var(--transition-base);
+  background-image: url("../../assets/images/welcomeBg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 904px 418px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 0 5px 5px var(--color-bg);
+}
+.page .pageWrapper {
+  padding: var(--spacing-ultra);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.page .pageWrapper .pageTitle {
+  font-size: var(--font-size-header);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-uploader);
+}
+.page .pageWrapper .pageText {
+  margin-top: var(--spacing-sm);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-base);
+  color: var(--color-text-secondary);
+}
+.page .pageWrapper .pageBtn {
+  border: none;
+  border-radius: var(--radius-full);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  gap: var(--spacing-sm);
+  background-color: var(--color-btn-default);
+  transition: var(--transition-base);
+  display: flex;
+  color: var(--color-text-btn);
+  font-weight: var(--font-weight-base);
+  font-size: var(--font-size-lg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: -moz-fit-content;
+  width: fit-content;
+  text-align: center;
+  line-height: 1;
+  margin-top: var(--spacing-ultra);
+}
+.page .pageWrapper .pageBtn svg {
+  width: 24px;
+  height: 24px;
+}
+.page .pageWrapper .pageBtn svg path {
+  stroke: var(--color-text-btn);
+}
+.page .pageWrapper .pageBtn:hover {
+  cursor: pointer;
+  background-color: var(--color-btn-hover);
+}
+
+@media (max-width: 1200px) {
+  .page {
+    max-width: 600px;
+  }
+  .page .pageWrapper {
+    padding: var(--spacing-lg);
+  }
+}
+@media (max-width: 640px) {
+  .page {
+    max-width: 296px;
+  }
+  .page .progress {
+    margin-bottom: var(--spacing-xl);
+  }
+  .page .pageWrapper {
+    padding: --spacing-md;
+  }
+}/*# sourceMappingURL=WelcomePage.module.css.map */
