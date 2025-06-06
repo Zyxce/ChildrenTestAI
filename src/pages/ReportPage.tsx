@@ -1,10 +1,11 @@
-import React, { useEffect, useState, useCallback } from 'react'
+import React, { useEffect, useState, useCallback, useRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../store'
 import { getReportStatus } from '../services/api'
 import { useNavigate } from 'react-router-dom'
 import { resetUploadState } from '../store/uploadSlice'
 import { Document, Page, pdfjs } from 'react-pdf'
+import style from '../styles/pages/ReportPage.module.css'
 
 // Воркер из public
 pdfjs.GlobalWorkerOptions.workerSrc = `${process.env.PUBLIC_URL}/pdf.worker.min.js`
@@ -18,12 +19,24 @@ export const ReportPage: React.FC = () => {
   )
   const [errorMessage, setErrorMessage] = useState<string>('')
   const [numPages, setNumPages] = useState<number>(0)
-  const [pdfUrl, setPdfUrl] = useState<string>('') // URL.createObjectURL
+  const [pdfUrl, setPdfUrl] = useState<string>('')
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  // относительный путь (CRA proxy)
-  const reportPath = taskId ? `/report/${taskId}` : ''
+  // Контейнер для измерения ширины
+  const containerRef = useRef<HTMLDivElement>(null)
+  const [containerWidth, setContainerWidth] = useState<number>(600)
+
+  // Подгоняем ширину под контейнер
+  useEffect(() => {
+    const updateWidth = () => {
+      const w = containerRef.current?.offsetWidth
+      if (w) setContainerWidth(w)
+    }
+    updateWidth()
+    window.addEventListener('resize', updateWidth)
+    return () => window.removeEventListener('resize', updateWidth)
+  }, [])
 
   // Проверка наличия taskId
   useEffect(() => {
@@ -46,11 +59,13 @@ export const ReportPage: React.FC = () => {
     return () => clearTimeout(timer)
   }, [status])
 
-  // Опрос статуса
+  // Опрашиваем статус обработки
   const fetchStatus = useCallback(async () => {
     try {
       const res = await getReportStatus(taskId!)
-      if (res.status === 'ready') setStatus('ready')
+      if (res.status === 'ready') {
+        setStatus('ready')
+      }
     } catch (err: any) {
       setErrorMessage(err.message || 'Ошибка при получении статуса')
       setStatus('error')
@@ -64,11 +79,11 @@ export const ReportPage: React.FC = () => {
     return () => clearInterval(id)
   }, [fetchStatus, status])
 
-  // Загрузка PDF как Blob после готовности
+  // Как только готов, загружаем PDF как Blob
   useEffect(() => {
-    if (status !== 'ready' || !reportPath) return
+    if (status !== 'ready' || !taskId) return
 
-    fetch(reportPath)
+    fetch(`/report/${taskId}`)
       .then((res) => {
         const ct = res.headers.get('Content-Type') || ''
         if (!ct.includes('application/pdf')) {
@@ -83,7 +98,7 @@ export const ReportPage: React.FC = () => {
         setErrorMessage('Не удалось загрузить PDF: ' + err.message)
         setStatus('error')
       })
-  }, [status, reportPath])
+  }, [status, taskId])
 
   const onDocumentLoadSuccess = ({ numPages }: { numPages: number }) => {
     setNumPages(numPages)
@@ -95,7 +110,7 @@ export const ReportPage: React.FC = () => {
   }
 
   return (
-    <div className="max-w-xl mx-auto p-4">
+    <div className={style.page} ref={containerRef}>
       <h1 className="text-2xl font-semibold mb-6">Ваш отчёт</h1>
 
       {status === 'processing' && !errorMessage && (
@@ -133,13 +148,14 @@ export const ReportPage: React.FC = () => {
               loading={null}
               error={<p>Не удалось отобразить PDF.</p>}
             >
-              {Array.from({ length: numPages }, (_, i) => (
+              {Array.from({ length: numPages }).map((_, i) => (
                 <Page
                   key={i}
                   pageNumber={i + 1}
-                  className="mb-4"
+                  width={containerWidth}
                   renderTextLayer={false}
                   renderAnnotationLayer={false}
+                  className="mb-4"
                 />
               ))}
             </Document>
@@ -147,7 +163,7 @@ export const ReportPage: React.FC = () => {
 
           <div className="flex gap-4 mt-4">
             <a
-              href={`${API_BASE_URL}${reportPath}`}
+              href={`${API_BASE_URL}/report/${taskId}`}
               target="_blank"
               rel="noopener noreferrer"
               className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
@@ -155,7 +171,7 @@ export const ReportPage: React.FC = () => {
               Открыть в новой вкладке
             </a>
             <a
-              href={`${API_BASE_URL}${reportPath}`}
+              href={`${API_BASE_URL}/report/${taskId}`}
               download={`psychology_report_${taskId}.pdf`}
               className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
             >

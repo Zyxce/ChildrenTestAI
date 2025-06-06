@@ -1,0 +1,52 @@
+.page {
+  background-color: var(--color-bg);
+  box-sizing: border-box;
+  max-width: 904px;
+  width: 100%;
+  margin: 0 auto;
+  border-radius: var(--radius-container);
+  overflow: hidden;
+  transition: var(--transition-base);
+}
+.page .progress {
+  display: flex;
+  height: 16px;
+  margin-bottom: var(--spacing-big);
+}
+.page .progress .completed {
+  width: 100%;
+  background-color: var(--color-progress-completed);
+}
+.page .progress .noCompleted {
+  background-color: var(--color-progress-nocompleted);
+  flex: 1;
+}
+.page .pageWrapper {
+  padding: 0 var(--spacing-ultra) var(--spacing-xl) var(--spacing-ultra);
+}
+.page .pageWrapper .pageTitle {
+  font-size: var(--font-size-header);
+}
+
+@media (max-width: 1200px) {
+  .page {
+    max-width: 600px;
+  }
+  .page .progress {
+    margin-bottom: var(--spacing-xl);
+  }
+  .page .pageWrapper {
+    padding: 0 var(--spacing-lg) var(--spacing-lg) var(--spacing-lg);
+  }
+}
+@media (max-width: 640px) {
+  .page {
+    max-width: 296px;
+  }
+  .page .progress {
+    margin-bottom: var(--spacing-xl);
+  }
+  .page .pageWrapper {
+    padding: 0 var(--spacing-md) var(--spacing-md) var(--spacing-md);
+  }
+}/*# sourceMappingURL=ReportPage.module.css.map */
