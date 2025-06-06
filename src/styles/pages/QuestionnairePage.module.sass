@@ -21,9 +21,42 @@
         padding: 0 var(--spacing-ultra) var(--spacing-xl) var(--spacing-ultra)
         .questionSection
             .sectionTitle
+                margin-top: var(--spacing-big)
                 font-size: var(--font-size-header)
                 font-weight: var(--font-weight-bold)
                 color: var(--color-text-primary)
             .questionsContainer
+                display: flex
+                flex-direction: column
+                gap: 30px
                 margin-top: var(--spacing-lg)
                 width: 100%
+        .firstSection
+            .sectionTitle
+                font-size: var(--font-size-header)
+                font-weight: var(--font-weight-bold)
+                color: var(--color-text-primary)
+            .questionsContainer
+                display: flex
+                flex-direction: column
+                gap: var(--spacing-md)
+                margin-top: var(--spacing-lg)
+                width: 100%
+            .attention
+                margin-top: var(--spacing-ultra)
+                padding: var(--spacing-md)
+                background-color: var( --color-card-attention)
+                border-radius: var(--radius-base)
+                .attentionTop, .attentionBottom
+                    display: flex
+                    align-items: center
+                    .handIcon, .flagIcon
+                        width: 32px
+                        height: 32px
+                    .attentionText
+                        font-size: var(--font-size-base)
+                        font-weight: var(--font-weight-base)
+                        color: var(--color-text-secondary)
+                        margin-left: var(--spacing-md)
+                .attentionBottom
+                    margin-top: var(--spacing-md)

@@ -1,4 +1,5 @@
 import React from 'react'
+import style from '../../styles/components/Questions/DateQuestion.module.css'
 
 interface DateQuestionProps {
   question: string
@@ -12,9 +13,10 @@ const DateQuestion: React.FC<DateQuestionProps> = ({
   onChange,
 }) => {
   return (
-    <div className="date-question">
-      <h3>{question}</h3>
+    <div className={style.questionContainer}>
+      <h3 className={style.questionTitle}>{question}</h3>
       <input
+        className={style.questionDate}
         type="date"
         value={value}
         onChange={(e) => onChange(e.target.value)}

@@ -335,7 +335,7 @@
       "fields": [
         {
           "id": "emotionalState",
-          "type": "radio",
+          "type": "emoji",
           "question": "Общее эмоциональное состояние ребёнка",
           "required": true,
           "options": [

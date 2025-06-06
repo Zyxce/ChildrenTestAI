@@ -1,0 +1,26 @@
+.quectionContainer
+    .quectionTitle
+        font-size: var(--font-size-lg)
+        font-weight: var(--font-weight-base)
+        color: var(--color-text-secondary)
+    .quectionOptions
+        margin-top: var(--spacing-sm)
+        border-radius: var(--radius-base)
+        overflow: hidden
+        width: fit-content
+        .quectionScale, .quectionScaleActive
+            padding: var(--spacing-xs) var(--spacing-xl)
+            font-size: var(--font-size-sm)
+            font-weight: var(--font-weight-base)
+            line-height: 1rem
+            border: var(--border-width) solid var(--color-bg)
+            &:hover
+                cursor: pointer
+        .quectionScale
+            background-color: var(--color-btn-disabled)
+            color: var(--color-text-secondary)
+            &:hover
+                background-color: var(--color-btn-hover)
+        .quectionScaleActive
+            background-color: var(--color-btn-default)
+            color: var(--color-text-btn)

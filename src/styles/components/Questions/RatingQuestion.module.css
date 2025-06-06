@@ -1,0 +1,33 @@
+.quectionContainer .quectionTitle {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-base);
+  color: var(--color-text-secondary);
+}
+.quectionContainer .quectionOptions {
+  margin-top: var(--spacing-sm);
+  border-radius: var(--radius-base);
+  overflow: hidden;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.quectionContainer .quectionOptions .quectionScale, .quectionContainer .quectionOptions .quectionScaleActive {
+  padding: var(--spacing-xs) var(--spacing-xl);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-base);
+  line-height: 1rem;
+  border: var(--border-width) solid var(--color-bg);
+}
+.quectionContainer .quectionOptions .quectionScale:hover, .quectionContainer .quectionOptions .quectionScaleActive:hover {
+  cursor: pointer;
+}
+.quectionContainer .quectionOptions .quectionScale {
+  background-color: var(--color-btn-disabled);
+  color: var(--color-text-secondary);
+}
+.quectionContainer .quectionOptions .quectionScale:hover {
+  background-color: var(--color-btn-hover);
+}
+.quectionContainer .quectionOptions .quectionScaleActive {
+  background-color: var(--color-btn-default);
+  color: var(--color-text-btn);
+}/*# sourceMappingURL=RatingQuestion.module.css.map */

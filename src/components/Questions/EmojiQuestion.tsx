@@ -1,16 +1,17 @@
 import React from 'react'
+import style from '../../styles/components/Questions/EmojiQuestion.module.css'
 
 const EMOJI_OPTIONS = [
-  { value: 'Хорошее', label: '😊 Хорошее' },
-  { value: 'Удовлетворительное', label: '😐 Удовлетворительное' },
-  { value: 'Плохое', label: '😢 Плохое' },
-  { value: 'Раздраженное', label: '😠 Раздраженное' },
-  { value: 'Уставшее', label: '😴 Уставшее' },
+  { value: 'Хорошее', label: 'Хорошее', emoji: '😊' },
+  { value: 'Удовлетворительное', label: 'Удовлетворительное', emoji: '😐' },
+  { value: 'Плохое', label: 'Плохое', emoji: '😢 ' },
+  { value: 'Раздраженное', label: 'Раздраженное', emoji: '😠' },
+  { value: 'Уставшее', label: 'Уставшее', emoji: '😴' },
 ]
 
 interface EmojiQuestionProps {
   question: string
-  value: string // Теперь только строка
+  value: string
   onChange: (value: string) => void
 }
 
@@ -19,17 +20,20 @@ const EmojiQuestion: React.FC<EmojiQuestionProps> = ({
   value,
   onChange,
 }) => (
-  <div className="emoji-question">
-    <h3>{question}</h3>
-    <div className="emoji-options">
+  <div className={style.questionContainer}>
+    <h3 className={style.questionTitle}>{question}</h3>
+    <div className={style.questionOptions}>
       {EMOJI_OPTIONS.map((option) => (
-        <button
+        <div
           key={option.value}
-          className={`emoji-button ${value === option.value ? 'selected' : ''}`}
           onClick={() => onChange(option.value)}
+          className={`${style.optionContainer} ${
+            value === option.value ? style.optionContainerActive : ''
+          }`}
         >
-          {option.label}
-        </button>
+          <p className={style.questionEmoji}>{option.emoji}</p>
+          <p className={style.questionText}>{option.label}</p>
+        </div>
       ))}
     </div>
   </div>

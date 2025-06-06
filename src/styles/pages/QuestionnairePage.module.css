@@ -25,11 +25,50 @@
   padding: 0 var(--spacing-ultra) var(--spacing-xl) var(--spacing-ultra);
 }
 .page .pageWrapper .questionSection .sectionTitle {
+  margin-top: var(--spacing-big);
   font-size: var(--font-size-header);
   font-weight: var(--font-weight-bold);
   color: var(--color-text-primary);
 }
 .page .pageWrapper .questionSection .questionsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
   margin-top: var(--spacing-lg);
   width: 100%;
+}
+.page .pageWrapper .firstSection .sectionTitle {
+  font-size: var(--font-size-header);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+}
+.page .pageWrapper .firstSection .questionsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+  width: 100%;
+}
+.page .pageWrapper .firstSection .attention {
+  margin-top: var(--spacing-ultra);
+  padding: var(--spacing-md);
+  background-color: var(--color-card-attention);
+  border-radius: var(--radius-base);
+}
+.page .pageWrapper .firstSection .attention .attentionTop, .page .pageWrapper .firstSection .attention .attentionBottom {
+  display: flex;
+  align-items: center;
+}
+.page .pageWrapper .firstSection .attention .attentionTop .handIcon, .page .pageWrapper .firstSection .attention .attentionTop .flagIcon, .page .pageWrapper .firstSection .attention .attentionBottom .handIcon, .page .pageWrapper .firstSection .attention .attentionBottom .flagIcon {
+  width: 32px;
+  height: 32px;
+}
+.page .pageWrapper .firstSection .attention .attentionTop .attentionText, .page .pageWrapper .firstSection .attention .attentionBottom .attentionText {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-base);
+  color: var(--color-text-secondary);
+  margin-left: var(--spacing-md);
+}
+.page .pageWrapper .firstSection .attention .attentionBottom {
+  margin-top: var(--spacing-md);
 }/*# sourceMappingURL=QuestionnairePage.module.css.map */

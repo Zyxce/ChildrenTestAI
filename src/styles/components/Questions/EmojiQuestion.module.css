@@ -1,0 +1,40 @@
+.questionContainer .questionTitle {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-base);
+  color: var(--color-text-secondary);
+}
+.questionContainer .questionOptions {
+  margin-top: var(--spacing-sm);
+}
+.questionContainer .questionOptions .optionContainer {
+  display: flex;
+  align-items: center;
+  width: 300px;
+  margin-top: var(--spacing-sm);
+  border: var(--border-width) solid var(--color-btn-disabled);
+  padding: var(--spacing-xs);
+  border-radius: var(--radius-base);
+  transition: var(--transition-base);
+}
+.questionContainer .questionOptions .optionContainer .questionEmoji {
+  font-size: var(--font-size-header);
+}
+.questionContainer .questionOptions .optionContainer .questionText {
+  margin-left: var(--spacing-xs);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-base);
+  color: var(--color-text-secondary);
+  line-height: 1rem;
+}
+.questionContainer .questionOptions .optionContainer:hover {
+  border: var(--border-width) solid var(--color-btn-hover);
+  cursor: pointer;
+}
+.questionContainer .questionOptions .optionContainerActive {
+  background-color: var(--color-btn-default);
+  cursor: pointer;
+  transition: var(--transition-base);
+}
+.questionContainer .questionOptions .optionContainerActive .questionText {
+  color: var(--color-bg);
+}/*# sourceMappingURL=EmojiQuestion.module.css.map */
