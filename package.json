@@ -12,12 +12,14 @@
     "react": "^19.0.0",
     "react-datepicker": "^8.4.0",
     "react-dom": "^19.0.0",
+    "react-pdf": "^9.2.1",
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.6.2",
     "react-scripts": "5.0.1",
     "react-to-pdf": "^2.0.1",
     "web-vitals": "^2.1.4"
   },
+  "proxy": "https://sirius-draw-test-94500a1b4a2f.herokuapp.com",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
