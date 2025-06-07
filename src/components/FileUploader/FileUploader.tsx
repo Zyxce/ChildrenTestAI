@@ -1,5 +1,5 @@
 // src/components/FileUploader.tsx
-import React, { useState, useCallback, useEffect } from 'react'
+import React, { useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import FileUploadField from './FileUploadField'
@@ -8,6 +8,7 @@ import type { RootState, AppDispatch } from '../../store'
 import { handleApiError } from '../../services/api'
 import attentionIcon from '../../assets/images/attention.svg'
 import style from '../../styles/components/FileUploader/FileUploader.module.css'
+import { useFileUploadManager } from '../../hooks/useFileUploadManager'
 
 // Определяем набор ID-полей строго из константы
 const UPLOAD_FIELDS = [
@@ -18,49 +19,14 @@ const UPLOAD_FIELDS = [
 
 type FieldId = (typeof UPLOAD_FIELDS)[number]['id']
 
-type FileEntry = { file: File; preview: string }
-type FilesState = Record<FieldId, FileEntry | null>
-
 const FileUploader: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>()
   const navigate = useNavigate()
   const { loading, error } = useSelector((state: RootState) => state.upload)
 
-  // Инициализируем state с нужными ключами
-  const initialFiles: FilesState = UPLOAD_FIELDS.reduce((acc, field) => {
-    acc[field.id] = null
-    return acc
-  }, {} as FilesState)
-
-  const [files, setFiles] = useState<FilesState>(initialFiles)
-
-  const handleFileChange = useCallback((fieldId: FieldId, file: File) => {
-    const preview = URL.createObjectURL(file)
-    setFiles((prev) => ({ ...prev, [fieldId]: { file, preview } }))
-  }, [])
-
-  const handleRemove = useCallback((fieldId: FieldId) => {
-    setFiles((prev) => {
-      const entry = prev[fieldId]
-      if (entry?.preview) {
-        URL.revokeObjectURL(entry.preview)
-      }
-      return { ...prev, [fieldId]: null }
-    })
-  }, [])
-
-  useEffect(() => {
-    return () => {
-      // Очистка при размонтировании компонента
-      Object.values(files).forEach((fileEntry) => {
-        if (fileEntry?.preview) {
-          URL.revokeObjectURL(fileEntry.preview)
-        }
-      })
-    }
-  }, [files])
-
-  const allFilesUploaded = Object.values(files).every((entry) => entry !== null)
+  // Используем кастомный хук для управления файлами
+  const { files, handleFileChange, handleRemove, allFilesUploaded } =
+    useFileUploadManager(UPLOAD_FIELDS)
 
   const handleSubmit = useCallback(async () => {
     if (!allFilesUploaded) return
@@ -74,11 +40,11 @@ const FileUploader: React.FC = () => {
     try {
       await dispatch(uploadFiles(filesToSend)).unwrap()
       navigate('/survey')
-      setTimeout(() => navigate('/survey'), 1500)
     } catch (err) {
       const errorMessage = handleApiError(err)
     }
   }, [dispatch, files, navigate, allFilesUploaded])
+
   return (
     <div className={style.uploaderContainer}>
       <div className={style.uploaderTop}>

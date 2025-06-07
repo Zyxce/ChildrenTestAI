@@ -4,13 +4,12 @@ import { useSelector } from 'react-redux'
 import { RootState } from '../store'
 import { submitSurvey } from '../services/api'
 import { Section, Question } from '../types'
+import { useAnswerTransformer } from '../hooks/useAnswerTransformer' // Добавляем импорт хука
 import QuestionContainer from '../components/Questions/QuestionContainer'
 import rawQuestionsData from '../data/questions.json'
 import style from '../styles/pages/QuestionnairePage.module.css'
 import handIcon from '../assets/images/hand.svg'
 import flagIcon from '../assets/images/flag.svg'
-import nextIcon from '../assets/images/nextIcon.svg'
-import backIcon from '../assets/images/backIcon.svg'
 
 const questionsData = rawQuestionsData as { sections: Section[] }
 
@@ -20,6 +19,8 @@ const QuestionnairePage: React.FC = () => {
   const [answers, setAnswers] = useState<Record<string, any>>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  //хук для трансформации данных
+  const transformAnswers = useAnswerTransformer()
 
   const [sections] = useState<Section[]>(questionsData.sections)
 
@@ -49,49 +50,16 @@ const QuestionnairePage: React.FC = () => {
     try {
       setIsSubmitting(true)
 
-      const transformAnswers = (answers: Record<string, any>) => {
-        const transformed: Record<string, string> = {}
+      // Используем хук для преобразования ответов
+      const transformed = transformAnswers(answers)
 
-        // Маппинг текстовых ответов на числовые значения
-        const radioOptionsMap: Record<string, string> = {
-          'Очень редко': '1',
-          Редко: '2',
-          Иногда: '3',
-          Часто: '4',
-          Всегда: '5',
-        }
+      // Удаляем неиспользуемые текстовые поля
+      delete transformed.developmentNotes
+      delete transformed.strengths
+      delete transformed.areasForDevelopment
+      delete transformed.consultedSpecialists
 
-        Object.entries(answers).forEach(([key, value]) => {
-          // Для вопросов q1_, q2_, q3_ преобразуем текст в число
-          if (
-            key.startsWith('q1_') ||
-            key.startsWith('q2_') ||
-            key.startsWith('q3_')
-          ) {
-            transformed[key] = radioOptionsMap[value] || value.toString()
-          }
-          // Для остальных полей обычное преобразование
-          else {
-            transformed[key] = value?.toString() || ''
-          }
-        })
-
-        // Специальные преобразования
-        if (answers.childGender) {
-          transformed.childGender =
-            answers.childGender === 'Мальчик' ? 'male' : 'female'
-        }
-
-        // Удаляем неиспользуемые текстовые поля
-        delete transformed.developmentNotes
-        delete transformed.strengths
-        delete transformed.areasForDevelopment
-        delete transformed.consultedSpecialists
-
-        return transformed
-      }
-
-      await submitSurvey(taskId, transformAnswers(answers))
+      await submitSurvey(taskId, transformed)
       navigate('/report')
     } catch (err) {
       console.error('Ошибка при отправке ответов:', err)
