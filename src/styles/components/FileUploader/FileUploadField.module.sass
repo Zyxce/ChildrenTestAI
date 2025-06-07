@@ -1,34 +1,17 @@
-
 .fieldContaner
-    display: -webkit-box
-    display: -moz-box
-    display: -ms-flexbox
-    display: -webkit-flex
     display: flex
-    -webkit-box-orient: vertical
-    -webkit-box-direction: normal
-    -moz-box-orient: vertical
-    -moz-box-direction: normal
-    -ms-flex-direction: column
-    -webkit-flex-direction: column
     flex-direction: column
     text-align: center
     .uploadContainer
         background-color: var(--color-surface-card)
         width: 216px
         height: 161px
-        -webkit-border-radius: var(--radius-base)
-        -moz-border-radius: var(--radius-base)
         border-radius: var(--radius-base)
         overflow: hidden
         position: relative
-        -webkit-transition: var(--transition-base)
-        -moz-transition: var(--transition-base)
-        -o-transition: var(--transition-base)
         transition: var(--transition-base)
         .previewImage
             max-width: 100%
-            -o-object-fit: contain
             object-fit: contain
         .inputContainer
             width: 64px
@@ -36,19 +19,10 @@
             position: absolute
             top: 50%
             left: 50%
-            -webkit-transform: translate(-50%, -50%)
-            -moz-transform: translate(-50%, -50%)
-            -ms-transform: translate(-50%, -50%)
-            -o-transform: translate(-50%, -50%)
             transform: translate(-50%, -50%)
             background-color: var(--color-btn-secondary-default)
             border: none
-            -webkit-border-radius: var(--radius-base)
-            -moz-border-radius: var(--radius-base)
             border-radius: var(--radius-base)
-            -webkit-transition: var(--transition-base)
-            -moz-transition: var(--transition-base)
-            -o-transition: var(--transition-base)
             transition: var(--transition-base)
             &:hover
                 background-color: var(--color-btn-secondary-hover)
@@ -64,10 +38,6 @@
                 position: absolute
                 top: 50%
                 left: 50%
-                -webkit-transform: translate(-50%, -50%)
-                -moz-transform: translate(-50%, -50%)
-                -ms-transform: translate(-50%, -50%)
-                -o-transform: translate(-50%, -50%)
                 transform: translate(-50%, -50%)
                 width: 36px
                 height: 36px
@@ -99,7 +69,8 @@
                     width: 16px
                     height: 16px
                     &:hover
-            .fieldLabel
+
+        .fieldLabel
 
 @media (max-width: 640px)
     .fieldContaner

@@ -75,7 +75,7 @@
 .page .pageWrapper .pageBottom {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: end;
   margin-top: var(--spacing-ultra);
 }
 .page .pageWrapper .pageBottom .stepMobile, .page .pageWrapper .pageBottom .stepDesktop {
@@ -106,9 +106,6 @@
   align-items: center;
   text-align: center;
   line-height: 1;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  user-select: none;
 }
 .page .pageWrapper .pageBottom .buttonsContainer .btnSubmitMuted svg {
   width: 24px;
@@ -133,9 +130,6 @@
   align-items: center;
   text-align: center;
   line-height: 1;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  user-select: none;
 }
 .page .pageWrapper .pageBottom .buttonsContainer .btnSubmitDefault svg {
   width: 24px;
@@ -164,9 +158,6 @@
   align-items: center;
   text-align: center;
   line-height: 1;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  user-select: none;
 }
 .page .pageWrapper .pageBottom .buttonsContainer .backBtn svg {
   width: 24px;
@@ -212,7 +203,7 @@
   }
   .page .pageWrapper .firstSection .attention .attentionTop, .page .pageWrapper .firstSection .attention .attentionBottom {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: start;
   }
   .page .pageWrapper .firstSection .attention .attentionTop .attentionText, .page .pageWrapper .firstSection .attention .attentionBottom .attentionText {
     margin-left: 0;
@@ -230,9 +221,10 @@
     margin-top: var(--spacing-ultra);
   }
   .page .pageWrapper .pageBottom {
+    display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: end;
     margin-top: var(--spacing-big);
   }
   .page .pageWrapper .pageBottom .stepDesktop {
@@ -243,6 +235,7 @@
     margin-top: var(--spacing-lg);
   }
   .page .pageWrapper .pageBottom .buttonsContainer {
+    display: flex;
     flex-direction: column;
     gap: var(--spacing-sm);
     width: 100%;

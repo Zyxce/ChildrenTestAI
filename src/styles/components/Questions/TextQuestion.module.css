@@ -2,71 +2,37 @@
   width: 100%;
 }
 .questionContainer .questionTitle {
-  -webkit-font-size: var(--font-size-lg);
-  -moz-font-size: var(--font-size-lg);
   font-size: var(--font-size-lg);
-  -webkit-font-weight: var(--font-weight-base);
-  -moz-font-weight: var(--font-weight-base);
   font-weight: var(--font-weight-base);
-  -webkit-color: var(--color-text-secondary);
-  -moz-color: var(--color-text-secondary);
   color: var(--color-text-secondary);
 }
 .questionContainer .questionInput {
   box-sizing: border-box;
   width: 100%;
-  -webkit-padding: var(--spacing-form) var(--spacing-mds);
-  -moz-padding: var(--spacing-form) var(--spacing-mds);
   padding: var(--spacing-form) var(--spacing-mds);
-  -webkit-color: var(--color-text-secondary);
-  -moz-color: var(--color-text-secondary);
   color: var(--color-text-secondary);
-  -webkit-font-size: var(--font-size-base);
-  -moz-font-size: var(--font-size-base);
   font-size: var(--font-size-base);
-  -webkit-font-weight: var(--font-weight-base);
-  -moz-font-weight: var(--font-weight-base);
   font-weight: var(--font-weight-base);
   height: 40px;
   border-radius: var(--radius-base);
-  -webkit-margin-top: var(--spacing-xs);
-  -moz-margin-top: var(--spacing-xs);
   margin-top: var(--spacing-xs);
-  -webkit-border: var(--border-width) solid var(--color-outline-default);
-  -moz-border: var(--border-width) solid var(--color-outline-default);
   border: var(--border-width) solid var(--color-outline-default);
   transition: var(--transition-base);
 }
 .questionContainer .questionInput:focus {
-  -webkit-outline: none;
-  -moz-outline: none;
   outline: none;
-  -webkit-border: var(--border-width) solid var(--color-outline-focus);
-  -moz-border: var(--border-width) solid var(--color-outline-focus);
   border: var(--border-width) solid var(--color-outline-focus);
 }
 .questionContainer .questionInputValue {
   box-sizing: border-box;
   width: 100%;
-  -webkit-padding: var(--spacing-form) var(--spacing-mds);
-  -moz-padding: var(--spacing-form) var(--spacing-mds);
   padding: var(--spacing-form) var(--spacing-mds);
-  -webkit-color: var(--color-text-secondary);
-  -moz-color: var(--color-text-secondary);
   color: var(--color-text-secondary);
-  -webkit-font-size: var(--font-size-base);
-  -moz-font-size: var(--font-size-base);
   font-size: var(--font-size-base);
-  -webkit-font-weight: var(--font-weight-base);
-  -moz-font-weight: var(--font-weight-base);
   font-weight: var(--font-weight-base);
   height: 40px;
   border-radius: var(--radius-base);
-  -webkit-margin-top: var(--spacing-xs);
-  -moz-margin-top: var(--spacing-xs);
   margin-top: var(--spacing-xs);
-  -webkit-border: var(--border-width) solid var(--color-outline-focus);
-  -moz-border: var(--border-width) solid var(--color-outline-focus);
   border: var(--border-width) solid var(--color-outline-focus);
   transition: var(--transition-base);
 }/*# sourceMappingURL=TextQuestion.module.css.map */

@@ -1,132 +1,66 @@
-
 .custom-datepicker
-    -webkit-padding: var(--spacing-form) var(--spacing-mds)
-    -moz-padding: var(--spacing-form) var(--spacing-mds)
     padding: var(--spacing-form) var(--spacing-mds)
-    -webkit-border: var(--border-width ) solid var(--color-text-muted)
-    -moz-border: var(--border-width ) solid var(--color-text-muted)
     border: var(--border-width ) solid var(--color-text-muted)
-    -webkit-border-radius: var(--radius-base)
-    -moz-border-radius: var(--radius-base)
     border-radius: var(--radius-base)
-    -webkit-font-size: var(--font-size-base)
-    -moz-font-size: var(--font-size-base)
     font-size: var(--font-size-base)
-    -webkit-font-weight: var(--font-weight-base)
-    -moz-font-weight: var(--font-weight-base)
     font-weight: var(--font-weight-base)
     background-color: #fff
-    -webkit-color: var(--color-text-muted)
-    -moz-color: var(--color-text-muted)
     color: var(--color-text-muted)
     text-align: center
-    width: -moz-fit-content
-    width: -webkit-fit-content
     width: fit-content
     max-width: 99px
     max-height: 40px
-    -webkit-box-sizing: border-box
-    -moz-box-sizing: border-box
     box-sizing: border-box
     cursor: pointer
     margin-top: var(--spacing-xs)
     outline: none
     &:hover
-        -webkit-border: var(--border-width ) solid var(--color-accent)
-        -moz-border: var(--border-width ) solid var(--color-accent)
         border: var(--border-width ) solid var(--color-accent)
 
 .custom-datepicker-selected
-    -webkit-padding: var(--spacing-form) var(--spacing-mds)
-    -moz-padding: var(--spacing-form) var(--spacing-mds)
     padding: var(--spacing-form) var(--spacing-mds)
-    -webkit-border: var(--border-width ) solid var(--color-accent)
-    -moz-border: var(--border-width ) solid var(--color-accent)
     border: var(--border-width ) solid var(--color-accent)
-    -webkit-border-radius: var(--radius-base)
-    -moz-border-radius: var(--radius-base)
     border-radius: var(--radius-base)
-    -webkit-font-size: var(--font-size-base)
-    -moz-font-size: var(--font-size-base)
     font-size: var(--font-size-base)
-    -webkit-font-weight: var(--font-weight-base)
-    -moz-font-weight: var(--font-weight-base)
     font-weight: var(--font-weight-base)
     background-color: #fff
-    -webkit-color: var(--color-text-secondary)
-    -moz-color: var(--color-text-secondary)
     color: var(--color-text-secondary)
     text-align: center
-    width: -moz-fit-content
-    width: -webkit-fit-content
     width: fit-content
     max-width: 99px
     max-height: 40px
-    -webkit-box-sizing: border-box
-    -moz-box-sizing: border-box
     box-sizing: border-box
     cursor: pointer
     margin-top: var(--spacing-xs)
     outline: none
 
 .react-datepicker
-    -webkit-font-family: var(--font-primary)
-    -moz-font-family: var(--font-primary)
     font-family: var(--font-primary)
-    -webkit-border: 1px solid #dddddd00
-    -moz-border: 1px solid #dddddd00
     border: 1px solid #dddddd00
-    -webkit-border-radius: 8px
-    -moz-border-radius: 8px
     border-radius: 8px
-    -webkit-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15)
-    -moz-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15)
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15)
 
     &__header
         background-color: var(--color-bg)
-        -webkit-border-top-left-radius: 8px
-        -moz-border-top-left-radius: 8px
         border-top-left-radius: 8px
-        -webkit-border: none
-        -moz-border: none
         border: none
     &__current-month
-        -webkit-color: var(--color-text-secondary)
-        -moz-color: var(--color-text-secondary)
         color: var(--color-text-secondary)
-        -webkit-font-size: var(--font-size-header)
-        -moz-font-size: var(--font-size-header)
         font-size: var(--font-size-header)
 
     &__navigation
-        -webkit-transform: scale(0.7)
-        -moz-transform: scale(0.7)
-        -ms-transform: scale(0.7)
-        transform: scale(0.7)
-        -webkit-color: var(--color-text-primary)
-        -moz-color: var(--color-text-primary)
+        scale: 0.7
         color: var(--color-text-primary)
 
     &__day-name
-        -webkit-color: var(--color-text-muted)
-        -moz-color: var(--color-text-muted)
         color: var(--color-text-muted)
-        -webkit-font-size: var(--font-size-xs)
-        -moz-font-size: var(--font-size-xs)
         font-size: var(--font-size-xs)
 
     &__day-names
-        -webkit-border: none
-        -moz-border: none
         border: none
 
     &__day
-        -webkit-color: var(--color-text-secondary)
-        -moz-color: var(--color-text-secondary)
         color: var(--color-text-secondary)
-        -webkit-font-size: var(--font-size-lg)
-        -moz-font-size: var(--font-size-lg)
         font-size: var(--font-size-lg)
 
     &__day--outside-month
@@ -134,8 +68,6 @@
 
     &__day--selected
         background-color: var(--color-accent)
-        -webkit-color: white
-        -moz-color: white
         color: white
 
     &__day:hover

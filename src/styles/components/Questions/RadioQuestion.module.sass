@@ -1,37 +1,15 @@
-
 .questionContainer
     width: 100%
     .questionTitle
-        -webkit-font-size: var(--font-size-lg)
-        -moz-font-size: var(--font-size-lg)
         font-size: var(--font-size-lg)
-        -webkit-font-weight: var(--font-weight-base)
-        -moz-font-weight: var(--font-weight-base)
         font-weight: var(--font-weight-base)
-        -webkit-color: var(--color-text-secondary)
-        -moz-color: var(--color-text-secondary)
         color: var(--color-text-secondary)
-
     .questionOptions
-        -webkit-margin-top: var(--spacing-sm)
-        -moz-margin-top: var(--spacing-sm)
         margin-top: var(--spacing-sm)
-        display: -webkit-box
-        display: -moz-box
-        display: -ms-flexbox
-        display: -webkit-flex
         display: flex
-
         .questionLabel
             cursor: pointer
-            display: -webkit-box
-            display: -moz-box
-            display: -ms-flexbox
-            display: -webkit-flex
             display: flex
-            -webkit-align-items: center
-            -moz-align-items: center
-            -ms-align-items: center
             align-items: center
             position: relative
 
@@ -40,24 +18,14 @@
                 opacity: 0
                 width: 0
                 height: 0
-
             .customRadio
                 display: inline-block
                 width: 20px
                 height: 20px
-                -webkit-border-radius: var(--radius-full)
-                -moz-border-radius: var(--radius-full)
                 border-radius: var(--radius-full)
-                -webkit-margin-right: var(--spacing-sm)
-                -moz-margin-right: var(--spacing-sm)
                 margin-right: var(--spacing-sm)
-                -webkit-transition: var(--transition-base)
-                -moz-transition: var(--transition-base)
-                -o-transition: var(--transition-base)
                 transition: var(--transition-base)
                 position: relative
-                -webkit-box-sizing: border-box
-                -moz-box-sizing: border-box
                 box-sizing: border-box
                 background-color: var(--color-checkbox-nochecked-default)
                 &::after
@@ -65,27 +33,17 @@
                     position: absolute
                     top: 50%
                     left: 50%
-                    -webkit-transform: translate(-50%, -50%)
-                    -moz-transform: translate(-50%, -50%)
-                    -ms-transform: translate(-50%, -50%)
                     transform: translate(-50%, -50%)
                     width: 6px
                     height: 6px
-                    -webkit-border-radius: 50%
-                    -moz-border-radius: 50%
                     border-radius: 50%
                     opacity: 0
-                    -webkit-transition: opacity var(--transition-base) ease
-                    -moz-transition: opacity var(--transition-base) ease
-                    -o-transition: opacity var(--transition-base) ease
                     transition: opacity var(--transition-base) ease
                     background-color: var(--color-bg)
-
             .customRadioChecked
                 background-color: var(--color-checkbox-checked-default)
                 &::after
                     opacity: 1
-
         .questionLabel:hover
             .customRadio
                 background-color: var(--color-checkbox-nochecked-hover)
@@ -95,72 +53,36 @@
                 background-color: var(--color-checkbox-checked-hover)
                 &::after
                     opacity: 1
-
         .questionOption
-            -webkit-margin-left: var(--spacing-xs)
-            -moz-margin-left: var(--spacing-xs)
             margin-left: var(--spacing-xs)
-            -webkit-font-size: var(--font-size-sm)
-            -moz-font-size: var(--font-size-sm)
             font-size: var(--font-size-sm)
-            -webkit-font-weight: var(--font-weight-base)
-            -moz-font-weight: var(--font-weight-base)
             font-weight: var(--font-weight-base)
-            -webkit-color: var(--color-text-secondary)
-            -moz-color: var(--color-text-secondary)
             color: var(--color-text-secondary)
             line-height: 1rem
-
         .questionLabel:not(:first-child)
-            -webkit-margin-left: var(--spacing-lg)
-            -moz-margin-left: var(--spacing-lg)
             margin-left: var(--spacing-lg)
 
 @media (max-width: 640px)
     .questionContainer
         .questionTitle
         .questionOptions
-            display: -webkit-box
-            display: -moz-box
-            display: -ms-flexbox
-            display: -webkit-flex
             display: flex
-            -webkit-box-orient: vertical
-            -webkit-box-direction: normal
-            -webkit-flex-direction: column
-            -moz-flex-direction: column
-            -ms-flex-direction: column
             flex-direction: column
-
             .questionLabel
                 .hiddenInput
                 .customRadio
-                    -webkit-margin-right: 0
-                    -moz-margin-right: 0
                     margin-right: 0
-                    -webkit-transition: var(--transition-base)
-                    -moz-transition: var(--transition-base)
-                    -o-transition: var(--transition-base)
                     transition: var(--transition-base)
-                &::after
+                    &::after
                 .customRadioChecked
-                &::after
-
+                    &::after
             .questionLabel:hover
                 .customRadio
                     &::after
                 .customRadioChecked
                     &::after
-
             .questionOption
-                -webkit-margin-left: var(--spacing-xs)
-                -moz-margin-left: var(--spacing-xs)
                 margin-left: var(--spacing-xs)
-
             .questionLabel:not(:first-child)
-                -webkit-margin-left: 0
-                -moz-margin-left: 0
                 margin-left: 0
-                -webkit-margin-top: var(--spacing-sm)
-                -moz-margin-top: var(--spacing-sm)
                 margin-top: var(--spacing-sm)

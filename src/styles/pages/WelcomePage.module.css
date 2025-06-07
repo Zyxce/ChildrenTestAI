@@ -55,20 +55,17 @@
   text-align: center;
   line-height: 1;
   margin-top: var(--spacing-ultra);
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  user-select: none;
+}
+.page .pageWrapper .pageBtn svg {
+  width: 24px;
+  height: 24px;
+}
+.page .pageWrapper .pageBtn svg path {
+  stroke: var(--color-text-btn);
 }
 .page .pageWrapper .pageBtn:hover {
   cursor: pointer;
   background-color: var(--color-btn-hover);
-}
-.page .pageWrapper svg {
-  width: 24px;
-  height: 24px;
-}
-.page .pageWrapper svg path {
-  stroke: var(--color-text-btn);
 }
 
 @media (max-width: 1200px) {
@@ -87,6 +84,6 @@
     margin-bottom: var(--spacing-xl);
   }
   .page .pageWrapper {
-    padding: var(--spacing-md);
+    padding: --spacing-md;
   }
 }/*# sourceMappingURL=WelcomePage.module.css.map */

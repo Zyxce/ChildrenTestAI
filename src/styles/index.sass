@@ -1,35 +1,14 @@
 *
   margin: 0
   padding: 0
-  -webkit-box-sizing: border-box
-  -moz-box-sizing: border-box
-  box-sizing: border-box
 
 body
   background-color: #f7f7f7
-  display: -webkit-box
-  display: -moz-box
-  display: -ms-flexbox
-  display: -webkit-flex
   display: flex
-  -webkit-justify-content: center
-  -moz-justify-content: center
-  -ms-flex-pack: center
-  -webkit-box-pack: center
   justify-content: center
   width: 100%
   font-family: var(--font-primary)
 
-input[type="file"]::-webkit-file-upload-button
-  display: none
-
 input[type="file"]::file-selector-button
-  display: none
 
-// Фикс для старых версий Firefox
-@-moz-document url-prefix()
-  input[type="file"]
-    color: transparent
-    &::before
-      content: attr(data-text)
-      color: #000
+  display: none

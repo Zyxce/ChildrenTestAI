@@ -1,86 +1,35 @@
-
 .questionContainer
     .questionTitle
-        -webkit-font-size: var(--font-size-lg)
-        -moz-font-size: var(--font-size-lg)
         font-size: var(--font-size-lg)
-        -webkit-font-weight: var(--font-weight-base)
-        -moz-font-weight: var(--font-weight-base)
         font-weight: var(--font-weight-base)
-        -webkit-color: var(--color-text-secondary)
-        -moz-color: var(--color-text-secondary)
         color: var(--color-text-secondary)
-
     .questionOptions
-        -webkit-margin-top: var(--spacing-sm)
-        -moz-margin-top: var(--spacing-sm)
         margin-top: var(--spacing-sm)
-
         .optionContainer
-            display: -webkit-box
-            display: -moz-box
-            display: -ms-flexbox
-            display: -webkit-flex
             display: flex
-            -webkit-align-items: center
-            -moz-align-items: center
-            -ms-align-items: center
             align-items: center
             width: 300px
-            -webkit-margin-top: var(--spacing-sm)
-            -moz-margin-top: var(--spacing-sm)
             margin-top: var(--spacing-sm)
-            -webkit-border: var(--border-width) solid var(--color-btn-disabled)
-            -moz-border: var(--border-width) solid var(--color-btn-disabled)
             border: var(--border-width) solid var(--color-btn-disabled)
-            -webkit-padding: var(--spacing-xs)
-            -moz-padding: var(--spacing-xs)
             padding: var(--spacing-xs)
-            -webkit-border-radius: var(--radius-base)
-            -moz-border-radius: var(--radius-base)
             border-radius: var(--radius-base)
-            -webkit-transition: var(--transition-base)
-            -moz-transition: var(--transition-base)
-            -o-transition: var(--transition-base)
             transition: var(--transition-base)
-
             .questionEmoji
-                -webkit-font-size: var(--font-size-header)
-                -moz-font-size: var(--font-size-header)
                 font-size: var(--font-size-header)
-
             .questionText
-                -webkit-margin-left: var(--spacing-xs)
-                -moz-margin-left: var(--spacing-xs)
                 margin-left: var(--spacing-xs)
-                -webkit-font-size: var(--font-size-sm)
-                -moz-font-size: var(--font-size-sm)
                 font-size: var(--font-size-sm)
-                -webkit-font-weight: var(--font-weight-base)
-                -moz-font-weight: var(--font-weight-base)
                 font-weight: var(--font-weight-base)
-                -webkit-color: var(--color-text-secondary)
-                -moz-color: var(--color-text-secondary)
                 color: var(--color-text-secondary)
                 line-height: 1rem
-
             &:hover
-                -webkit-border: var(--border-width) solid var(--color-btn-hover)
-                -moz-border: var(--border-width) solid var(--color-btn-hover)
                 border: var(--border-width) solid var(--color-btn-hover)
                 cursor: pointer
-
         .optionContainerActive
             background-color: var(--color-btn-default)
             cursor: pointer
-            -webkit-transition: var(--transition-base)
-            -moz-transition: var(--transition-base)
-            -o-transition: var(--transition-base)
             transition: var(--transition-base)
-
             .questionText
-                -webkit-color: var(--color-bg)
-                -moz-color: var(--color-bg)
                 color: var(--color-bg)
 
 @media (max-width: 640px)
