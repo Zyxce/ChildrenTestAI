@@ -1,0 +1,53 @@
+/* Regular */
+@font-face {
+  font-family: 'Circe Rounded';
+  src: url('../../assets/fonts//CirceRounded-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Thin */
+@font-face {
+  font-family: 'Circe Rounded';
+  src: url('../../assets/fonts//CirceRounded-Thin.otf') format('opentype');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ExtraLight */
+@font-face {
+  font-family: 'Circe Rounded';
+  src: url('../../assets/fonts//CirceRounded-ExtraLight.otf') format('opentype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Light */
+@font-face {
+  font-family: 'Circe Rounded';
+  src: url('../../assets/fonts//CirceRounded-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Bold */
+@font-face {
+  font-family: 'Circe Rounded';
+  src: url('../../assets/fonts//CirceRounded-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ExtraBold */
+@font-face {
+  font-family: 'Circe Rounded';
+  src: url('../../assets/fonts//CirceRounded-ExtraBold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
