@@ -1,5 +1,6 @@
 // src/hooks/useFileUploadManager.ts
 import { useCallback, useEffect, useMemo, useState } from 'react'
+import { getFilePreview } from '../utils/fileValidation'
 
 type FileEntry = { file: File; preview: string }
 type FilesState = Record<string, FileEntry | null>
@@ -12,7 +13,7 @@ export const useFileUploadManager = (
   )
 
   const handleFileChange = useCallback((fieldId: string, file: File) => {
-    const preview = URL.createObjectURL(file)
+    const preview = getFilePreview(file)
     setFiles((prev) => ({ ...prev, [fieldId]: { file, preview } }))
   }, [])
 

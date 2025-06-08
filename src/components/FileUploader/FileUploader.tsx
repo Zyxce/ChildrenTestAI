@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import FileUploadField from './FileUploadField'
 import { uploadFiles } from '../../store/uploadSlice'
 import type { RootState, AppDispatch } from '../../store'
-import { handleApiError } from '../../services/api'
+import { handleApiError } from '../../utils/apiErrorHandler'
 import attentionIcon from '../../assets/images/attention.svg'
 import style from '../../styles/components/FileUploader/FileUploader.module.css'
 import { useFileUploadManager } from '../../hooks/useFileUploadManager'
@@ -15,8 +15,6 @@ const UPLOAD_FIELDS = [
   { id: 'imaginary-animal', label: 'Несуществующее животное' },
   { id: 'self-portrait', label: 'Автопортрет' },
 ] as const
-
-type FieldId = (typeof UPLOAD_FIELDS)[number]['id']
 
 const FileUploader: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>()

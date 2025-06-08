@@ -4,7 +4,6 @@ import uploadPhotoIcon from '../../assets/images/uploadPhotos.svg'
 import removePhotoIcon from '../../assets/images/removePhotos.svg'
 import style from '../../styles/components/FileUploader/FileUploadField.module.css'
 import { validateFile } from '../../utils/fileValidation'
-import { getFilePreview } from '../../utils/fileValidation'
 
 interface FileUploadFieldProps {
   label: string
@@ -24,7 +23,6 @@ const FileUploadField: React.FC<FileUploadFieldProps> = ({
       if (e.target.files && e.target.files[0]) {
         const file = e.target.files[0]
 
-        // Валидация файла
         const error = validateFile(file)
         if (error) {
           alert(error)
@@ -46,9 +44,7 @@ const FileUploadField: React.FC<FileUploadFieldProps> = ({
             <input
               type="file"
               accept="image/*"
-              onClick={(e) => {
-                e.currentTarget.value = ''
-              }}
+              onClick={(e) => (e.currentTarget.value = '')}
               onChange={handleFileChange}
               className={style.inputField}
             />
@@ -61,9 +57,7 @@ const FileUploadField: React.FC<FileUploadFieldProps> = ({
             <input
               type="file"
               accept="image/*"
-              onClick={(e) => {
-                e.currentTarget.value = ''
-              }}
+              onClick={(e) => (e.currentTarget.value = '')}
               onChange={handleFileChange}
               className={style.inputField}
             />

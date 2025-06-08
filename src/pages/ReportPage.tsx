@@ -1,12 +1,11 @@
 // src/pages/ReportPage.tsx
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../store'
 import { useNavigate } from 'react-router-dom'
 import { resetUploadState } from '../store/uploadSlice'
 import { Document, Page, pdfjs } from 'react-pdf'
 import style from '../styles/pages/ReportPage.module.css'
-import { useMediaQuery } from 'react-responsive'
 import { VscLoading } from 'react-icons/vsc'
 import { useReportStatusPolling } from '../hooks/useReportStatusPolling'
 import { usePdfLoader } from '../hooks/usePdfLoader'
