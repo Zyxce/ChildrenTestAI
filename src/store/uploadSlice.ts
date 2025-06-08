@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { uploadPhotos } from '../services/api'
 
-interface UploadState {
+export interface UploadState {
   taskId: string | null
   loading: boolean
   error: string | null
