@@ -9,12 +9,7 @@ import { handleApiError } from '../../utils/apiErrorHandler'
 import attentionIcon from '../../assets/images/attention.svg'
 import style from '../../styles/components/FileUploader/FileUploader.module.css'
 import { useFileUploadManager } from '../../hooks/useFileUploadManager'
-
-const UPLOAD_FIELDS = [
-  { id: 'house-tree-person', label: 'Дом, дерево, человек' },
-  { id: 'imaginary-animal', label: 'Несуществующее животное' },
-  { id: 'self-portrait', label: 'Автопортрет' },
-] as const
+import { UPLOAD_FIELDS } from '../../configs/constants'
 
 const FileUploader: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>()

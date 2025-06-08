@@ -1,8 +1,7 @@
 // src/services/api.ts
 import { TaskIdResponse, Answers, ReportStatus } from '../types'
 import { extractApiError, handleApiError } from '../utils/apiErrorHandler'
-
-const API_BASE_URL = 'https://sirius-draw-test-94500a1b4a2f.herokuapp.com'
+import { API_BASE_URL } from '../configs/constants'
 export interface ReportResponse {
   status: 'processing' | 'ready'
   url?: string

@@ -1,14 +1,7 @@
 // src/components/Questions/RadioQuestion.tsx
 import React from 'react'
 import style from '../../styles/components/Questions/RadioQuestion.module.css'
-
-const optionsMap: Record<string, string> = {
-  '1': 'Очень редко',
-  '2': 'Редко',
-  '3': 'Иногда',
-  '4': 'Часто',
-  '5': 'Всегда',
-}
+import { RADIO_OPTIONS_MAP } from '../../configs/constants'
 
 interface RadioQuestionProps {
   question: string
@@ -49,7 +42,7 @@ const RadioQuestion: React.FC<RadioQuestionProps> = ({
               }`}
             />
             <span className={style.questionOption}>
-              {optionsMap[option] || option}
+              {RADIO_OPTIONS_MAP[option] || option}
             </span>
           </label>
         ))}

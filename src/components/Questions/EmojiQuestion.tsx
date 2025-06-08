@@ -1,15 +1,7 @@
 // src/components/Questions/EmojiQuestion.tsx
 import React from 'react'
 import style from '../../styles/components/Questions/EmojiQuestion.module.css'
-
-const EMOJI_OPTIONS = [
-  { value: 'Хорошее', label: 'Хорошее', emoji: '😊' },
-  { value: 'Удовлетворительное', label: 'Удовлетворительное', emoji: '😐' },
-  { value: 'Плохое', label: 'Плохое', emoji: '😢 ' },
-  { value: 'Раздраженное', label: 'Раздраженное', emoji: '😠' },
-  { value: 'Уставшее', label: 'Уставшее', emoji: '😴' },
-]
-
+import { EMOJI_OPTIONS } from '../../configs/constants'
 interface EmojiQuestionProps {
   question: string
   value: string
