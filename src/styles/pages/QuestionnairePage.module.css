@@ -107,12 +107,10 @@
   text-align: center;
   line-height: 1;
 }
-.page .pageWrapper .pageBottom .buttonsContainer .btnSubmitMuted svg {
-  width: 24px;
-  height: 24px;
-}
-.page .pageWrapper .pageBottom .buttonsContainer .btnSubmitMuted svg path {
-  stroke: var(--color-text-muted);
+.page .pageWrapper .pageBottom .buttonsContainer .btnSubmitMuted .icon {
+  width: 16px;
+  height: 16px;
+  color: var(--color-text-muted);
 }
 .page .pageWrapper .pageBottom .buttonsContainer .btnSubmitDefault {
   border: none;
@@ -131,12 +129,10 @@
   text-align: center;
   line-height: 1;
 }
-.page .pageWrapper .pageBottom .buttonsContainer .btnSubmitDefault svg {
-  width: 24px;
-  height: 24px;
-}
-.page .pageWrapper .pageBottom .buttonsContainer .btnSubmitDefault svg path {
-  stroke: var(--color-text-btn);
+.page .pageWrapper .pageBottom .buttonsContainer .btnSubmitDefault .icon {
+  width: 16px;
+  height: 16px;
+  color: var(--color-text-btn);
 }
 .page .pageWrapper .pageBottom .buttonsContainer .btnSubmitDefault:hover {
   cursor: pointer;
@@ -159,12 +155,10 @@
   text-align: center;
   line-height: 1;
 }
-.page .pageWrapper .pageBottom .buttonsContainer .backBtn svg {
-  width: 24px;
-  height: 24px;
-}
-.page .pageWrapper .pageBottom .buttonsContainer .backBtn svg path {
-  stroke: var(--color-text-muted);
+.page .pageWrapper .pageBottom .buttonsContainer .backBtn .icon {
+  width: 16px;
+  height: 16px;
+  color: var(--color-text-secondary);
 }
 .page .pageWrapper .pageBottom .buttonsContainer .backBtn:hover {
   cursor: pointer;

@@ -55,12 +55,10 @@
   text-align: center;
   line-height: 1;
 }
-.uploaderContainer .uploaderBottom .btnMuted svg {
-  width: 24px;
-  height: 24px;
-}
-.uploaderContainer .uploaderBottom .btnMuted svg path {
-  stroke: var(--color-text-muted);
+.uploaderContainer .uploaderBottom .btnMuted .icon {
+  width: 16px;
+  height: 16px;
+  color: var(--color-text-muted);
 }
 .uploaderContainer .uploaderBottom .btnDefault {
   border: none;
@@ -79,15 +77,14 @@
   text-align: center;
   line-height: 1;
 }
-.uploaderContainer .uploaderBottom .btnDefault svg {
-  width: 24px;
-  height: 24px;
-}
-.uploaderContainer .uploaderBottom .btnDefault svg path {
-  stroke: var(--color-text-btn);
+.uploaderContainer .uploaderBottom .btnDefault .icon {
+  width: 16px;
+  height: 16px;
+  color: var(--color-text-btn);
 }
 .uploaderContainer .uploaderBottom .btnDefault:hover {
   cursor: pointer;
+  background-color: var(--color-btn-hover);
   background-color: var(--color-btn-hover);
 }
 

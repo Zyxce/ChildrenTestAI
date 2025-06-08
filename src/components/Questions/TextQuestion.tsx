@@ -22,7 +22,10 @@ const TextQuestion: React.FC<TextQuestionProps> = ({
 }) => {
   const inputClasses = `${style.questionInput} ${
     value.trim() ? style.questionInputValue : ''
-  } ${hasError ? style.questionInputError : ''}`
+  } ${hasError || errorMessage ? style.questionInputError : ''}`
+  const textAreaClasses = `${style.questionTextArea} ${
+    value.trim() ? style.questionTextArea : ''
+  } ${hasError ? style.questionTextArea : ''}`
 
   if (type === 'text') {
     return (
@@ -44,7 +47,7 @@ const TextQuestion: React.FC<TextQuestionProps> = ({
         <h3 className={style.questionTitle}>{question}</h3>
         <textarea
           value={value}
-          className={inputClasses}
+          className={textAreaClasses}
           onChange={(e) => onChange(e.target.value)}
           rows={rows}
         />

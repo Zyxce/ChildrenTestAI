@@ -15,6 +15,8 @@ import handIcon from '../assets/images/hand.svg'
 import flagIcon from '../assets/images/flag.svg'
 import { useSurveyForm } from '../hooks/useFormValidation'
 import { handleApiError } from '../utils/apiErrorHandler'
+import { IoMdArrowRoundBack } from 'react-icons/io'
+import { IoMdArrowRoundForward } from 'react-icons/io'
 
 const questionsData = rawQuestionsData as { sections: Section[] }
 
@@ -149,7 +151,7 @@ const QuestionnairePage: React.FC = () => {
               onClick={() => navigate('/upload')}
               className={style.backBtn}
             >
-              К загрузке рисунков
+              <IoMdArrowRoundBack className={style.icon} />К загрузке рисунков
             </button>
 
             <button
@@ -162,6 +164,7 @@ const QuestionnairePage: React.FC = () => {
               }`}
             >
               {isSubmitting ? 'Отправка...' : 'Узнать результаты'}
+              <IoMdArrowRoundForward className={style.icon} />
             </button>
             <p className={style.stepMobile}>Шаг 2/3</p>
           </div>

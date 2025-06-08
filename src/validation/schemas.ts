@@ -14,8 +14,8 @@ export const emojiSchema = z.enum([
 // Обновленная схема для текста с проверкой на русские символы
 export const textSchema = z
   .string()
-  .refine((value) => /^[а-яёА-ЯЁ\s.,!?:;()"'\-]*$/.test(value), {
-    message: 'Только русские буквы и символы: . , ! ? : ; - ( ) " \'',
+  .refine((value) => /^[а-яёА-ЯЁ]*$/.test(value), {
+    message: 'Только русские буквы без символов и знаков',
   })
 
 export const dateSchema = z

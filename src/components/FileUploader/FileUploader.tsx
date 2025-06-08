@@ -10,6 +10,7 @@ import attentionIcon from '../../assets/images/attention.svg'
 import style from '../../styles/components/FileUploader/FileUploader.module.css'
 import { useFileUploadManager } from '../../hooks/useFileUploadManager'
 import { UPLOAD_FIELDS } from '../../configs/constants'
+import { IoMdArrowRoundForward } from 'react-icons/io'
 
 const FileUploader: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>()
@@ -71,14 +72,7 @@ const FileUploader: React.FC = () => {
           }
         >
           Далее
-          <svg viewBox="0 0 24 24" fill="none">
-            <path
-              d="M5 12H19M19 12L13 6M19 12L13 18"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
+          <IoMdArrowRoundForward className={style.icon} />
         </button>
       </div>
     </div>
