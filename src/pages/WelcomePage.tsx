@@ -1,6 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import style from '../styles/pages/WelcomePage.module.css'
+import FloatingBubbles from '../components/FloatingBubles'
 
 const WelcomePage: React.FC = () => {
   const navigate = useNavigate()

@@ -5,14 +5,22 @@
   -webkit-margin-after: 0;
   -webkit-margin-start: 0;
   -webkit-margin-end: 0;
+  -moz-margin-before: 0;
+  -moz-margin-after: 0;
+  -moz-margin-start: 0;
+  -moz-margin-end: 0;
   -webkit-padding-before: 0;
   -webkit-padding-after: 0;
   -webkit-padding-start: 0;
   -webkit-padding-end: 0;
+  -moz-padding-before: 0;
+  -moz-padding-after: 0;
+  -moz-padding-start: 0;
+  -moz-padding-end: 0;
 }
 
 body {
-  background-color: #f7f7f7;
+  background-color: #f1fcff;
   display: flex;
   justify-content: center;
   width: 100%;
@@ -25,7 +33,19 @@ body {
   background: var(--color-bg);
 }
 
+::-moz-scrollbar {
+  height: 12px;
+  width: 5px;
+  background: var(--color-bg);
+}
+
 ::-webkit-scrollbar:horizontal {
+  display: none;
+  height: 0;
+  scrollbar-width: none;
+}
+
+::-moz-scrollbar:horizontal {
   display: none;
   height: 0;
   scrollbar-width: none;
@@ -34,10 +54,18 @@ body {
 ::-webkit-scrollbar-thumb {
   background: var(--color-text-uploader);
   border-radius: 1ex;
-  -webkit-border-radius: 1ex;
+}
+
+::-moz-scrollbar-thumb {
+  background: var(--color-text-uploader);
+  border-radius: 1ex;
 }
 
 ::-webkit-scrollbar-corner {
+  background: var(--color-bg);
+}
+
+::-moz-scrollbar-corner {
   background: var(--color-bg);
 }
 
@@ -53,6 +81,7 @@ body {
 
 ::-moz-selection {
   background: var(--color-primary);
+  color: var(--color-accent);
 }
 
 input[type=file]::-webkit-file-upload-button {
