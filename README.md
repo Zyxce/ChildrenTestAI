@@ -193,6 +193,8 @@ src/
 │  │     ├─ RadioQuestion.tsx
 │  │     ├─ RatingQuestion.tsx
 │  │     └─ TextQuestion.tsx
+│  ├─ configs
+│  │  └─ constants.ts
 │  ├─ data
 │  │  └─ questions.json
 │  ├─ global.d.ts

@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { Question, Section } from '../types' // Добавляем импорт типов
+import { Question, Section } from '../types'
 
 // Базовые схемы для разных типов вопросов
 export const ratingSchema = z.enum(['1', '2', '3', '4', '5'])
@@ -10,7 +10,14 @@ export const emojiSchema = z.enum([
   'Раздраженное',
   'Уставшее',
 ])
-export const textSchema = z.string().min(1, 'Обязательное поле')
+
+// Обновленная схема для текста с проверкой на русские символы
+export const textSchema = z
+  .string()
+  .refine((value) => /^[а-яёА-ЯЁ\s.,!?:;()"'\-]*$/.test(value), {
+    message: 'Только русские буквы и символы: . , ! ? : ; - ( ) " \'',
+  })
+
 export const dateSchema = z
   .string()
   .regex(/^\d{4}-\d{2}-\d{2}$/, 'Неверный формат даты')
@@ -26,21 +33,38 @@ export const radioSchema = z.enum([
 
 // Схема для отдельного вопроса
 export const questionSchema = (question: Question) => {
+  let schema: z.ZodTypeAny
+
   switch (question.type) {
     case 'rating':
-      return ratingSchema
+      schema = ratingSchema
+      break
     case 'emoji':
-      return emojiSchema
+      schema = emojiSchema
+      break
     case 'text':
     case 'textarea':
-      return textSchema
+      schema = textSchema
+      break
     case 'date':
-      return dateSchema
+      schema = dateSchema
+      break
     case 'radio':
-      return radioSchema
+      schema = radioSchema
+      break
     default:
-      return z.any()
+      schema = z.any()
   }
+
+  // Добавляем проверку обязательности
+  if (question.required) {
+    return schema.refine(
+      (value) => value !== undefined && value !== '' && value !== null,
+      { message: 'Обязательное поле' }
+    )
+  }
+
+  return schema.optional()
 }
 
 // Схема для всей анкеты
@@ -49,9 +73,7 @@ export const surveySchema = (sections: Section[]) => {
 
   sections.forEach((section) => {
     section.fields.forEach((field) => {
-      shape[field.id] = field.required
-        ? questionSchema(field)
-        : questionSchema(field).optional()
+      shape[field.id] = questionSchema(field)
     })
   })
 

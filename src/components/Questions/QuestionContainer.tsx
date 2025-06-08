@@ -46,11 +46,13 @@ const QuestionContainer: React.FC<QuestionContainerProps> = ({
     case 'textarea':
       return (
         <TextQuestion
+          type={question.type}
           question={question.question}
           value={value || ''}
           onChange={onChange}
           rows={question.rows || (question.type === 'textarea' ? 5 : 4)}
           hasError={!!error}
+          errorMessage={error}
         />
       )
     case 'date':
@@ -60,6 +62,7 @@ const QuestionContainer: React.FC<QuestionContainerProps> = ({
           value={value}
           onChange={onChange}
           hasError={!!error}
+          errorMessage={error}
         />
       )
     case 'radio':

@@ -10,6 +10,7 @@ interface DateQuestionProps {
   value: string
   onChange: (value: string) => void
   hasError?: boolean
+  errorMessage?: string
 }
 
 const DateQuestion: React.FC<DateQuestionProps> = ({
@@ -17,6 +18,7 @@ const DateQuestion: React.FC<DateQuestionProps> = ({
   value,
   onChange,
   hasError = false,
+  errorMessage,
 }) => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(
     value ? new Date(value) : null
@@ -41,6 +43,9 @@ const DateQuestion: React.FC<DateQuestionProps> = ({
         } ${hasError ? 'custom-datepicker-error' : ''}`}
         placeholderText="дд.мм.гггг"
       />
+      {hasError && errorMessage && (
+        <p className={style.errorMessage}>{errorMessage}</p>
+      )}
     </div>
   )
 }
