@@ -7,6 +7,7 @@ interface TextQuestionProps {
   value: string
   onChange: (value: string) => void
   rows?: number
+  hasError?: boolean
 }
 
 const TextQuestion: React.FC<TextQuestionProps> = ({
@@ -14,10 +15,12 @@ const TextQuestion: React.FC<TextQuestionProps> = ({
   value,
   onChange,
   rows = 4,
+  hasError = false,
 }) => {
   const inputClasses = `${style.questionInput} ${
     value.trim() ? style.questionInputValue : ''
-  }`
+  } ${hasError ? style.questionInputError : ''}`
+
   return (
     <div className={style.questionContainer}>
       <h3 className={style.questionTitle}>{question}</h3>

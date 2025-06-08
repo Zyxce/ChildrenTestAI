@@ -78,7 +78,6 @@ export const submitSurvey = async (
   }
 }
 
-// В src/services/api.ts обновите getReportStatus:
 export const getReportStatus = async (
   taskId: string
 ): Promise<ReportStatus> => {

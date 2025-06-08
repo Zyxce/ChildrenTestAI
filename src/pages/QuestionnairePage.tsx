@@ -1,10 +1,14 @@
-import React, { useState, useEffect } from 'react'
+// src/pages/QuestionnairePage.tsx
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import { useForm, Controller, SubmitHandler } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { RootState } from '../store'
 import { submitSurvey } from '../services/api'
 import { Section, Question } from '../types'
-import { useAnswerTransformer } from '../hooks/useAnswerTransformer' // Добавляем импорт хука
+import { useAnswerTransformer } from '../hooks/useAnswerTransformer'
+import { surveySchema, SurveyFormData } from '../validation/schemas'
 import QuestionContainer from '../components/Questions/QuestionContainer'
 import rawQuestionsData from '../data/questions.json'
 import style from '../styles/pages/QuestionnairePage.module.css'
@@ -16,18 +20,30 @@ const questionsData = rawQuestionsData as { sections: Section[] }
 const QuestionnairePage: React.FC = () => {
   const navigate = useNavigate()
   const { taskId } = useSelector((state: RootState) => state.upload)
-  const [answers, setAnswers] = useState<Record<string, any>>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  //хук для трансформации данных
   const transformAnswers = useAnswerTransformer()
 
   const [sections] = useState<Section[]>(questionsData.sections)
-
-  // Выделяем первую секцию отдельно
   const firstSection = sections[0]
-  // Остальные секции
   const otherSections = sections.slice(1)
+
+  // Инициализация формы с валидацией
+  const {
+    control,
+    handleSubmit,
+    formState: { errors, isValid, isDirty },
+  } = useForm<SurveyFormData>({
+    resolver: zodResolver(surveySchema(sections)),
+    mode: 'onChange',
+    defaultValues: sections.reduce((acc, section) => {
+      section.fields.forEach((field) => {
+        acc[field.id] =
+          field.type === 'text' || field.type === 'textarea' ? '' : null
+      })
+      return acc
+    }, {} as SurveyFormData),
+  })
 
   useEffect(() => {
     if (!taskId) {
@@ -35,11 +51,7 @@ const QuestionnairePage: React.FC = () => {
     }
   }, [taskId, navigate])
 
-  const handleAnswerChange = (questionId: string, value: any) => {
-    setAnswers((prev) => ({ ...prev, [questionId]: value }))
-  }
-
-  const handleSubmit = async () => {
+  const onSubmit: SubmitHandler<SurveyFormData> = async (data) => {
     if (!taskId) {
       setError(
         'Отсутствует идентификатор задачи. Пожалуйста, начните тест заново.'
@@ -50,8 +62,8 @@ const QuestionnairePage: React.FC = () => {
     try {
       setIsSubmitting(true)
 
-      // Используем хук для преобразования ответов
-      const transformed = transformAnswers(answers)
+      // Преобразуем ответы в нужный формат
+      const transformed = transformAnswers(data)
 
       // Удаляем неиспользуемые текстовые поля
       delete transformed.developmentNotes
@@ -69,16 +81,6 @@ const QuestionnairePage: React.FC = () => {
     }
   }
 
-  const allRequiredAnswered = sections.every((section) =>
-    section.fields.every(
-      (field) =>
-        !field.required ||
-        (answers[field.id] !== undefined &&
-          answers[field.id] !== null &&
-          answers[field.id] !== '')
-    )
-  )
-
   return (
     <div className={style.page}>
       <div className={style.progress}>
@@ -86,22 +88,32 @@ const QuestionnairePage: React.FC = () => {
         <div className={style.noCompleted}></div>
       </div>
       <div className={style.pageWrapper}>
-        {/* Отдельный блок для первой секции */}
+        {/* Первая секция */}
         <div className={style.firstSection}>
           <h3 className={style.sectionTitle}>{firstSection.title}</h3>
           <div className={style.questionsContainer}>
             {firstSection.fields.map((field) => (
-              <QuestionContainer
+              <div
                 key={`question-${field.id}`}
-                question={field}
-                value={
-                  answers[field.id] ??
-                  (field.type === 'text' || field.type === 'textarea'
-                    ? ''
-                    : null)
-                }
-                onChange={(value) => handleAnswerChange(field.id, value)}
-              />
+                className={style.questionWrapper}
+              >
+                <Controller
+                  name={field.id}
+                  control={control}
+                  render={({ field: { onChange, value } }) => (
+                    <QuestionContainer
+                      question={field}
+                      value={value}
+                      onChange={onChange}
+                    />
+                  )}
+                />
+                {errors[field.id] && (
+                  <p className={style.errorMessage}>
+                    {errors[field.id]?.message?.toString()}
+                  </p>
+                )}
+              </div>
             ))}
           </div>
           <div className={style.attention}>
@@ -131,23 +143,33 @@ const QuestionnairePage: React.FC = () => {
             <h3 className={style.sectionTitle}>{section.title}</h3>
             <div className={style.questionsContainer}>
               {section.fields.map((field) => (
-                <QuestionContainer
+                <div
                   key={`question-${field.id}`}
-                  question={field}
-                  value={
-                    answers[field.id] ??
-                    (field.type === 'text' || field.type === 'textarea'
-                      ? ''
-                      : null)
-                  }
-                  onChange={(value) => handleAnswerChange(field.id, value)}
-                />
+                  className={style.questionWrapper}
+                >
+                  <Controller
+                    name={field.id}
+                    control={control}
+                    render={({ field: { onChange, value } }) => (
+                      <QuestionContainer
+                        question={field}
+                        value={value}
+                        onChange={onChange}
+                      />
+                    )}
+                  />
+                  {errors[field.id] && (
+                    <p className={style.errorMessage}>
+                      {errors[field.id]?.message?.toString()}
+                    </p>
+                  )}
+                </div>
               ))}
             </div>
           </div>
         ))}
 
-        {error && <div className="error-message">{error}</div>}
+        {error && <div className={style.errorMessage}>{error}</div>}
 
         <div className={style.pageBottom}>
           <p className={style.stepDesktop}>Шаг 2/3</p>
@@ -160,15 +182,15 @@ const QuestionnairePage: React.FC = () => {
             </button>
 
             <button
-              onClick={handleSubmit}
-              disabled={!allRequiredAnswered || isSubmitting}
-              className={` ${
-                !allRequiredAnswered || isSubmitting
+              onClick={handleSubmit(onSubmit)}
+              disabled={!isValid || isSubmitting || !isDirty}
+              className={` ${style.btnSubmit} ${
+                !isValid || isSubmitting || !isDirty
                   ? style.btnSubmitMuted
                   : style.btnSubmitDefault
               }`}
             >
-              Узнать результаты
+              {isSubmitting ? 'Отправка...' : 'Узнать результаты'}
             </button>
             <p className={style.stepMobile}>Шаг 2/3</p>
           </div>

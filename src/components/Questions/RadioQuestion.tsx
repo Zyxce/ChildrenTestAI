@@ -15,6 +15,7 @@ interface RadioQuestionProps {
   options: string[]
   value: string
   onChange: (value: string) => void
+  hasError?: boolean
 }
 
 const RadioQuestion: React.FC<RadioQuestionProps> = ({
@@ -22,14 +23,18 @@ const RadioQuestion: React.FC<RadioQuestionProps> = ({
   options,
   value,
   onChange,
+  hasError = false,
 }) => {
   return (
-    <div className={style.questionContainer}>
+    <div
+      className={`${style.questionContainer} ${
+        hasError ? style.containerError : ''
+      }`}
+    >
       <h3 className={style.questionTitle}>{question}</h3>
       <div className={style.questionOptions}>
         {options.map((option) => (
           <label key={option} className={style.questionLabel}>
-            {/* Скрытый нативный инпут */}
             <input
               type="radio"
               name={question}
@@ -38,15 +43,11 @@ const RadioQuestion: React.FC<RadioQuestionProps> = ({
               onChange={() => onChange(option)}
               className={style.hiddenInput}
             />
-
-            {/* Кастомный радио-индикатор */}
             <span
-              className={`
-              ${style.customRadio} 
-              ${value === option ? style.customRadioChecked : ''}
-            `}
+              className={`${style.customRadio} ${
+                value === option ? style.customRadioChecked : ''
+              }`}
             />
-
             <span className={style.questionOption}>
               {optionsMap[option] || option}
             </span>

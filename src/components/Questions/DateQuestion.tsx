@@ -1,3 +1,4 @@
+// src/components/Questions/DateQuestion.tsx
 import React, { useState } from 'react'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
@@ -8,19 +9,25 @@ interface DateQuestionProps {
   question: string
   value: string
   onChange: (value: string) => void
+  hasError?: boolean
 }
 
 const DateQuestion: React.FC<DateQuestionProps> = ({
   question,
   value,
   onChange,
+  hasError = false,
 }) => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(
     value ? new Date(value) : null
   )
 
   return (
-    <div className={style.questionContainer}>
+    <div
+      className={`${style.questionContainer} ${
+        hasError ? style.containerError : ''
+      }`}
+    >
       <h3 className={style.questionTitle}>{question}</h3>
       <DatePicker
         selected={selectedDate}
@@ -31,7 +38,7 @@ const DateQuestion: React.FC<DateQuestionProps> = ({
         dateFormat="dd.MM.yyyy"
         className={`custom-datepicker ${
           selectedDate ? 'custom-datepicker-selected' : ''
-        }`}
+        } ${hasError ? 'custom-datepicker-error' : ''}`}
         placeholderText="дд.мм.гггг"
       />
     </div>
