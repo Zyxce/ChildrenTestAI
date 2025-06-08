@@ -19,6 +19,42 @@ body {
   font-family: var(--font-primary);
 }
 
+::-webkit-scrollbar {
+  height: 12px;
+  width: 5px;
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar:horizontal {
+  display: none;
+  height: 0;
+  scrollbar-width: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-text-uploader);
+  border-radius: 1ex;
+  -webkit-border-radius: 1ex;
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--color-bg);
+}
+
+::-moz-selection {
+  background: var(--color-selection);
+  color: var(--color-accent);
+}
+
+::selection {
+  background: var(--color-selection);
+  color: var(--color-accent);
+}
+
+::-moz-selection {
+  background: var(--color-primary);
+}
+
 input[type=file]::-webkit-file-upload-button {
   display: none;
 }
