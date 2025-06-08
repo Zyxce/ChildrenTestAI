@@ -72,7 +72,7 @@
   color: var(--color-text-secondary);
   line-height: 1rem;
 }
-.questionContainer .questionOptions:hover {
+.questionContainer .questionOptions .questionText:hover {
   border: var(--border-width) solid var(--color-btn-hover);
   cursor: pointer;
 }
