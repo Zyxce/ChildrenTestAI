@@ -1,4 +1,22 @@
 @charset "UTF-8";
+.pageAnalysis {
+  background-image: url("../../assets/images/analysisBg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 904px 418px;
+  box-shadow: inset 0 0 5px 5px var(--color-bg);
+}
+
+.pageError {
+  background-image: url("../../assets/images/errorBg.png");
+  background-size: cover;
+  background-position: right;
+  background-repeat: no-repeat;
+  background-size: 304px 418px;
+  box-shadow: inset 0 0 5px 5px var(--color-bg);
+}
+
 .page {
   background-color: var(--color-bg);
   box-sizing: border-box;
@@ -16,43 +34,72 @@
   margin-bottom: var(--spacing-big);
 }
 .page .progress .completed {
-  animation: progressQuestion var(--transition-base) ease-out 0s forwards;
   background-color: var(--color-progress-completed);
+  position: relative;
+  animation: progressQuestion var(--transition-base) ease-out 0s forwards;
+}
+.page .progress .completed::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: repeating-linear-gradient(-45deg, transparent, transparent 4px, rgba(255, 255, 255, 0.3) 4px, rgba(255, 255, 255, 0.3) 8px);
+  pointer-events: none;
 }
 .page .progress .noCompleted {
   background-color: var(--color-progress-nocompleted);
   flex: 1;
 }
 .page .pageWrapper {
-  min-height: 300px;
+  min-height: 360px;
+  box-sizing: border-box;
   padding: 0 var(--spacing-ultra) var(--spacing-xl) var(--spacing-ultra);
-}
-.page .pageWrapper .pageTitle {
-  font-size: var(--font-size-header);
-  font-size: var(--font-size-header);
-  font-weight: var(--font-weight-bold);
-  color: var(--color-text-primary);
 }
 .page .pageWrapper .processСontainer {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 328px;
 }
 .page .pageWrapper .processСontainer .analysisText {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-base);
+  font-size: var(--font-size-header);
+  font-weight: var(--font-weight-bold);
   color: var(--color-text-secondary);
 }
-.page .pageWrapper .processСontainer .icon {
-  width: 16px;
-  height: 16px;
-  margin-left: var(--spacing-sm);
+.page .pageWrapper .processСontainer .icon, .page .pageWrapper .processСontainer .iconTop {
+  width: var(--font-size-header);
+  height: var(--font-size-header);
   color: var(--color-btn-hover);
   animation: spin 1s linear infinite;
 }
-.page .pageWrapper .downloadBtn {
-  margin-top: auto;
+.page .pageWrapper .processСontainer .icon {
+  margin-left: var(--spacing-sm);
 }
-.page .pageWrapper .downloadBtn .btnSubmitDefault {
-  max-width: 100px;
+.page .pageWrapper .processСontainer .iconTop {
+  display: none;
+}
+.page .pageWrapper .errorContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 328px;
+}
+.page .pageWrapper .errorContainer .errorMessage {
+  display: flex;
+  color: var(--color-text-attention);
+  font-size: var(--font-size-header);
+  margin: auto auto;
+  align-items: center;
+}
+.page .pageWrapper .errorContainer .errorMessage .icon {
+  width: 24px;
+  height: 24px;
+  margin-right: var(--spacing-sm);
+}
+.page .pageWrapper .errorContainer .btnReload {
+  margin-top: auto;
+  max-width: 220px;
   border: none;
   border-radius: var(--radius-full);
   padding: var(--spacing-sm) var(--spacing-lg);
@@ -70,12 +117,121 @@
   line-height: 1;
   text-decoration: none;
 }
-.page .pageWrapper .downloadBtn .btnSubmitDefault:hover {
+.page .pageWrapper .errorContainer .btnReload .icon {
+  width: 16px;
+  height: 16px;
+  transform: rotate(0deg);
+  transition: var(--transition-base);
+}
+.page .pageWrapper .errorContainer .btnReload:hover {
+  cursor: pointer;
+  background-color: var(--color-btn-hover);
+}
+.page .pageWrapper .errorContainer .btnReload:hover .icon {
+  width: 16px;
+  height: 16px;
+  transform: rotate(360deg);
+}
+.page .pageWrapper .reportContainer {
+  min-height: 328px;
+  display: flex;
+  flex-direction: column;
+}
+.page .pageWrapper .reportContainer .pageTitle {
+  font-size: var(--font-size-header);
+  font-size: var(--font-size-header);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+}
+.page .pageWrapper .reportContainer .reportDocumentContainer {
+  height: 100%;
+}
+.page .pageWrapper .reportContainer .btnContainer {
+  display: flex;
+  margin-top: auto;
+}
+.page .pageWrapper .reportContainer .btnContainer .btnDownloadContainer {
+  margin-right: var(--spacing-md);
+}
+.page .pageWrapper .reportContainer .btnContainer .btnDownloadContainer .btnDownload {
+  border: none;
+  border-radius: var(--radius-full);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  gap: var(--spacing-sm);
+  background-color: var(--color-btn-default);
+  transition: var(--transition-base);
+  display: flex;
+  color: var(--color-text-btn);
+  font-weight: var(--font-weight-base);
+  font-size: var(--font-size-lg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  line-height: 1;
+  text-decoration: none;
+}
+.page .pageWrapper .reportContainer .btnContainer .btnDownloadContainer .btnDownload .icon {
+  width: 16px;
+  height: 16px;
+}
+.page .pageWrapper .reportContainer .btnContainer .btnDownloadContainer .btnDownload:hover {
+  cursor: pointer;
+  background-color: var(--color-btn-hover);
+}
+.page .pageWrapper .reportContainer .btnContainer .btnCopied {
+  border: none;
+  border-radius: var(--radius-full);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  gap: var(--spacing-sm);
+  background-color: var(--color-btn-disabled);
+  transition: var(--transition-base);
+  display: flex;
+  color: var(--color-text-muted);
+  font-weight: var(--font-weight-base);
+  font-size: var(--font-size-lg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  line-height: 1;
+}
+.page .pageWrapper .reportContainer .btnContainer .btnCopied .icon {
+  width: 16px;
+  height: 16px;
+  color: var(--color-text-muted);
+}
+.page .pageWrapper .reportContainer .btnContainer .btnCopy {
+  border: none;
+  border-radius: var(--radius-full);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  gap: var(--spacing-sm);
+  background-color: var(--color-btn-default);
+  transition: var(--transition-base);
+  display: flex;
+  color: var(--color-text-btn);
+  font-weight: var(--font-weight-base);
+  font-size: var(--font-size-lg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  line-height: 1;
+}
+.page .pageWrapper .reportContainer .btnContainer .btnCopy .icon {
+  width: 16px;
+  height: 16px;
+  color: var(--color-text-btn);
+}
+.page .pageWrapper .reportContainer .btnContainer .btnCopy:hover {
   cursor: pointer;
   background-color: var(--color-btn-hover);
 }
 
 @media (max-width: 1200px) {
+  .pageAnalysis {
+    background-size: 600px 418px;
+  }
   .page {
     max-width: 600px;
   }
@@ -87,6 +243,14 @@
   }
 }
 @media (max-width: 640px) {
+  .pageAnalysis {
+    background-image: url("../../assets/images/analysisBgMobile.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: repeat;
+    background-size: 326px 218px;
+    box-shadow: inset 0 0 5px 5px var(--color-bg);
+  }
   .page {
     max-width: 296px;
   }
@@ -95,6 +259,53 @@
   }
   .page .pageWrapper {
     padding: 0 var(--spacing-md) var(--spacing-md) var(--spacing-md);
+  }
+  .page .pageWrapper .processСontainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 268px;
+  }
+  .page .pageWrapper .processСontainer .analysisText {
+    font-size: var(--font-size-header);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-secondary);
+  }
+  .page .pageWrapper .processСontainer .icon {
+    display: none;
+  }
+  .page .pageWrapper .processСontainer .iconTop {
+    display: block;
+    width: 32px;
+    height: 32px;
+    margin-left: 0;
+    margin-bottom: var(--spacing-md);
+    color: var(--color-btn-hover);
+    animation: spin 1s linear infinite;
+  }
+  .page .pageWrapper .errorContainer {
+    text-align: center;
+  }
+  .page .pageWrapper .errorContainer .errorMessage {
+    flex-direction: column;
+  }
+  .page .pageWrapper .errorContainer .errorMessage .icon {
+    width: 36px;
+    height: 36px;
+    margin-right: 0;
+    margin-bottom: var(--spacing-md);
+  }
+  .page .pageWrapper .errorContainer .btnReload {
+    margin: 0 auto;
+    margin-top: auto;
+  }
+  .page .pageWrapper .reportContainer .btnContainer {
+    flex-direction: column;
+  }
+  .page .pageWrapper .reportContainer .btnContainer .btnDownloadContainer {
+    width: 100%;
+    margin-bottom: var(--spacing-sm);
   }
 }
 @keyframes spin {

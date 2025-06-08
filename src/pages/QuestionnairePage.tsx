@@ -17,6 +17,7 @@ import { useSurveyForm } from '../hooks/useFormValidation'
 import { handleApiError } from '../utils/apiErrorHandler'
 import { IoMdArrowRoundBack } from 'react-icons/io'
 import { IoMdArrowRoundForward } from 'react-icons/io'
+import { MdErrorOutline } from 'react-icons/md'
 
 const questionsData = rawQuestionsData as { sections: Section[] }
 
@@ -142,7 +143,12 @@ const QuestionnairePage: React.FC = () => {
           </div>
         ))}
 
-        {error && <div className={style.errorMessage}>{error}</div>}
+        {error && (
+          <div className={style.errorContainer}>
+            <MdErrorOutline className={style.errorIcon} />
+            <p className={style.errorText}>{error}</p>
+          </div>
+        )}
 
         <div className={style.pageBottom}>
           <p className={style.stepDesktop}>Шаг 2/3</p>

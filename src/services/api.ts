@@ -55,6 +55,12 @@ export const submitSurvey = async (
         survey: answers,
       }),
     })
+    console.log(
+      JSON.stringify({
+        task_id: taskId,
+        survey: answers,
+      })
+    )
 
     if (!response.ok) {
       const errorMessage = await extractApiError(response)

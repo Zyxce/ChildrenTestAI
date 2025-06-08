@@ -1,3 +1,17 @@
+.pageAnalysis
+    background-image: url('../../assets/images/analysisBg.png')
+    background-size: cover
+    background-position: center
+    background-repeat: no-repeat
+    background-size: 904px 418px
+    box-shadow: inset 0 0 5px 5px var(--color-bg),
+.pageError
+    background-image: url('../../assets/images/errorBg.png')
+    background-size: cover
+    background-position: right
+    background-repeat: no-repeat
+    background-size: 304px 418px
+    box-shadow: inset 0 0 5px 5px var(--color-bg),
 .page
     background-color: var(--color-bg)
     box-sizing: border-box
@@ -13,36 +27,61 @@
         height: 16px
         margin-bottom: var(--spacing-big)
         .completed
-            animation: progressQuestion var(--transition-base) ease-out 0s forwards
             background-color: var(--color-progress-completed)
+            position: relative
+            animation: progressQuestion var(--transition-base) ease-out 0s forwards
+            &::after
+                content: ""
+                position: absolute
+                top: 0
+                left: 0
+                right: 0
+                bottom: 0
+                background-image: repeating-linear-gradient(-45deg,transparent,transparent 4px,rgba(255, 255, 255, 0.3) 4px, rgba(255, 255, 255, 0.3) 8px )
+                pointer-events: none
         .noCompleted
             background-color: var(--color-progress-nocompleted)
             flex: 1
     .pageWrapper
-        min-height: 300px
+        min-height: 360px
+        box-sizing: border-box
         padding: 0 var(--spacing-ultra) var(--spacing-xl) var(--spacing-ultra)
-        .pageTitle
-            font-size: var(--font-size-header)
-            font-size: var(--font-size-header)
-            font-weight: var(--font-weight-bold)
-            color: var(--color-text-primary)
         .processСontainer
             display: flex
+            justify-content: center
+            align-items: center
+            min-height: 328px
             .analysisText
-                font-size: var(--font-size-base)
-                font-weight: var(--font-weight-base)
+                font-size: var(--font-size-header)
+                font-weight: var(--font-weight-bold)
                 color: var(--color-text-secondary)
-            .icon
-                width: 16px
-                height: 16px
-                margin-left: var(--spacing-sm)
+            .icon, .iconTop
+                width: var(--font-size-header)
+                height: var(--font-size-header)
                 color: var(--color-btn-hover)
                 -webkit-animation: spin 1s linear infinite
                 animation: spin 1s linear infinite
-        .downloadBtn
-            margin-top: auto
-            .btnSubmitDefault
-                max-width: 100px
+            .icon
+                margin-left: var(--spacing-sm)
+            .iconTop
+                display: none
+        .errorContainer
+            display: flex
+            flex-direction: column
+            min-height: 328px
+            .errorMessage
+                display: flex
+                color: var(--color-text-attention)
+                font-size: var(--font-size-header)
+                margin: auto auto
+                align-items: center
+                .icon
+                    width: 24px
+                    height: 24px
+                    margin-right: var(--spacing-sm)
+            .btnReload
+                margin-top: auto
+                max-width: 220px
                 border: none
                 border-radius: var(--radius-full)
                 padding: var(--spacing-sm) var(--spacing-lg)
@@ -59,11 +98,106 @@
                 text-align: center
                 line-height: 1
                 text-decoration: none
+                .icon
+                    width: 16px
+                    height: 16px
+                    transform: rotate(0deg)
+                    transition: var(--transition-base)
                 &:hover
                     cursor: pointer
                     background-color: var(--color-btn-hover)
+                    .icon
+                        width: 16px
+                        height: 16px
+                        transform: rotate(360deg)
+
+        .reportContainer
+            min-height: 328px
+            display: flex
+            flex-direction: column
+            .pageTitle
+                font-size: var(--font-size-header)
+                font-size: var(--font-size-header)
+                font-weight: var(--font-weight-bold)
+                color: var(--color-text-primary)
+            .reportDocumentContainer
+                height: 100%
+
+            .btnContainer
+                display: flex
+                margin-top: auto
+                .btnDownloadContainer
+                    margin-right: var(--spacing-md)
+                    .btnDownload
+                        border: none
+                        border-radius: var(--radius-full)
+                        padding: var(--spacing-sm) var(--spacing-lg)
+                        gap: var(--spacing-sm)
+                        background-color: var(--color-btn-default)
+                        transition: var(--transition-base)
+                        display: flex
+                        color: var(--color-text-btn)
+                        font-weight: var(--font-weight-base)
+                        font-size: var(--font-size-lg)
+                        display: flex
+                        justify-content: center
+                        align-items: center
+                        text-align: center
+                        line-height: 1
+                        text-decoration: none
+                        .icon
+                            width: 16px
+                            height: 16px
+                        &:hover
+                            cursor: pointer
+                            background-color: var(--color-btn-hover)
+                .btnCopied
+                    border: none
+                    border-radius: var(--radius-full)
+                    padding: var(--spacing-sm) var(--spacing-lg)
+                    gap: var(--spacing-sm)
+                    background-color: var(--color-btn-disabled)
+                    transition: var(--transition-base)
+                    display: flex
+                    color: var(--color-text-muted)
+                    font-weight: var(--font-weight-base)
+                    font-size: var(--font-size-lg)
+                    display: flex
+                    justify-content: center
+                    align-items: center
+                    text-align: center
+                    line-height: 1
+                    .icon
+                        width: 16px
+                        height: 16px
+                        color: var(--color-text-muted)
+                .btnCopy
+                    border: none
+                    border-radius: var(--radius-full)
+                    padding: var(--spacing-sm) var(--spacing-lg)
+                    gap: var(--spacing-sm)
+                    background-color: var(--color-btn-default)
+                    transition: var(--transition-base)
+                    display: flex
+                    color: var(--color-text-btn)
+                    font-weight: var(--font-weight-base)
+                    font-size: var(--font-size-lg)
+                    display: flex
+                    justify-content: center
+                    align-items: center
+                    text-align: center
+                    line-height: 1
+                    .icon
+                        width: 16px
+                        height: 16px
+                        color: var(--color-text-btn)
+                    &:hover
+                        cursor: pointer
+                        background-color: var(--color-btn-hover)
 
 @media (max-width: 1200px)
+    .pageAnalysis
+        background-size: 600px 418px
     .page
         max-width: 600px
         .progress
@@ -74,6 +208,13 @@
             padding: 0 var(--spacing-lg) var(--spacing-lg) var(--spacing-lg)
 
 @media (max-width: 640px)
+    .pageAnalysis
+        background-image: url('../../assets/images/analysisBgMobile.png')
+        background-size: cover
+        background-position: center
+        background-repeat: repeat
+        background-size: 326px 218px
+        box-shadow: inset 0 0 5px 5px var(--color-bg),
     .page
         max-width: 296px
         .progress
@@ -82,6 +223,49 @@
             .noCompleted
         .pageWrapper
             padding: 0 var( --spacing-md) var( --spacing-md) var( --spacing-md)
+            .processСontainer
+                display: flex
+                flex-direction: column
+                justify-content: center
+                align-items: center
+                min-height: 268px
+                .analysisText
+                    font-size: var(--font-size-header)
+                    font-weight: var(--font-weight-bold)
+                    color: var(--color-text-secondary)
+                .icon
+                    display: none
+                .iconTop
+                    display: block
+                    width: 32px
+                    height: 32px
+                    margin-left: 0
+                    margin-bottom: var(--spacing-md)
+                    color: var(--color-btn-hover)
+                    -webkit-animation: spin 1s linear infinite
+                    animation: spin 1s linear infinite
+            .errorContainer
+                text-align: center
+                .errorMessage
+                    flex-direction: column
+                    .icon
+                        width: 36px
+                        height: 36px
+                        margin-right: 0
+                        margin-bottom: var(--spacing-md)
+                .btnReload
+                    margin: 0 auto
+                    margin-top: auto
+                    .icon
+                    &:hover
+                        .icon
+            .reportContainer
+                .btnContainer
+                    flex-direction: column
+                    .btnDownloadContainer
+                        width: 100%
+                        margin-bottom: var(--spacing-sm)
+                        .btnDownload
 
 @-webkit-keyframes spin
   from
