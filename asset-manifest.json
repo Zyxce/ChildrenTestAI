@@ -1,25 +1,28 @@
 {
   "files": {
-    "main.css": "/ChildrenTestAI/static/css/main.e822bba8.css",
-    "main.js": "/ChildrenTestAI/static/js/main.e1d1c468.js",
+    "main.css": "/ChildrenTestAI/static/css/main.1df0126b.css",
+    "main.js": "/ChildrenTestAI/static/js/main.45482ed2.js",
     "static/media/welcomeBg.jpg": "/ChildrenTestAI/static/media/welcomeBg.268ce9513cb945004d9e.jpg",
     "static/media/CirceRounded-Light.otf": "/ChildrenTestAI/static/media/CirceRounded-Light.bee4cf44694a05bdd393.otf",
     "static/media/CirceRounded-Bold.otf": "/ChildrenTestAI/static/media/CirceRounded-Bold.63f1293bc8249ff6b698.otf",
     "static/media/CirceRounded-ExtraLight.otf": "/ChildrenTestAI/static/media/CirceRounded-ExtraLight.c0f36890d2cbfb365edd.otf",
     "static/media/CirceRounded-ExtraBold.otf": "/ChildrenTestAI/static/media/CirceRounded-ExtraBold.6a3cc715559f9889975d.otf",
     "static/media/CirceRounded-Thin.otf": "/ChildrenTestAI/static/media/CirceRounded-Thin.4754039ca3ec37ccb83f.otf",
+    "static/media/analysisBgMobile.png": "/ChildrenTestAI/static/media/analysisBgMobile.b4ba9b7d689bdb4f978c.png",
     "static/media/CirceRounded-Regular.otf": "/ChildrenTestAI/static/media/CirceRounded-Regular.1f0dcce91d25e8258a22.otf",
+    "static/media/analysisBg.png": "/ChildrenTestAI/static/media/analysisBg.35ad8e73671aff3f6ca7.png",
+    "static/media/errorBg.png": "/ChildrenTestAI/static/media/errorBg.31f9c87c707b1f013ada.png",
     "static/media/hand.svg": "/ChildrenTestAI/static/media/hand.c165d951be24b1078bdcce22a18771a0.svg",
     "static/media/flag.svg": "/ChildrenTestAI/static/media/flag.dd1dfeeaf0a3dcb6199e9245a1de9c54.svg",
     "index.html": "/ChildrenTestAI/index.html",
     "static/media/attention.svg": "/ChildrenTestAI/static/media/attention.41d64b7d22f9808b546344121e7ff847.svg",
     "static/media/removePhotos.svg": "/ChildrenTestAI/static/media/removePhotos.5d191226ea2c576b6063070503eb7999.svg",
     "static/media/uploadPhotos.svg": "/ChildrenTestAI/static/media/uploadPhotos.3184b2b8ac6918b45f1fd797a48721ba.svg",
-    "main.e822bba8.css.map": "/ChildrenTestAI/static/css/main.e822bba8.css.map",
-    "main.e1d1c468.js.map": "/ChildrenTestAI/static/js/main.e1d1c468.js.map"
+    "main.1df0126b.css.map": "/ChildrenTestAI/static/css/main.1df0126b.css.map",
+    "main.45482ed2.js.map": "/ChildrenTestAI/static/js/main.45482ed2.js.map"
   },
   "entrypoints": [
-    "static/css/main.e822bba8.css",
-    "static/js/main.e1d1c468.js"
+    "static/css/main.1df0126b.css",
+    "static/js/main.45482ed2.js"
   ]
 }
