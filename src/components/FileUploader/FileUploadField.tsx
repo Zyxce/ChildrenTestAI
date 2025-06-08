@@ -1,7 +1,10 @@
+// src/components/FileUploader/FileUploadField.tsx
 import React, { useCallback } from 'react'
 import uploadPhotoIcon from '../../assets/images/uploadPhotos.svg'
 import removePhotoIcon from '../../assets/images/removePhotos.svg'
 import style from '../../styles/components/FileUploader/FileUploadField.module.css'
+import { validateFile } from '../../utils/fileValidation'
+import { getFilePreview } from '../../utils/fileValidation'
 
 interface FileUploadFieldProps {
   label: string
@@ -21,15 +24,10 @@ const FileUploadField: React.FC<FileUploadFieldProps> = ({
       if (e.target.files && e.target.files[0]) {
         const file = e.target.files[0]
 
-        // Валидация типа файла
-        if (!file.type.match('image/jpeg|image/png|image/jpg')) {
-          alert('Пожалуйста, загружайте только JPG/PNG изображения')
-          return
-        }
-
-        // Валидация размера файла (макс 5MB)
-        if (file.size > 5 * 1024 * 1024) {
-          alert('Файл слишком большой. Максимальный размер: 5MB')
+        // Валидация файла
+        const error = validateFile(file)
+        if (error) {
+          alert(error)
           return
         }
 
@@ -53,8 +51,8 @@ const FileUploadField: React.FC<FileUploadFieldProps> = ({
               }}
               onChange={handleFileChange}
               className={style.inputField}
-            ></input>
-            <img src={removePhotoIcon} alt={'upload'}></img>
+            />
+            <img src={removePhotoIcon} alt={'remove'} onClick={onRemove} />
           </div>
         </div>
       ) : (
@@ -68,8 +66,8 @@ const FileUploadField: React.FC<FileUploadFieldProps> = ({
               }}
               onChange={handleFileChange}
               className={style.inputField}
-            ></input>
-            <img src={uploadPhotoIcon} alt={'upload'}></img>
+            />
+            <img src={uploadPhotoIcon} alt={'upload'} />
           </div>
         </div>
       )}

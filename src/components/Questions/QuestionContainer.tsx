@@ -12,12 +12,14 @@ interface QuestionContainerProps {
   question: Question
   value: any
   onChange: (value: any) => void
+  error?: string
 }
 
 const QuestionContainer: React.FC<QuestionContainerProps> = ({
   question,
   value,
   onChange,
+  error,
 }) => {
   switch (question.type) {
     case 'rating':
@@ -28,6 +30,7 @@ const QuestionContainer: React.FC<QuestionContainerProps> = ({
           onChange={onChange}
           min={question.scale?.min || 1}
           max={question.scale?.max || 5}
+          hasError={!!error}
         />
       )
     case 'emoji':
@@ -36,6 +39,7 @@ const QuestionContainer: React.FC<QuestionContainerProps> = ({
           question={question.question}
           value={value}
           onChange={onChange}
+          hasError={!!error}
         />
       )
     case 'text':
@@ -46,6 +50,7 @@ const QuestionContainer: React.FC<QuestionContainerProps> = ({
           value={value || ''}
           onChange={onChange}
           rows={question.rows || (question.type === 'textarea' ? 5 : 4)}
+          hasError={!!error}
         />
       )
     case 'date':
@@ -54,6 +59,7 @@ const QuestionContainer: React.FC<QuestionContainerProps> = ({
           question={question.question}
           value={value}
           onChange={onChange}
+          hasError={!!error}
         />
       )
     case 'radio':
@@ -64,6 +70,7 @@ const QuestionContainer: React.FC<QuestionContainerProps> = ({
             options={question.options || []}
             value={value}
             onChange={onChange}
+            hasError={!!error}
           />
         </div>
       )

@@ -199,7 +199,11 @@ src/
 │  ├─ hooks
 │  │  ├─ useAnswerTransformer.ts
 │  │  ├─ useFileUploadManager.ts
-│  │  └─ useReportStatusPolling.ts
+│  │  ├─ useFormValidation.ts
+│  │  ├─ usePdfLoader.ts
+│  │  ├─ useReportStatusPolling.ts
+│  │  ├─ useResponsiveContainer.ts
+│  │  └─ useTaskIdGuard.ts
 │  ├─ index.tsx
 │  ├─ pages
 │  │  ├─ QuestionnairePage.tsx
@@ -271,6 +275,9 @@ src/
 │  │     └─ WelcomePage.module.sass
 │  ├─ types.ts
 │  ├─ utils
+│  │  ├─ answerTransformer.ts
+│  │  ├─ apiErrorHandler.ts
+│  │  └─ fileValidation.ts
 │  └─ validation
 │     └─ schemas.ts
 └─ tsconfig.json

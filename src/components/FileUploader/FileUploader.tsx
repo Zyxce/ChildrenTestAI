@@ -1,4 +1,4 @@
-// src/components/FileUploader.tsx
+// src/components/FileUploader/FileUploader.tsx
 import React, { useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
@@ -10,7 +10,6 @@ import attentionIcon from '../../assets/images/attention.svg'
 import style from '../../styles/components/FileUploader/FileUploader.module.css'
 import { useFileUploadManager } from '../../hooks/useFileUploadManager'
 
-// Определяем набор ID-полей строго из константы
 const UPLOAD_FIELDS = [
   { id: 'house-tree-person', label: 'Дом, дерево, человек' },
   { id: 'imaginary-animal', label: 'Несуществующее животное' },
@@ -24,7 +23,6 @@ const FileUploader: React.FC = () => {
   const navigate = useNavigate()
   const { loading, error } = useSelector((state: RootState) => state.upload)
 
-  // Используем кастомный хук для управления файлами
   const { files, handleFileChange, handleRemove, allFilesUploaded } =
     useFileUploadManager(UPLOAD_FIELDS)
 
@@ -42,6 +40,7 @@ const FileUploader: React.FC = () => {
       navigate('/survey')
     } catch (err) {
       const errorMessage = handleApiError(err)
+      console.error('Upload error:', errorMessage)
     }
   }, [dispatch, files, navigate, allFilesUploaded])
 
@@ -50,10 +49,8 @@ const FileUploader: React.FC = () => {
       <div className={style.uploaderTop}>
         <h2 className={style.uploaderTitle}>Загрузите фотографии рисунков</h2>
         <div className={style.uploaderAttention}>
-          <img src={attentionIcon} alt={'Attention'}></img>
-          <p>
-            Допустимые форматы файлов: jpg, jpeg, png, pdf. Размер не более 5 Мб
-          </p>
+          <img src={attentionIcon} alt={'Attention'} />
+          <p>Допустимые форматы файлов: jpg, jpeg, png. Размер не более 5 Мб</p>
         </div>
       </div>
 
@@ -68,6 +65,8 @@ const FileUploader: React.FC = () => {
           />
         ))}
       </div>
+
+      {error && <div className={style.errorMessage}>{error}</div>}
 
       <div className={style.uploaderBottom}>
         <p>Шаг 1/3</p>

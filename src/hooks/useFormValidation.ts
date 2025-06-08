@@ -1,4 +1,5 @@
-import { useForm, Controller } from 'react-hook-form'
+// src/hooks/useFormValidation.ts
+import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { surveySchema, SurveyFormData } from '../validation/schemas'
 import { Section } from '../types'

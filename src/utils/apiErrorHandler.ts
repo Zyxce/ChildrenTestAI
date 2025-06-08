@@ -1,7 +1,12 @@
+// src/utils/apiErrorHandler.ts
 export const handleApiError = (error: unknown): string => {
-  if (error instanceof Error) return error.message
-  if (typeof error === 'string') return error
-  return 'Unknown error'
+  if (error instanceof Error) {
+    return error.message
+  }
+  if (typeof error === 'string') {
+    return error
+  }
+  return 'Неизвестная ошибка'
 }
 
 export const extractApiError = async (response: Response): Promise<string> => {
@@ -10,9 +15,9 @@ export const extractApiError = async (response: Response): Promise<string> => {
     return (
       errorData.detail ||
       errorData.message ||
-      `Error ${response.status}: ${response.statusText}`
+      `Ошибка ${response.status}: ${response.statusText}`
     )
   } catch (e) {
-    return `Error ${response.status}: ${response.statusText}`
+    return `Ошибка ${response.status}: ${response.statusText}`
   }
 }

@@ -14,6 +14,8 @@ import rawQuestionsData from '../data/questions.json'
 import style from '../styles/pages/QuestionnairePage.module.css'
 import handIcon from '../assets/images/hand.svg'
 import flagIcon from '../assets/images/flag.svg'
+import { useSurveyForm } from '../hooks/useFormValidation'
+import { handleApiError } from '../utils/apiErrorHandler'
 
 const questionsData = rawQuestionsData as { sections: Section[] }
 
@@ -28,22 +30,11 @@ const QuestionnairePage: React.FC = () => {
   const firstSection = sections[0]
   const otherSections = sections.slice(1)
 
-  // Инициализация формы с валидацией
   const {
     control,
     handleSubmit,
     formState: { errors, isValid, isDirty },
-  } = useForm<SurveyFormData>({
-    resolver: zodResolver(surveySchema(sections)),
-    mode: 'onChange',
-    defaultValues: sections.reduce((acc, section) => {
-      section.fields.forEach((field) => {
-        acc[field.id] =
-          field.type === 'text' || field.type === 'textarea' ? '' : null
-      })
-      return acc
-    }, {} as SurveyFormData),
-  })
+  } = useSurveyForm(sections)
 
   useEffect(() => {
     if (!taskId) {
@@ -61,21 +52,12 @@ const QuestionnairePage: React.FC = () => {
 
     try {
       setIsSubmitting(true)
-
-      // Преобразуем ответы в нужный формат
       const transformed = transformAnswers(data)
-
-      // Удаляем неиспользуемые текстовые поля
-      delete transformed.developmentNotes
-      delete transformed.strengths
-      delete transformed.areasForDevelopment
-      delete transformed.consultedSpecialists
-
       await submitSurvey(taskId, transformed)
       navigate('/report')
     } catch (err) {
-      console.error('Ошибка при отправке ответов:', err)
-      setError('Ошибка при отправке ответов. Пожалуйста, попробуйте снова.')
+      const errorMessage = handleApiError(err)
+      setError(`Ошибка при отправке ответов: ${errorMessage}`)
     } finally {
       setIsSubmitting(false)
     }
@@ -105,31 +87,25 @@ const QuestionnairePage: React.FC = () => {
                       question={field}
                       value={value}
                       onChange={onChange}
+                      error={errors[field.id]?.message?.toString()}
                     />
                   )}
                 />
-                {errors[field.id] && (
-                  <p className={style.errorMessage}>
-                    {errors[field.id]?.message?.toString()}
-                  </p>
-                )}
               </div>
             ))}
           </div>
           <div className={style.attention}>
             <div className={style.attentionTop}>
-              <img src={handIcon} alt={'hand'} className={style.handIcon}></img>
+              <img src={handIcon} alt={'hand'} className={style.handIcon} />
               <p className={style.attentionText}>
                 Пожалуйста, внимательно прочитайте каждый вопрос и выберите
                 наиболее подходящий вариант ответа, отражающий поведение и
                 эмоциональное состояние вашего ребенка в течение последних 2-4
-                недель. Отвечайте максимально честно и искренне, так как от
-                этого зависит точность оценки психоэмоционального развития
-                Вашего ребенка.
+                недель.
               </p>
             </div>
             <div className={style.attentionBottom}>
-              <img src={flagIcon} alt={'flag'} className={style.flagIcon}></img>
+              <img src={flagIcon} alt={'flag'} className={style.flagIcon} />
               <p className={style.attentionText}>
                 Все вопросы обязательны к заполнению
               </p>
@@ -155,14 +131,10 @@ const QuestionnairePage: React.FC = () => {
                         question={field}
                         value={value}
                         onChange={onChange}
+                        error={errors[field.id]?.message?.toString()}
                       />
                     )}
                   />
-                  {errors[field.id] && (
-                    <p className={style.errorMessage}>
-                      {errors[field.id]?.message?.toString()}
-                    </p>
-                  )}
                 </div>
               ))}
             </div>
@@ -184,7 +156,7 @@ const QuestionnairePage: React.FC = () => {
             <button
               onClick={handleSubmit(onSubmit)}
               disabled={!isValid || isSubmitting || !isDirty}
-              className={` ${style.btnSubmit} ${
+              className={`${style.btnSubmit} ${
                 !isValid || isSubmitting || !isDirty
                   ? style.btnSubmitMuted
                   : style.btnSubmitDefault

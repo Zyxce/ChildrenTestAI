@@ -1,5 +1,6 @@
 // src/services/api.ts
 import { TaskIdResponse, Answers, ReportStatus } from '../types'
+import { extractApiError, handleApiError } from '../utils/apiErrorHandler'
 
 const API_BASE_URL = 'https://sirius-draw-test-94500a1b4a2f.herokuapp.com'
 export interface ReportResponse {
@@ -40,7 +41,6 @@ export const uploadPhotos = async (
   }
 }
 
-// ... остальной код ...
 export const submitSurvey = async (
   taskId: string,
   answers: Answers
@@ -52,28 +52,16 @@ export const submitSurvey = async (
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        task_id: taskId, // Ключ изменен на task_id
+        task_id: taskId,
         survey: answers,
       }),
     })
 
     if (!response.ok) {
-      let errorMessage = `Ошибка ${response.status}: ${response.statusText}`
-      try {
-        const errorData = await response.json()
-        console.error('Детали ошибки сервера:', errorData) // Добавлено логирование
-        if (errorData.detail) {
-          errorMessage = errorData.detail
-        } else if (errorData.message) {
-          errorMessage = errorData.message
-        }
-      } catch (e) {
-        console.error('Ошибка парсинга JSON:', e)
-      }
+      const errorMessage = await extractApiError(response)
       throw new Error(errorMessage)
     }
   } catch (error) {
-    console.error('Полная ошибка API:', error) // Добавлено логирование
     throw new Error(handleApiError(error))
   }
 }
@@ -103,11 +91,4 @@ export const getReportStatus = async (
     console.error('Ошибка при проверке статуса:', error)
     return { status: 'processing' }
   }
-}
-
-export const handleApiError = (error: unknown): string => {
-  if (error instanceof Error) {
-    return error.message
-  }
-  return 'Неизвестная ошибка'
 }

@@ -1,12 +1,13 @@
+// src/utils/fileValidation.ts
 export const validateFile = (file: File): string | null => {
   const validTypes = ['image/jpeg', 'image/png', 'image/jpg']
 
   if (!validTypes.includes(file.type)) {
-    return 'Please upload only JPG/PNG images'
+    return 'Пожалуйста, загружайте только JPG/PNG изображения'
   }
 
   if (file.size > 5 * 1024 * 1024) {
-    return 'File is too large. Max size: 5MB'
+    return 'Файл слишком большой. Максимальный размер: 5MB'
   }
 
   return null

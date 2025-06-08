@@ -1,3 +1,4 @@
+// src/pages/ReportPage.tsx
 import React, { useState, useEffect, useRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../store'
@@ -8,6 +9,8 @@ import style from '../styles/pages/ReportPage.module.css'
 import { useMediaQuery } from 'react-responsive'
 import { VscLoading } from 'react-icons/vsc'
 import { useReportStatusPolling } from '../hooks/useReportStatusPolling'
+import { usePdfLoader } from '../hooks/usePdfLoader'
+import { useResponsiveContainer } from '../hooks/useResponsiveContainer'
 
 pdfjs.GlobalWorkerOptions.workerSrc = `${process.env.PUBLIC_URL}/pdf.worker.min.js`
 
@@ -18,57 +21,18 @@ export const ReportPage: React.FC = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const [numPages, setNumPages] = useState<number>(0)
-  const [pdfUrl, setPdfUrl] = useState<string>('')
 
-  // Destructure all values from the hook including setter functions
-  const { status, errorMessage, setStatus, setErrorMessage } =
-    useReportStatusPolling(taskId)
-
-  const containerRef = useRef<HTMLDivElement>(null)
-  const [containerWidth, setContainerWidth] = useState<number>(600)
-
-  const isDesktop = useMediaQuery({ minWidth: 1200 })
-  const isTablet = useMediaQuery({ minWidth: 641, maxWidth: 1199 })
-  const isMobile = useMediaQuery({ maxWidth: 640 })
-
-  useEffect(() => {
-    if (isDesktop) setContainerWidth(776)
-    else if (isTablet) setContainerWidth(552)
-    else if (isMobile) setContainerWidth(264)
-  }, [isDesktop, isTablet, isMobile])
-
-  // Handle missing taskId
-  useEffect(() => {
-    if (!taskId) {
-      setErrorMessage('Task ID не найден. Пожалуйста, начните тест заново.')
-      setStatus('error')
-    }
-  }, [taskId, setErrorMessage, setStatus])
-
-  // Load PDF when report is ready
-  useEffect(() => {
-    if (status !== 'ready' || !taskId) return
-
-    fetch(`/report/${taskId}`)
-      .then((res) => {
-        if (!res.headers.get('Content-Type')?.includes('application/pdf')) {
-          throw new Error('Пришел не PDF, а HTML')
-        }
-        return res.blob()
-      })
-      .then((blob) => setPdfUrl(URL.createObjectURL(blob)))
-      .catch((err) => {
-        setErrorMessage('Не удалось загрузить PDF: ' + err.message)
-      })
-  }, [status, taskId, setErrorMessage])
-
-  const onDocumentLoadSuccess = ({ numPages }: { numPages: number }) => {
-    setNumPages(numPages)
-  }
+  const { status, errorMessage } = useReportStatusPolling(taskId)
+  const { pdfUrl, loadingPdf, pdfError } = usePdfLoader(status, taskId)
+  const { containerRef, containerWidth } = useResponsiveContainer()
 
   const handleReset = () => {
     dispatch(resetUploadState())
     navigate('/')
+  }
+
+  const onDocumentLoadSuccess = ({ numPages }: { numPages: number }) => {
+    setNumPages(numPages)
   }
 
   return (
@@ -89,14 +53,14 @@ export const ReportPage: React.FC = () => {
 
         {status === 'ready' && (
           <>
-            {!pdfUrl && (
+            {(loadingPdf || !pdfUrl) && (
               <div className={style.processСontainer}>
                 <p className={style.analysisText}>Загрузка документа...</p>
                 <VscLoading className={style.icon} />
               </div>
             )}
 
-            {pdfUrl && (
+            {pdfUrl && !loadingPdf && (
               <Document
                 file={pdfUrl}
                 onLoadSuccess={onDocumentLoadSuccess}
@@ -116,25 +80,26 @@ export const ReportPage: React.FC = () => {
               </Document>
             )}
 
-            <div className={style.downloadBtn}>
-              <a
-                href={`${API_BASE_URL}/report/${taskId}`}
-                download={`psychology_report_${taskId}.pdf`}
-                className={style.btnSubmitDefault}
-              >
-                Скачать PDF
-              </a>
-            </div>
+            {pdfUrl && !loadingPdf && (
+              <div className={style.downloadBtn}>
+                <a
+                  href={`${API_BASE_URL}/report/${taskId}`}
+                  download={`psychology_report_${taskId}.pdf`}
+                  className={style.btnSubmitDefault}
+                >
+                  Скачать PDF
+                </a>
+              </div>
+            )}
           </>
         )}
 
-        {status === 'error' && (
-          <div className="text-center py-6">
-            <p className="text-red-500 mb-4">{errorMessage}</p>
-            <button
-              onClick={handleReset}
-              className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300"
-            >
+        {(status === 'error' || pdfError) && (
+          <div className={style.errorContainer}>
+            <p className={style.errorMessage}>
+              {errorMessage || pdfError || 'Произошла неизвестная ошибка'}
+            </p>
+            <button onClick={handleReset} className={style.btnSubmitDefault}>
               Начать новый тест
             </button>
           </div>
