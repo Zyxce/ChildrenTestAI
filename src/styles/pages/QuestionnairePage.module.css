@@ -35,6 +35,7 @@
 }
 .page .pageWrapper {
   padding: 0 var(--spacing-ultra) var(--spacing-xl) var(--spacing-ultra);
+  animation: opacityAnim var(--transition-base) ease-out 0s forwards;
 }
 .page .pageWrapper .questionSection .sectionTitle {
   margin-top: var(--spacing-big);
@@ -279,5 +280,13 @@
   }
   100% {
     width: 60%;
+  }
+}
+@keyframes opacityAnim {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }/*# sourceMappingURL=QuestionnairePage.module.css.map */

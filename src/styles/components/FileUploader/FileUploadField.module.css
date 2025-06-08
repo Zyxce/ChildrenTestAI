@@ -11,6 +11,7 @@
   overflow: hidden;
   position: relative;
   transition: var(--transition-base);
+  animation: scaleAnim var(--transition-base) ease-out 0s forwards;
 }
 .fieldContaner .uploadContainer .previewImage {
   max-width: 100%;
@@ -59,6 +60,7 @@
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-base);
   color: var(--color-text-secondary);
+  animation: opacityAnim var(--transition-base) ease-out 0s forwards;
 }
 
 @media (max-width: 1200px) {
@@ -101,5 +103,21 @@
   .fieldContaner .uploadContainer .inputContainer img {
     width: 16px;
     height: 16px;
+  }
+}
+@keyframes scaleAnim {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes opacityAnim {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }/*# sourceMappingURL=FileUploadField.module.css.map */

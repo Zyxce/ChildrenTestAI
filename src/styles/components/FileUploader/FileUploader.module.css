@@ -1,7 +1,12 @@
+.uploaderContainer {
+  display: flex;
+  flex-direction: column;
+}
 .uploaderContainer .uploaderTop .uploaderTitle {
   font-size: var(--font-size-header);
   font-weight: var(--font-weight-bold);
   color: var(--color-text-uploader);
+  animation: opacityAnim var(--transition-base) ease-out 0s forwards;
 }
 .uploaderContainer .uploaderTop .uploaderAttention {
   margin-top: var(--spacing-sm);
@@ -12,6 +17,7 @@
   background-color: var(--color-surface-attention);
   gap: var(--spacing-sm);
   border-radius: var(--radius-full);
+  animation: opacityAnim var(--transition-base) ease-out 0s forwards;
 }
 .uploaderContainer .uploaderTop .uploaderAttention img {
   width: var(--scale-icon);
@@ -106,5 +112,13 @@
   }
   .uploaderContainer .uploaderBottom {
     margin-top: var(--spacing-xl);
+  }
+}
+@keyframes opacityAnim {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }/*# sourceMappingURL=FileUploader.module.css.map */

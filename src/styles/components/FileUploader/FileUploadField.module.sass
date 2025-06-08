@@ -10,6 +10,7 @@
         overflow: hidden
         position: relative
         transition: var(--transition-base)
+        animation: scaleAnim var(--transition-base) ease-out 0s forwards
         .previewImage
             max-width: 100%
             object-fit: contain
@@ -44,11 +45,13 @@
                 z-index: -1
                 &:hover
                     cursor: pointer
+
     .fieldLabel
         margin-top: var(--spacing-sm)
         font-size: var(--font-size-lg)
         font-weight: var(--font-weight-base)
         color: var(--color-text-secondary)
+        animation: opacityAnim var(--transition-base) ease-out 0s forwards
 
 @media (max-width: 1200px)
     .fieldContaner
@@ -93,3 +96,15 @@
                     &:hover
 
         .fieldLabel
+
+@keyframes scaleAnim
+    0%
+        transform: scale(0)
+    100%
+        transform: scale(1)
+
+@keyframes opacityAnim
+    0%
+        opacity: 0
+    100%
+        opacity: 1

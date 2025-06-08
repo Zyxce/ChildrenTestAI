@@ -45,6 +45,8 @@
     .pageWrapper
         min-height: 360px
         box-sizing: border-box
+        animation: opacityAnim var(--transition-base) ease-out 0s forwards
+
         padding: 0 var(--spacing-ultra) var(--spacing-xl) var(--spacing-ultra)
         .processСontainer
             display: flex
@@ -288,3 +290,9 @@
         width: 60%
     100%
         width: 100%
+
+@keyframes opacityAnim
+    0%
+        opacity: 0
+    100%
+        opacity: 1

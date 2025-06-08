@@ -1,11 +1,14 @@
 
 .uploaderContainer
+    display: flex
+    flex-direction: column
     .uploaderTop
 
         .uploaderTitle
             font-size: var(--font-size-header)
             font-weight: var(--font-weight-bold)
             color: var(--color-text-uploader)
+            animation: opacityAnim var(--transition-base) ease-out 0s forwards
         .uploaderAttention
             margin-top: var(--spacing-sm)
             display: flex
@@ -14,6 +17,7 @@
             background-color: var(--color-surface-attention)
             gap: var(--spacing-sm)
             border-radius: var(--radius-full)
+            animation: opacityAnim var(--transition-base) ease-out 0s forwards
             img
                 width: var(--scale-icon)
                 height: var(--scale-icon)
@@ -25,6 +29,7 @@
         display: flex
         margin-top: var(--spacing-xl)
         justify-content: space-between
+
     .uploaderBottom
         display: flex
         justify-content: space-between
@@ -121,3 +126,9 @@
                 svg
                     path
                 &:hover
+
+@keyframes opacityAnim
+    0%
+        opacity: 0
+    100%
+        opacity: 1

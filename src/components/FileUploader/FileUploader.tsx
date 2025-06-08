@@ -44,7 +44,13 @@ const FileUploader: React.FC = () => {
         <h2 className={style.uploaderTitle}>Загрузите фотографии рисунков</h2>
         <div className={style.uploaderAttention}>
           <img src={attentionIcon} alt={'Attention'} />
-          <p>Допустимые форматы файлов: jpg, jpeg, png. Размер не более 5 Мб</p>
+          {error ? (
+            <p>{error}</p>
+          ) : (
+            <p>
+              Допустимые форматы файлов: jpg, jpeg, png. Размер не более 5 Мб
+            </p>
+          )}
         </div>
       </div>
 
@@ -59,9 +65,6 @@ const FileUploader: React.FC = () => {
           />
         ))}
       </div>
-
-      {error && <div className={style.errorMessage}>{error}</div>}
-
       <div className={style.uploaderBottom}>
         <p>Шаг 1/3</p>
         <button
