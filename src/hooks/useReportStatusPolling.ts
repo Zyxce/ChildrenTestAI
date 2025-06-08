@@ -33,7 +33,9 @@ export const useReportStatusPolling = (taskId: string | null) => {
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       if (status === 'processing') {
-        setErrorMessage('Report generation is taking longer than usual')
+        setErrorMessage(
+          'Формирование отчета занимает больше времени, чем обычно'
+        )
         setStatus('error')
       }
     }, 300000)
