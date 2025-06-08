@@ -1,5 +1,6 @@
 .questionContainer {
   width: 100%;
+  position: relative;
 }
 .questionContainer .questionTitle {
   font-size: var(--font-size-lg);
@@ -35,4 +36,10 @@
   margin-top: var(--spacing-xs);
   border: var(--border-width) solid var(--color-outline-focus);
   transition: var(--transition-base);
+}
+.questionContainer .errorMessage {
+  color: var(--color-text-attention);
+  font-size: var(--font-size-sm);
+  position: absolute;
+  bottom: var(--validation-spacing);
 }/*# sourceMappingURL=TextQuestion.module.css.map */

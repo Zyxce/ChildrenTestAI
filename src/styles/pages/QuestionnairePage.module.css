@@ -14,8 +14,8 @@
   margin-bottom: var(--spacing-big);
 }
 .page .progress .completed {
-  width: 60%;
   background-color: var(--color-progress-completed);
+  animation: progressQuestion var(--transition-base) ease-out 0s forwards;
 }
 .page .progress .noCompleted {
   background-color: var(--color-progress-nocompleted);
@@ -239,5 +239,13 @@
     flex-direction: column;
     gap: var(--spacing-sm);
     width: 100%;
+  }
+}
+@keyframes progressQuestion {
+  0% {
+    width: 30%;
+  }
+  100% {
+    width: 60%;
   }
 }/*# sourceMappingURL=QuestionnairePage.module.css.map */

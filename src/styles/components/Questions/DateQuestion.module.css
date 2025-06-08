@@ -1,5 +1,14 @@
+.questionContainer {
+  position: relative;
+}
 .questionContainer .questionTitle {
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-base);
   color: var(--color-text-secondary);
+}
+.questionContainer .errorMessage {
+  color: var(--color-text-attention);
+  font-size: var(--font-size-sm);
+  position: absolute;
+  bottom: var(--validation-spacing);
 }/*# sourceMappingURL=DateQuestion.module.css.map */

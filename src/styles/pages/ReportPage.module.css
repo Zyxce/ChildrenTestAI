@@ -16,7 +16,7 @@
   margin-bottom: var(--spacing-big);
 }
 .page .progress .completed {
-  width: 100%;
+  animation: progressQuestion var(--transition-base) ease-out 0s forwards;
   background-color: var(--color-progress-completed);
 }
 .page .progress .noCompleted {
@@ -103,5 +103,13 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+@keyframes progressQuestion {
+  0% {
+    width: 60%;
+  }
+  100% {
+    width: 100%;
   }
 }/*# sourceMappingURL=ReportPage.module.css.map */

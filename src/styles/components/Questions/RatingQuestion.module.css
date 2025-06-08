@@ -16,6 +16,7 @@
   font-weight: var(--font-weight-base);
   line-height: 1rem;
   border: var(--border-width) solid var(--color-bg);
+  transition: var(--transition-base);
 }
 .quectionContainer .quectionOptions .quectionScale:hover, .quectionContainer .quectionOptions .quectionScaleActive:hover {
   cursor: pointer;

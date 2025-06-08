@@ -13,7 +13,7 @@
         height: 16px
         margin-bottom: var(--spacing-big)
         .completed
-            width: 100%
+            animation: progressQuestion var(--transition-base) ease-out 0s forwards
             background-color: var(--color-progress-completed)
         .noCompleted
             background-color: var(--color-progress-nocompleted)
@@ -98,3 +98,9 @@
     to
         -webkit-transform: rotate(360deg)
         transform: rotate(360deg)
+
+@keyframes progressQuestion
+    0%
+        width: 60%
+    100%
+        width: 100%

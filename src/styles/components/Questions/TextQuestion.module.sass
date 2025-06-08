@@ -1,5 +1,6 @@
 .questionContainer
     width: 100%
+    position: relative
     .questionTitle
         font-size: var(--font-size-lg)
         font-weight: var(--font-weight-base)
@@ -31,3 +32,8 @@
         margin-top: var(--spacing-xs)
         border: var(--border-width) solid var(--color-outline-focus)
         transition: var(--transition-base)
+    .errorMessage
+        color: var(--color-text-attention)
+        font-size: var(--font-size-sm)
+        position: absolute
+        bottom: var(--validation-spacing)

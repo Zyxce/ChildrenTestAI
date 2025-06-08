@@ -12,8 +12,8 @@
         height: 16px
         margin-bottom: var(--spacing-big)
         .completed
-            width: 30%
             background-color: var(--color-progress-completed)
+            animation: progressQuestion var(--transition-base) ease-out 0s forwards
         .noCompleted
             background-color: var(--color-progress-nocompleted)
             flex: 1
@@ -39,3 +39,9 @@
             .noCompleted
         .pageWrapper
             padding: 0 var( --spacing-md) var( --spacing-md) var( --spacing-md)
+
+@keyframes progressQuestion
+    0%
+        width: 0%
+    100%
+        width: 30%
