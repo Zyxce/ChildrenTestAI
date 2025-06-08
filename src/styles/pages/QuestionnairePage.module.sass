@@ -1,13 +1,21 @@
+
 .page
     background-color: var(--color-bg)
+    -webkit-box-sizing: border-box
+    -moz-box-sizing: border-box
     box-sizing: border-box
     max-width: 904px
     width: 100%
     margin: 0 auto
     border-radius: var(--radius-container)
     overflow: hidden
+    -webkit-transition: var(--transition-base)
+    -moz-transition: var(--transition-base)
+    -o-transition: var(--transition-base)
     transition: var(--transition-base)
     .progress
+        display: -webkit-box
+        display: -ms-flexbox
         display: flex
         height: 16px
         margin-bottom: var(--spacing-big)
@@ -15,6 +23,9 @@
         .completed
             background-color: var(--color-progress-completed)
             position: relative
+            -webkit-animation: progressQuestion var(--transition-base) ease-out 0s forwards
+            -moz-animation: progressQuestion var(--transition-base) ease-out 0s forwards
+            -o-animation: progressQuestion var(--transition-base) ease-out 0s forwards
             animation: progressQuestion var(--transition-base) ease-out 0s forwards
             &::after
                 content: ""
@@ -23,13 +34,21 @@
                 left: 0
                 right: 0
                 bottom: 0
-                background-image: repeating-linear-gradient(-45deg,transparent,transparent 4px,rgba(255, 255, 255, 0.3) 4px, rgba(255, 255, 255, 0.3) 8px )
+                background-image: -webkit-repeating-linear-gradient(-45deg, transparent, transparent 4px, rgba(255, 255, 255, 0.3) 4px, rgba(255, 255, 255, 0.3) 8px)
+                background-image: -moz-repeating-linear-gradient(-45deg, transparent, transparent 4px, rgba(255, 255, 255, 0.3) 4px, rgba(255, 255, 255, 0.3) 8px)
+                background-image: -o-repeating-linear-gradient(-45deg, transparent, transparent 4px, rgba(255, 255, 255, 0.3) 4px, rgba(255, 255, 255, 0.3) 8px)
+                background-image: repeating-linear-gradient(-45deg, transparent, transparent 4px, rgba(255, 255, 255, 0.3) 4px, rgba(255, 255, 255, 0.3) 8px)
                 pointer-events: none
         .noCompleted
             background-color: var(--color-progress-nocompleted)
+            -webkit-box-flex: 1
+            -ms-flex: 1
             flex: 1
     .pageWrapper
         padding: 0 var(--spacing-ultra) var(--spacing-xl) var(--spacing-ultra)
+        -webkit-animation: opacityAnim var(--transition-base) ease-out 0s forwards
+        -moz-animation: opacityAnim var(--transition-base) ease-out 0s forwards
+        -o-animation: opacityAnim var(--transition-base) ease-out 0s forwards
         animation: opacityAnim var(--transition-base) ease-out 0s forwards
         .questionSection
             .sectionTitle
@@ -38,7 +57,12 @@
                 font-weight: var(--font-weight-bold)
                 color: var(--color-text-primary)
             .questionsContainer
+                display: -webkit-box
+                display: -ms-flexbox
                 display: flex
+                -webkit-box-orient: vertical
+                -webkit-box-direction: normal
+                -ms-flex-direction: column
                 flex-direction: column
                 gap: 30px
                 margin-top: var(--spacing-lg)
@@ -49,7 +73,12 @@
                 font-weight: var(--font-weight-bold)
                 color: var(--color-text-primary)
             .questionsContainer
+                display: -webkit-box
+                display: -ms-flexbox
                 display: flex
+                -webkit-box-orient: vertical
+                -webkit-box-direction: normal
+                -ms-flex-direction: column
                 flex-direction: column
                 gap: var(--spacing-md)
                 margin-top: var(--spacing-lg)
@@ -60,7 +89,11 @@
                 background-color: var( --color-card-attention)
                 border-radius: var(--radius-base)
                 .attentionTop, .attentionBottom
+                    display: -webkit-box
+                    display: -ms-flexbox
                     display: flex
+                    -webkit-box-align: center
+                    -ms-flex-align: center
                     align-items: center
                     .handIcon, .flagIcon
                         width: 32px
@@ -73,8 +106,14 @@
                 .attentionBottom
                     margin-top: var(--spacing-md)
         .pageBottom
+            display: -webkit-box
+            display: -ms-flexbox
             display: flex
+            -webkit-box-pack: justify
+            -ms-flex-pack: justify
             justify-content: space-between
+            -webkit-box-align: end
+            -ms-flex-align: end
             align-items: end
             margin-top: var(--spacing-ultra)
             .stepMobile,.stepDesktop
@@ -84,6 +123,8 @@
             .stepMobile
                 display: none
             .buttonsContainer
+                display: -webkit-box
+                display: -ms-flexbox
                 display: flex
                 gap: var(--spacing-sm)
                 .btnSubmitMuted
@@ -92,13 +133,24 @@
                     padding: var(--spacing-sm) var(--spacing-lg)
                     gap: var(--spacing-sm)
                     background-color: var(--color-btn-disabled)
+                    -webkit-transition: var(--transition-base)
+                    -moz-transition: var(--transition-base)
+                    -o-transition: var(--transition-base)
                     transition: var(--transition-base)
+                    display: -webkit-box
+                    display: -ms-flexbox
                     display: flex
                     color: var(--color-text-muted)
                     font-weight: var(--font-weight-base)
                     font-size: var(--font-size-lg)
+                    display: -webkit-box
+                    display: -ms-flexbox
                     display: flex
+                    -webkit-box-pack: center
+                    -ms-flex-pack: center
                     justify-content: center
+                    -webkit-box-align: center
+                    -ms-flex-align: center
                     align-items: center
                     text-align: center
                     line-height: 1
@@ -112,13 +164,24 @@
                     padding: var(--spacing-sm) var(--spacing-lg)
                     gap: var(--spacing-sm)
                     background-color: var(--color-btn-default)
+                    -webkit-transition: var(--transition-base)
+                    -moz-transition: var(--transition-base)
+                    -o-transition: var(--transition-base)
                     transition: var(--transition-base)
+                    display: -webkit-box
+                    display: -ms-flexbox
                     display: flex
                     color: var(--color-text-btn)
                     font-weight: var(--font-weight-base)
                     font-size: var(--font-size-lg)
+                    display: -webkit-box
+                    display: -ms-flexbox
                     display: flex
+                    -webkit-box-pack: center
+                    -ms-flex-pack: center
                     justify-content: center
+                    -webkit-box-align: center
+                    -ms-flex-align: center
                     align-items: center
                     text-align: center
                     line-height: 1
@@ -135,13 +198,24 @@
                     padding: var(--spacing-sm) var(--spacing-lg)
                     gap: var(--spacing-sm)
                     background-color: var(--color-btn-secondary-default)
+                    -webkit-transition: var(--transition-base)
+                    -moz-transition: var(--transition-base)
+                    -o-transition: var(--transition-base)
                     transition: var(--transition-base)
+                    display: -webkit-box
+                    display: -ms-flexbox
                     display: flex
                     color: var(--color-text-secondary)
                     font-weight: var(--font-weight-base)
                     font-size: var(--font-size-lg)
+                    display: -webkit-box
+                    display: -ms-flexbox
                     display: flex
+                    -webkit-box-pack: center
+                    -ms-flex-pack: center
                     justify-content: center
+                    -webkit-box-align: center
+                    -ms-flex-align: center
                     align-items: center
                     text-align: center
                     line-height: 1
@@ -153,6 +227,8 @@
                         cursor: pointer
                         background-color: var(--color-btn-secondary-hover)
         .errorContainer
+            display: -webkit-box
+            display: -ms-flexbox
             display: flex
             margin-top: var(--spacing-md)
             .errorIcon
@@ -166,8 +242,6 @@
         max-width: 600px
         .progress
             margin-bottom: var(--spacing-xl)
-            .completed
-            .noCompleted
         .pageWrapper
             padding: 0 var(--spacing-lg) var(--spacing-lg) var(--spacing-lg)
             .firstSection
@@ -179,16 +253,19 @@
         max-width: 296px
         .progress
             margin-bottom: var(--spacing-xl)
-            .completed
-            .noCompleted
         .pageWrapper
-            padding: 0 var( --spacing-md) var( --spacing-md) var( --spacing-md)
+            padding: 0 var(--spacing-md) var(--spacing-md) var(--spacing-md)
             .firstSection
                 margin-top: var(--spacing-xl)
                 .attention
                     margin-top: var(--spacing-xl)
                     .attentionTop, .attentionBottom
+                        -webkit-box-orient: vertical
+                        -webkit-box-direction: normal
+                        -ms-flex-direction: column
                         flex-direction: column
+                        -webkit-box-align: start
+                        -ms-flex-align: start
                         align-items: start
                         .attentionText
                             margin-left: 0
@@ -203,9 +280,12 @@
                 .sectionTitle:not(:first-child)
                     margin-top: var(--spacing-ultra)
             .pageBottom
-                display: flex
+                -webkit-box-orient: vertical
+                -webkit-box-direction: normal
+                -ms-flex-direction: column
                 flex-direction: column
-                justify-content: space-between
+                -webkit-box-align: end
+                -ms-flex-align: end
                 align-items: end
                 margin-top: var(--spacing-big)
                 .stepDesktop
@@ -214,14 +294,23 @@
                     display: block
                     margin-top: var(--spacing-lg)
                 .buttonsContainer
-                    display: flex
+                    -webkit-box-orient: vertical
+                    -webkit-box-direction: normal
+                    -ms-flex-direction: column
                     flex-direction: column
                     gap: var(--spacing-sm)
                     width: 100%
             .errorContainer
                 margin-top: var(--spacing-big)
+                -webkit-box-orient: vertical
+                -webkit-box-direction: normal
+                -ms-flex-direction: column
                 flex-direction: column
+                -webkit-box-pack: center
+                -ms-flex-pack: center
                 justify-content: center
+                -webkit-box-align: center
+                -ms-flex-align: center
                 align-items: center
                 text-align: center
                 .errorIcon
@@ -231,11 +320,47 @@
                     margin-top: var(--spacing-md)
                     margin-left: 0
 
+@-webkit-keyframes progressQuestion
+    0%
+    width: 30%
+    100%
+    width: 60%
+
+@-moz-keyframes progressQuestion
+    0%
+    width: 30%
+    100%
+    width: 60%
+
+@-o-keyframes progressQuestion
+    0%
+    width: 30%
+    100%
+    width: 60%
+
 @keyframes progressQuestion
     0%
         width: 30%
     100%
         width: 60%
+
+@-webkit-keyframes opacityAnim
+    0%
+    opacity: 0
+    100%
+    opacity: 1
+
+@-moz-keyframes opacityAnim
+    0%
+    opacity: 0
+    100%
+    opacity: 1
+
+@-o-keyframes opacityAnim
+    0%
+    opacity: 0
+    100%
+    opacity: 1
 
 @keyframes opacityAnim
     0%

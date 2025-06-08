@@ -78,6 +78,7 @@
 @media (max-width: 640px) {
   .questionContainer .questionOptions {
     display: flex;
+    -moz-flex-direction: column;
     flex-direction: column;
   }
   .questionContainer .questionOptions .questionLabel .customRadio {

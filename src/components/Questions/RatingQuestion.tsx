@@ -1,4 +1,3 @@
-// src/components/Questions/RatingQuestion.tsx
 import React, { useState } from 'react'
 import style from '../../styles/components/Questions/RatingQuestion.module.css'
 

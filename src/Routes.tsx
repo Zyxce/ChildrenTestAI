@@ -1,4 +1,3 @@
-// src/Routes.tsx
 import React from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import UploadPhotosPage from './pages/UploadPhotosPage'

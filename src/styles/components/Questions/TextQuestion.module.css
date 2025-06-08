@@ -55,4 +55,47 @@
   font-size: var(--font-size-sm);
   position: absolute;
   bottom: var(--validation-spacing);
+}
+.questionContainer .questionTextArea {
+  box-sizing: border-box;
+  width: 100%;
+  padding: var(--spacing-form) var(--spacing-mds);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-base);
+  min-height: 96px;
+  border-radius: var(--radius-base);
+  margin-top: var(--spacing-xs);
+  border: var(--border-width) solid var(--color-outline-default);
+  transition: var(--transition-base);
+}
+.questionContainer .questionTextArea:focus {
+  outline: none;
+  border: var(--border-width) solid var(--color-outline-focus);
+}
+.questionContainer .questionTextAreaValue {
+  box-sizing: border-box;
+  width: 100%;
+  padding: var(--spacing-form) var(--spacing-mds);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-base);
+  min-height: 96px;
+  border-radius: var(--radius-base);
+  margin-top: var(--spacing-xs);
+  border: var(--border-width) solid var(--color-outline-focus);
+  transition: var(--transition-base);
+}
+.questionContainer .questionTextAreaError {
+  box-sizing: border-box;
+  width: 100%;
+  padding: var(--spacing-form) var(--spacing-mds);
+  color: var(--color-text-attention);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-base);
+  min-height: 96px;
+  border-radius: var(--radius-base);
+  margin-top: var(--spacing-xs);
+  border: var(--border-width) solid var(--color-text-attention);
+  transition: var(--transition-base);
 }/*# sourceMappingURL=TextQuestion.module.css.map */

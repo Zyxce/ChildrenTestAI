@@ -1,18 +1,36 @@
+
 .fieldContaner
+    display: -webkit-box
+    display: -moz-box
+    display: -ms-flexbox
+    display: -webkit-flex
     display: flex
+    -webkit-box-orient: vertical
+    -webkit-box-direction: normal
+    -ms-flex-direction: column
+    -webkit-flex-direction: column
     flex-direction: column
     text-align: center
     .uploadContainer
         background-color: var(--color-surface-card)
         width: 216px
         height: 161px
+        -webkit-border-radius: var(--radius-base)
+        -moz-border-radius: var(--radius-base)
         border-radius: var(--radius-base)
         overflow: hidden
         position: relative
+        -webkit-transition: var(--transition-base)
+        -moz-transition: var(--transition-base)
+        -o-transition: var(--transition-base)
         transition: var(--transition-base)
+        -webkit-animation: scaleAnim var(--transition-base) ease-out 0s forwards
+        -moz-animation: scaleAnim var(--transition-base) ease-out 0s forwards
+        -o-animation: scaleAnim var(--transition-base) ease-out 0s forwards
         animation: scaleAnim var(--transition-base) ease-out 0s forwards
         .previewImage
             max-width: 100%
+            -o-object-fit: contain
             object-fit: contain
         .inputContainer
             width: 64px
@@ -20,10 +38,19 @@
             position: absolute
             top: 50%
             left: 50%
+            -webkit-transform: translate(-50%, -50%)
+            -moz-transform: translate(-50%, -50%)
+            -ms-transform: translate(-50%, -50%)
+            -o-transform: translate(-50%, -50%)
             transform: translate(-50%, -50%)
             background-color: var(--color-btn-secondary-default)
             border: none
+            -webkit-border-radius: var(--radius-base)
+            -moz-border-radius: var(--radius-base)
             border-radius: var(--radius-base)
+            -webkit-transition: var(--transition-base)
+            -moz-transition: var(--transition-base)
+            -o-transition: var(--transition-base)
             transition: var(--transition-base)
             &:hover
                 background-color: var(--color-btn-secondary-hover)
@@ -39,18 +66,24 @@
                 position: absolute
                 top: 50%
                 left: 50%
+                -webkit-transform: translate(-50%, -50%)
+                -moz-transform: translate(-50%, -50%)
+                -ms-transform: translate(-50%, -50%)
+                -o-transform: translate(-50%, -50%)
                 transform: translate(-50%, -50%)
                 width: 36px
                 height: 36px
                 z-index: -1
                 &:hover
                     cursor: pointer
-
     .fieldLabel
         margin-top: var(--spacing-sm)
         font-size: var(--font-size-lg)
         font-weight: var(--font-weight-base)
         color: var(--color-text-secondary)
+        -webkit-animation: opacityAnim var(--transition-base) ease-out 0s forwards
+        -moz-animation: opacityAnim var(--transition-base) ease-out 0s forwards
+        -o-animation: opacityAnim var(--transition-base) ease-out 0s forwards
         animation: opacityAnim var(--transition-base) ease-out 0s forwards
 
 @media (max-width: 1200px)
@@ -72,7 +105,6 @@
                     width: 16px
                     height: 16px
                     &:hover
-
         .fieldLabel
 
 @media (max-width: 640px)
@@ -94,14 +126,63 @@
                     width: 16px
                     height: 16px
                     &:hover
-
         .fieldLabel
+
+@-webkit-keyframes scaleAnim
+  0%
+    -webkit-transform: scale(0)
+    transform: scale(0)
+  100%
+    -webkit-transform: scale(1)
+    transform: scale(1)
+
+@-moz-keyframes scaleAnim
+  0%
+    -moz-transform: scale(0)
+    transform: scale(0)
+  100%
+    -moz-transform: scale(1)
+    transform: scale(1)
+
+@-o-keyframes scaleAnim
+  0%
+    -o-transform: scale(0)
+    transform: scale(0)
+  100%
+    -o-transform: scale(1)
+    transform: scale(1)
 
 @keyframes scaleAnim
     0%
+        -webkit-transform: scale(0)
+        -moz-transform: scale(0)
+        -ms-transform: scale(0)
+        -o-transform: scale(0)
         transform: scale(0)
     100%
+        -webkit-transform: scale(1)
+        -moz-transform: scale(1)
+        -ms-transform: scale(1)
+        -o-transform: scale(1)
         transform: scale(1)
+
+@-webkit-keyframes opacityAnim
+  0%
+    opacity: 0
+  100%
+    opacity: 1
+
+@-moz-keyframes opacityAnim
+  0%
+    opacity: 0
+  100%
+    opacity: 1
+
+@-o-keyframes opacityAnim
+  0%
+    opacity: 0
+  100%
+    opacity: 1
 
 @keyframes opacityAnim
     0%

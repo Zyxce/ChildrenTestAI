@@ -43,3 +43,70 @@
                 &:hover
             .optionContainerActive
                 .questionText
+
+.questionContainer
+    .questionTitle
+        font-size: var(--font-size-lg)
+        font-weight: var(--font-weight-base)
+        color: var(--color-text-secondary)
+
+    .questionOptions
+        margin-top: var(--spacing-sm)
+
+        .optionContainer
+            display: -webkit-box
+            display: -ms-flexbox
+            display: -webkit-flex
+            display: flex
+            -webkit-box-align: center
+            -ms-flex-align: center
+            -webkit-align-items: center
+            align-items: center
+            width: 300px
+            margin-top: var(--spacing-sm)
+            border: var(--border-width) solid var(--color-btn-disabled)
+            padding: var(--spacing-xs)
+            -webkit-border-radius: var(--radius-base)
+            -moz-border-radius: var(--radius-base)
+            border-radius: var(--radius-base)
+            -webkit-transition: var(--transition-base)
+            -moz-transition: var(--transition-base)
+            -o-transition: var(--transition-base)
+            transition: var(--transition-base)
+
+        .questionEmoji
+            font-size: var(--font-size-header)
+
+        .questionText
+            margin-left: var(--spacing-xs)
+            font-size: var(--font-size-sm)
+            font-weight: var(--font-weight-base)
+            color: var(--color-text-secondary)
+            line-height: 1rem
+
+        &:hover
+            border: var(--border-width) solid var(--color-btn-hover)
+            cursor: pointer
+
+    .optionContainerActive
+        background-color: var(--color-btn-default)
+        cursor: pointer
+        -webkit-transition: var(--transition-base)
+        -moz-transition: var(--transition-base)
+        -o-transition: var(--transition-base)
+        transition: var(--transition-base)
+
+        .questionText
+            color: var(--color-bg)
+
+@media (max-width: 640px)
+    .questionContainer
+        .questionTitle
+        .questionOptions
+            .optionContainer
+                width: 100%
+                .questionEmoji
+                .questionText
+                &:hover
+            .optionContainerActive
+                .questionText

@@ -1,4 +1,3 @@
-// src/store/uploadSlice.ts
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { uploadPhotos } from '../services/api'
 
@@ -25,7 +24,7 @@ export const uploadFiles = createAsyncThunk(
     { rejectWithValue }
   ) => {
     try {
-      // Преобразуем объект в массив файлов
+      //преобразование обьекта в массив
       const filesArray = [
         files['house-tree-person'],
         files['imaginary-animal'],

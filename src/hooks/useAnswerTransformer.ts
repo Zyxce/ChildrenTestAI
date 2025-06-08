@@ -1,4 +1,3 @@
-// src/hooks/useAnswerTransformer.ts
 import { useCallback } from 'react'
 
 export const useAnswerTransformer = () => {
@@ -12,7 +11,7 @@ export const useAnswerTransformer = () => {
     }
 
     return Object.entries(answers).reduce((acc, [key, value]) => {
-      // Преобразование радио-кнопок в числовые значения
+      // ПРЕобразование радио в числа
       if (
         key.startsWith('q1_') ||
         key.startsWith('q2_') ||
@@ -20,7 +19,7 @@ export const useAnswerTransformer = () => {
       ) {
         acc[key] = radioMap[value] || value
       }
-      // Преобразование пола
+      // преобразование пола
       else if (key === 'childGender') {
         acc[key] = value === 'Мальчик' ? 'male' : 'female'
       }

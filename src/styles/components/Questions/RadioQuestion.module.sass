@@ -1,3 +1,4 @@
+
 .questionContainer
     width: 100%
     .questionTitle
@@ -6,13 +7,24 @@
         color: var(--color-text-secondary)
     .questionOptions
         margin-top: var(--spacing-sm)
+        display: -webkit-box
+        display: -moz-box
+        display: -ms-flexbox
+        display: -webkit-flex
         display: flex
         .questionLabel
             cursor: pointer
+            display: -webkit-box
+            display: -moz-box
+            display: -ms-flexbox
+            display: -webkit-flex
             display: flex
+            -webkit-box-align: center
+            -moz-box-align: center
+            -ms-flex-align: center
+            -webkit-align-items: center
             align-items: center
             position: relative
-
             .hiddenInput
                 position: absolute
                 opacity: 0
@@ -22,10 +34,17 @@
                 display: inline-block
                 width: 20px
                 height: 20px
+                -webkit-border-radius: var(--radius-full)
+                -moz-border-radius: var(--radius-full)
                 border-radius: var(--radius-full)
                 margin-right: var(--spacing-sm)
+                -webkit-transition: var(--transition-base)
+                -moz-transition: var(--transition-base)
+                -o-transition: var(--transition-base)
                 transition: var(--transition-base)
                 position: relative
+                -webkit-box-sizing: border-box
+                -moz-box-sizing: border-box
                 box-sizing: border-box
                 background-color: var(--color-checkbox-nochecked-default)
                 &::after
@@ -33,11 +52,20 @@
                     position: absolute
                     top: 50%
                     left: 50%
+                    -webkit-transform: translate(-50%, -50%)
+                    -moz-transform: translate(-50%, -50%)
+                    -ms-transform: translate(-50%, -50%)
+                    -o-transform: translate(-50%, -50%)
                     transform: translate(-50%, -50%)
                     width: 6px
                     height: 6px
+                    -webkit-border-radius: 50%
+                    -moz-border-radius: 50%
                     border-radius: 50%
                     opacity: 0
+                    -webkit-transition: opacity var(--transition-base) ease
+                    -moz-transition: opacity var(--transition-base) ease
+                    -o-transition: opacity var(--transition-base) ease
                     transition: opacity var(--transition-base) ease
                     background-color: var(--color-bg)
             .customRadioChecked
@@ -66,12 +94,24 @@
     .questionContainer
         .questionTitle
         .questionOptions
+            display: -webkit-box
+            display: -moz-box
+            display: -ms-flexbox
+            display: -webkit-flex
             display: flex
+            -webkit-box-orient: vertical
+            -webkit-box-direction: normal
+            -webkit-flex-direction: column
+            -moz-flex-direction: column
+            -ms-flex-direction: column
             flex-direction: column
             .questionLabel
                 .hiddenInput
                 .customRadio
                     margin-right: 0
+                    -webkit-transition: var(--transition-base)
+                    -moz-transition: var(--transition-base)
+                    -o-transition: var(--transition-base)
                     transition: var(--transition-base)
                     &::after
                 .customRadioChecked

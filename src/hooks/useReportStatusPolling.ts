@@ -1,5 +1,3 @@
-// src/hooks/useReportStatusPolling.ts
-
 import { useState, useEffect, useCallback } from 'react'
 import { getReportStatus } from '../services/api'
 

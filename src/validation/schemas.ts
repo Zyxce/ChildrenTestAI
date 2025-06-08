@@ -1,7 +1,7 @@
 import { z } from 'zod'
 import { Question, Section } from '../types'
 
-// Базовые схемы для разных типов вопросов
+// схемы базовые для разных вопрос
 export const ratingSchema = z.enum(['1', '2', '3', '4', '5'])
 export const emojiSchema = z.enum([
   'Хорошее',
@@ -11,7 +11,7 @@ export const emojiSchema = z.enum([
   'Уставшее',
 ])
 
-// Обновленная схема для текста с проверкой на русские символы
+// схема для текстового инпута
 export const textSchema = z
   .string()
   .refine((value) => /^[а-яёА-ЯЁ]*$/.test(value), {
@@ -31,7 +31,7 @@ export const radioSchema = z.enum([
   'Девочка',
 ])
 
-// Схема для отдельного вопроса
+// С схема для отдельных вопросов
 export const questionSchema = (question: Question) => {
   let schema: z.ZodTypeAny
 
@@ -56,7 +56,7 @@ export const questionSchema = (question: Question) => {
       schema = z.any()
   }
 
-  // Добавляем проверку обязательности
+  // проверка на рекьюред
   if (question.required) {
     return schema.refine(
       (value) => value !== undefined && value !== '' && value !== null,
@@ -67,7 +67,7 @@ export const questionSchema = (question: Question) => {
   return schema.optional()
 }
 
-// Схема для всей анкеты
+// схема для всей анкеты
 export const surveySchema = (sections: Section[]) => {
   const shape: Record<string, z.ZodTypeAny> = {}
 

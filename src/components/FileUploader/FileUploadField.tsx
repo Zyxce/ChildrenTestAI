@@ -1,4 +1,3 @@
-// src/components/FileUploader/FileUploadField.tsx
 import React, { useCallback } from 'react'
 import uploadPhotoIcon from '../../assets/images/uploadPhotos.svg'
 import removePhotoIcon from '../../assets/images/removePhotos.svg'

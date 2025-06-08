@@ -94,10 +94,8 @@
   background-color: var(--color-btn-hover);
 }
 
-@media (max-width: 1200px) {
-  .uploaderContainer .uploaderBottom {
-    margin-top: var(--spacing-big);
-  }
+.uploaderContainer .uploaderBottom {
+  margin-top: var(--spacing-big);
 }
 @media (max-width: 640px) {
   .uploaderContainer .uploaderTop .uploaderAttention {
@@ -110,7 +108,7 @@
     margin-top: var(--spacing-lg);
     gap: var(--spacing-md);
   }
-  .uploaderContainer .uploaderBottom {
+  .uploaderContainer .uploadField .uploaderBottom {
     margin-top: var(--spacing-xl);
   }
 }

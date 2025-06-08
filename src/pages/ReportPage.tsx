@@ -1,4 +1,3 @@
-// src/pages/ReportPage.tsx
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../store'
@@ -44,7 +43,7 @@ export const ReportPage: React.FC = () => {
       .writeText(reportLink)
       .then(() => {
         setIsCopied(true)
-        setTimeout(() => setIsCopied(false), 2000) // Сбрасываем статус через 2 секунды
+        setTimeout(() => setIsCopied(false), 2000)
       })
       .catch((err) => {
         console.error('Ошибка при копировании: ', err)

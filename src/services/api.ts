@@ -1,4 +1,3 @@
-// src/services/api.ts
 import { TaskIdResponse, Answers, ReportStatus } from '../types'
 import { extractApiError, handleApiError } from '../utils/apiErrorHandler'
 import { API_BASE_URL } from '../configs/constants'
@@ -6,15 +5,14 @@ export interface ReportResponse {
   status: 'processing' | 'ready'
   url?: string
 }
-// ... существующий код ...
 
 export const uploadPhotos = async (
-  files: File[] // Принимаем массив файлов
+  files: File[] // принимаемый массив файлов
 ): Promise<TaskIdResponse> => {
   try {
     const formData = new FormData()
 
-    // Добавляем все файлы в поле "files"
+    //  добавляются все файлы
     files.forEach((file) => {
       formData.append('files', file)
     })
@@ -84,7 +82,7 @@ export const getReportStatus = async (
       throw new Error(`Ошибка ${response.status}: ${errorText}`)
     }
 
-    // Если ответ PDF - считаем готовым
+    // если пдф считается и готовится
     if (response.headers.get('content-type')?.includes('application/pdf')) {
       return { status: 'ready' }
     }

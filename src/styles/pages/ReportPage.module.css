@@ -297,16 +297,13 @@
     margin-right: 0;
     margin-bottom: var(--spacing-md);
   }
-  .page .pageWrapper .errorContainer .btnReload {
-    margin: 0 auto;
-    margin-top: auto;
-  }
   .page .pageWrapper .reportContainer .btnContainer {
     flex-direction: column;
   }
   .page .pageWrapper .reportContainer .btnContainer .btnDownloadContainer {
     width: 100%;
     margin-bottom: var(--spacing-sm);
+    margin-right: 0;
   }
 }
 @keyframes spin {

@@ -1,4 +1,3 @@
-// src/components/Questions/RadioQuestion.tsx
 import React from 'react'
 import style from '../../styles/components/Questions/RadioQuestion.module.css'
 import { RADIO_OPTIONS_MAP } from '../../configs/constants'

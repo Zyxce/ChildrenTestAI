@@ -1,4 +1,3 @@
-// src/hooks/useFileUploadManager.ts
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { getFilePreview } from '../utils/fileValidation'
 

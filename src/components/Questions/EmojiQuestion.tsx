@@ -1,4 +1,3 @@
-// src/components/Questions/EmojiQuestion.tsx
 import React from 'react'
 import style from '../../styles/components/Questions/EmojiQuestion.module.css'
 import { EMOJI_OPTIONS } from '../../configs/constants'

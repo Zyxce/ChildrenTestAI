@@ -239,9 +239,7 @@
     margin-top: var(--spacing-ultra);
   }
   .page .pageWrapper .pageBottom {
-    display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: end;
     margin-top: var(--spacing-big);
   }
@@ -253,7 +251,6 @@
     margin-top: var(--spacing-lg);
   }
   .page .pageWrapper .pageBottom .buttonsContainer {
-    display: flex;
     flex-direction: column;
     gap: var(--spacing-sm);
     width: 100%;

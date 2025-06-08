@@ -1,27 +1,63 @@
+
 .page
     background-color: var(--color-bg)
+    -webkit-box-sizing: border-box
+    -moz-box-sizing: border-box
     box-sizing: border-box
     max-width: 904px
     height: 418px
     width: 100%
     margin: 0 auto
+    -webkit-border-radius: var(--radius-container)
+    -moz-border-radius: var(--radius-container)
     border-radius: var(--radius-container)
     overflow: hidden
+    -webkit-transition: var(--transition-base)
+    -moz-transition: var(--transition-base)
+    -o-transition: var(--transition-base)
     transition: var(--transition-base)
     background-image: url('../../assets/images/welcomeBg.jpg')
     background-size: cover
     background-position: center
     background-repeat: no-repeat
+    -webkit-background-size: 904px 418px
+    -moz-background-size: 904px 418px
     background-size: 904px 418px
+    display: -webkit-box
+    display: -moz-box
+    display: -ms-flexbox
+    display: -webkit-flex
     display: flex
+    -webkit-box-align: center
+    -moz-box-align: center
+    -ms-flex-align: center
+    -webkit-align-items: center
     align-items: center
+    -webkit-box-pack: center
+    -moz-box-pack: center
+    -ms-flex-pack: center
+    -webkit-justify-content: center
     justify-content: center
-    box-shadow: inset 0 0 5px 5px var(--color-bg),
+    -webkit-box-shadow: inset 0 0 5px 5px var(--color-bg)
+    -moz-box-shadow: inset 0 0 5px 5px var(--color-bg)
+    box-shadow: inset 0 0 5px 5px var(--color-bg)
     .pageWrapper
         padding: var(--spacing-ultra)
         text-align: center
+        display: -webkit-box
+        display: -moz-box
+        display: -ms-flexbox
+        display: -webkit-flex
         display: flex
+        -webkit-box-orient: vertical
+        -webkit-box-direction: normal
+        -ms-flex-direction: column
+        -webkit-flex-direction: column
         flex-direction: column
+        -webkit-box-align: center
+        -moz-box-align: center
+        -ms-flex-align: center
+        -webkit-align-items: center
         align-items: center
         .pageTitle
             font-size: var(--font-size-header)
@@ -34,18 +70,41 @@
             color: var(--color-text-secondary)
         .pageBtn
             border: none
+            -webkit-border-radius: var(--radius-full)
+            -moz-border-radius: var(--radius-full)
             border-radius: var(--radius-full)
             padding: var(--spacing-sm) var(--spacing-lg)
             gap: var(--spacing-sm)
             background-color: var(--color-btn-default)
+            -webkit-transition: var(--transition-base)
+            -moz-transition: var(--transition-base)
+            -o-transition: var(--transition-base)
             transition: var(--transition-base)
+            display: -webkit-box
+            display: -moz-box
+            display: -ms-flexbox
+            display: -webkit-flex
             display: flex
             color: var(--color-text-btn)
             font-weight: var(--font-weight-base)
             font-size: var(--font-size-lg)
+            display: -webkit-box
+            display: -moz-box
+            display: -ms-flexbox
+            display: -webkit-flex
             display: flex
+            -webkit-box-pack: center
+            -moz-box-pack: center
+            -ms-flex-pack: center
+            -webkit-justify-content: center
             justify-content: center
+            -webkit-box-align: center
+            -moz-box-align: center
+            -ms-flex-align: center
+            -webkit-align-items: center
             align-items: center
+            width: -webkit-fit-content
+            width: -moz-fit-content
             width: fit-content
             text-align: center
             line-height: 1

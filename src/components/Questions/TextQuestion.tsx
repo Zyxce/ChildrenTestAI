@@ -1,4 +1,3 @@
-// src/components/Questions/TextQuestion.tsx
 import React from 'react'
 import style from '../../styles/components/Questions/TextQuestion.module.css'
 interface TextQuestionProps {
@@ -24,8 +23,8 @@ const TextQuestion: React.FC<TextQuestionProps> = ({
     value.trim() ? style.questionInputValue : ''
   } ${hasError || errorMessage ? style.questionInputError : ''}`
   const textAreaClasses = `${style.questionTextArea} ${
-    value.trim() ? style.questionTextArea : ''
-  } ${hasError ? style.questionTextArea : ''}`
+    value.trim() ? style.questionTextAreaValue : ''
+  } ${hasError ? style.questionTextAreaError : ''}`
 
   if (type === 'text') {
     return (

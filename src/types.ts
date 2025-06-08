@@ -1,5 +1,3 @@
-// src/types.ts
-
 // Тип для шкалы рейтинговых вопросов
 export interface QuestionScale {
   min: number

@@ -1,3 +1,4 @@
+
 .questionContainer
     width: 100%
     position: relative
@@ -6,6 +7,8 @@
         font-weight: var(--font-weight-base)
         color: var(--color-text-secondary)
     .questionInput
+        -webkit-box-sizing: border-box
+        -moz-box-sizing: border-box
         box-sizing: border-box
         width: 100%
         padding: var(--spacing-form) var(--spacing-mds)
@@ -13,14 +16,21 @@
         font-size: var(--font-size-base)
         font-weight: var(--font-weight-base)
         height: 40px
+        -webkit-border-radius: var(--radius-base)
+        -moz-border-radius: var(--radius-base)
         border-radius: var(--radius-base)
         margin-top: var(--spacing-xs)
         border: var(--border-width) solid var(--color-outline-default)
+        -webkit-transition: var(--transition-base)
+        -moz-transition: var(--transition-base)
+        -o-transition: var(--transition-base)
         transition: var(--transition-base)
         &:focus
             outline: none
             border: var(--border-width) solid var(--color-outline-focus)
     .questionInputValue
+        -webkit-box-sizing: border-box
+        -moz-box-sizing: border-box
         box-sizing: border-box
         width: 100%
         padding: var(--spacing-form) var(--spacing-mds)
@@ -28,11 +38,18 @@
         font-size: var(--font-size-base)
         font-weight: var(--font-weight-base)
         height: 40px
+        -webkit-border-radius: var(--radius-base)
+        -moz-border-radius: var(--radius-base)
         border-radius: var(--radius-base)
         margin-top: var(--spacing-xs)
         border: var(--border-width) solid var(--color-outline-focus)
+        -webkit-transition: var(--transition-base)
+        -moz-transition: var(--transition-base)
+        -o-transition: var(--transition-base)
         transition: var(--transition-base)
     .questionInputError
+        -webkit-box-sizing: border-box
+        -moz-box-sizing: border-box
         box-sizing: border-box
         width: 100%
         padding: var(--spacing-form) var(--spacing-mds)
@@ -40,12 +57,77 @@
         font-size: var(--font-size-base)
         font-weight: var(--font-weight-base)
         height: 40px
+        -webkit-border-radius: var(--radius-base)
+        -moz-border-radius: var(--radius-base)
         border-radius: var(--radius-base)
         margin-top: var(--spacing-xs)
         border: var(--border-width) solid var(--color-text-attention)
+        -webkit-transition: var(--transition-base)
+        -moz-transition: var(--transition-base)
+        -o-transition: var(--transition-base)
         transition: var(--transition-base)
     .errorMessage
         color: var(--color-text-attention)
         font-size: var(--font-size-sm)
         position: absolute
         bottom: var(--validation-spacing)
+    .questionTextArea
+        -webkit-box-sizing: border-box
+        -moz-box-sizing: border-box
+        box-sizing: border-box
+        width: 100%
+        padding: var(--spacing-form) var(--spacing-mds)
+        color: var(--color-text-secondary)
+        font-size: var(--font-size-base)
+        font-weight: var(--font-weight-base)
+        min-height: 96px
+        -webkit-border-radius: var(--radius-base)
+        -moz-border-radius: var(--radius-base)
+        border-radius: var(--radius-base)
+        margin-top: var(--spacing-xs)
+        border: var(--border-width) solid var(--color-outline-default)
+        -webkit-transition: var(--transition-base)
+        -moz-transition: var(--transition-base)
+        -o-transition: var(--transition-base)
+        transition: var(--transition-base)
+        &:focus
+            outline: none
+            border: var(--border-width) solid var(--color-outline-focus)
+    .questionTextAreaValue
+        -webkit-box-sizing: border-box
+        -moz-box-sizing: border-box
+        box-sizing: border-box
+        width: 100%
+        padding: var(--spacing-form) var(--spacing-mds)
+        color: var(--color-text-secondary)
+        font-size: var(--font-size-base)
+        font-weight: var(--font-weight-base)
+        min-height: 96px
+        -webkit-border-radius: var(--radius-base)
+        -moz-border-radius: var(--radius-base)
+        border-radius: var(--radius-base)
+        margin-top: var(--spacing-xs)
+        border: var(--border-width) solid var(--color-outline-focus)
+        -webkit-transition: var(--transition-base)
+        -moz-transition: var(--transition-base)
+        -o-transition: var(--transition-base)
+        transition: var(--transition-base)
+    .questionTextAreaError
+        -webkit-box-sizing: border-box
+        -moz-box-sizing: border-box
+        box-sizing: border-box
+        width: 100%
+        padding: var(--spacing-form) var(--spacing-mds)
+        color: var(--color-text-attention)
+        font-size: var(--font-size-base)
+        font-weight: var(--font-weight-base)
+        min-height: 96px
+        -webkit-border-radius: var(--radius-base)
+        -moz-border-radius: var(--radius-base)
+        border-radius: var(--radius-base)
+        margin-top: var(--spacing-xs)
+        border: var(--border-width) solid var(--color-text-attention)
+        -webkit-transition: var(--transition-base)
+        -moz-transition: var(--transition-base)
+        -o-transition: var(--transition-base)
+        transition: var(--transition-base)

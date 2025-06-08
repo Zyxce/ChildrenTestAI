@@ -1,4 +1,3 @@
-// src/utils/fileValidation.ts
 import { VALID_FILE_TYPES, MAX_FILE_SIZE } from '../configs/constants'
 
 export const validateFile = (file: File): string | null => {

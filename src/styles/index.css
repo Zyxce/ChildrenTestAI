@@ -1,6 +1,14 @@
 * {
   margin: 0;
   padding: 0;
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+  -webkit-margin-start: 0;
+  -webkit-margin-end: 0;
+  -webkit-padding-before: 0;
+  -webkit-padding-after: 0;
+  -webkit-padding-start: 0;
+  -webkit-padding-end: 0;
 }
 
 body {
@@ -9,6 +17,18 @@ body {
   justify-content: center;
   width: 100%;
   font-family: var(--font-primary);
+}
+
+input[type=file]::-webkit-file-upload-button {
+  display: none;
+}
+
+input[type=file]::-moz-file-upload-button {
+  display: none;
+}
+
+input[type=file]::-ms-browse {
+  display: none;
 }
 
 input[type=file]::file-selector-button {

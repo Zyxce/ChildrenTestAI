@@ -1,4 +1,3 @@
-// src/components/Questions/QuestionContainer.tsx
 import React from 'react'
 import RatingQuestion from './RatingQuestion'
 import EmojiQuestion from './EmojiQuestion'

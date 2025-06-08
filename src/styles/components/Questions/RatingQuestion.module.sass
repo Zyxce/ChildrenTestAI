@@ -1,3 +1,4 @@
+
 .quectionContainer
     .quectionTitle
         font-size: var(--font-size-lg)
@@ -5,8 +6,12 @@
         color: var(--color-text-secondary)
     .quectionOptions
         margin-top: var(--spacing-sm)
+        -webkit-border-radius: var(--radius-base)
+        -moz-border-radius: var(--radius-base)
         border-radius: var(--radius-base)
         overflow: hidden
+        width: -moz-fit-content
+        width: -webkit-fit-content
         width: fit-content
         .quectionScale, .quectionScaleActive
             padding: var(--spacing-xs) var(--spacing-xl)
@@ -14,6 +19,9 @@
             font-weight: var(--font-weight-base)
             line-height: 1rem
             border: var(--border-width) solid var(--color-bg)
+            -webkit-transition: var(--transition-base)
+            -moz-transition: var(--transition-base)
+            -o-transition: var(--transition-base)
             transition: var(--transition-base)
             &:hover
                 cursor: pointer
@@ -30,8 +38,9 @@
     .quectionContainer
         .quectionTitle
         .quectionOptions
-
             overflow: hidden
+            width: -moz-fit-content
+            width: -webkit-fit-content
             width: fit-content
             .quectionScale, .quectionScaleActive
                 padding: var(--spacing-xs) var(--spacing-md)

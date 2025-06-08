@@ -1,4 +1,3 @@
-// src/components/FileUploader/FileUploader.tsx
 import React, { useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
