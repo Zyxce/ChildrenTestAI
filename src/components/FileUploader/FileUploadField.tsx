@@ -43,6 +43,7 @@ const FileUploadField: React.FC<FileUploadFieldProps> = ({
             <input
               type="file"
               accept="image/*"
+              data-testid="file-input"
               onClick={(e) => (e.currentTarget.value = '')}
               onChange={handleFileChange}
               className={style.inputField}
@@ -56,6 +57,7 @@ const FileUploadField: React.FC<FileUploadFieldProps> = ({
             <input
               type="file"
               accept="image/*"
+              data-testid="file-input"
               onClick={(e) => (e.currentTarget.value = '')}
               onChange={handleFileChange}
               className={style.inputField}

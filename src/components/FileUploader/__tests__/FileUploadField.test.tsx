@@ -2,9 +2,17 @@ import React from 'react'
 import { render, screen, fireEvent } from '@testing-library/react'
 import FileUploadField from '../FileUploadField'
 
+// Мокаем изображения
+jest.mock('../../assets/images/uploadPhotos.svg', () => 'upload-icon')
+jest.mock('../../assets/images/removePhotos.svg', () => 'remove-icon')
+
 describe('FileUploadField', () => {
   const onFileChange = jest.fn()
   const onRemove = jest.fn()
+
+  beforeEach(() => {
+    jest.clearAllMocks()
+  })
 
   test('renders without preview', () => {
     render(
@@ -43,7 +51,7 @@ describe('FileUploadField', () => {
     )
 
     const file = new File(['content'], 'file.png', { type: 'image/png' })
-    const input = screen.getByTestId('file-input')
+    const input = screen.getByTestId('file-input') as HTMLInputElement
 
     fireEvent.change(input, { target: { files: [file] } })
     expect(onFileChange).toHaveBeenCalledWith(file)

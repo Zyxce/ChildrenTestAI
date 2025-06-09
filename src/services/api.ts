@@ -1,6 +1,7 @@
 import { TaskIdResponse, Answers, ReportStatus } from '../types'
 import { extractApiError, handleApiError } from '../utils/apiErrorHandler'
 import { API_BASE_URL } from '../configs/constants'
+
 export interface ReportResponse {
   status: 'processing' | 'ready'
   url?: string

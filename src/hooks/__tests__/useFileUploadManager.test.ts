@@ -7,8 +7,14 @@ const fields = [
 ]
 
 describe('useFileUploadManager', () => {
-  beforeEach(() => {
+  beforeAll(() => {
+    // Мокаем URL.createObjectURL
     global.URL.createObjectURL = jest.fn(() => 'mock-url')
+  })
+
+  afterEach(() => {
+    // Очищаем все моки после каждого теста
+    jest.clearAllMocks()
   })
 
   test('initializes with empty files', () => {
@@ -31,6 +37,7 @@ describe('useFileUploadManager', () => {
       file,
       preview: 'mock-url',
     })
+    expect(URL.createObjectURL).toHaveBeenCalledWith(file)
   })
 
   test('handles file removal', () => {
