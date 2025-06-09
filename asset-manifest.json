@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/ChildrenTestAI/static/css/main.1df0126b.css",
-    "main.js": "/ChildrenTestAI/static/js/main.45482ed2.js",
+    "main.css": "/ChildrenTestAI/static/css/main.19af11b4.css",
+    "main.js": "/ChildrenTestAI/static/js/main.701ed52c.js",
     "static/media/welcomeBg.jpg": "/ChildrenTestAI/static/media/welcomeBg.268ce9513cb945004d9e.jpg",
     "static/media/CirceRounded-Light.otf": "/ChildrenTestAI/static/media/CirceRounded-Light.bee4cf44694a05bdd393.otf",
     "static/media/CirceRounded-Bold.otf": "/ChildrenTestAI/static/media/CirceRounded-Bold.63f1293bc8249ff6b698.otf",
@@ -18,11 +18,11 @@
     "static/media/attention.svg": "/ChildrenTestAI/static/media/attention.41d64b7d22f9808b546344121e7ff847.svg",
     "static/media/removePhotos.svg": "/ChildrenTestAI/static/media/removePhotos.5d191226ea2c576b6063070503eb7999.svg",
     "static/media/uploadPhotos.svg": "/ChildrenTestAI/static/media/uploadPhotos.3184b2b8ac6918b45f1fd797a48721ba.svg",
-    "main.1df0126b.css.map": "/ChildrenTestAI/static/css/main.1df0126b.css.map",
-    "main.45482ed2.js.map": "/ChildrenTestAI/static/js/main.45482ed2.js.map"
+    "main.19af11b4.css.map": "/ChildrenTestAI/static/css/main.19af11b4.css.map",
+    "main.701ed52c.js.map": "/ChildrenTestAI/static/js/main.701ed52c.js.map"
   },
   "entrypoints": [
-    "static/css/main.1df0126b.css",
-    "static/js/main.45482ed2.js"
+    "static/css/main.19af11b4.css",
+    "static/js/main.701ed52c.js"
   ]
 }
