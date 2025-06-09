@@ -62,26 +62,26 @@
   border-radius: var(--radius-base);
   transition: var(--transition-base);
 }
-.questionContainer .questionOptions .questionEmoji {
+.questionContainer .questionOptions .optionContainer .questionEmoji {
   font-size: var(--font-size-header);
 }
-.questionContainer .questionOptions .questionText {
+.questionContainer .questionOptions .optionContainer .questionText {
   margin-left: var(--spacing-xs);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-base);
   color: var(--color-text-secondary);
   line-height: 1rem;
 }
-.questionContainer .questionOptions .questionText:hover {
+.questionContainer .questionOptions .optionContainer:hover {
   border: var(--border-width) solid var(--color-btn-hover);
   cursor: pointer;
 }
-.questionContainer .optionContainerActive {
+.questionContainer .questionOptions .optionContainerActive {
   background-color: var(--color-btn-default);
   cursor: pointer;
   transition: var(--transition-base);
 }
-.questionContainer .optionContainerActive .questionText {
+.questionContainer .questionOptions .optionContainerActive .questionText {
   color: var(--color-bg);
 }
 
