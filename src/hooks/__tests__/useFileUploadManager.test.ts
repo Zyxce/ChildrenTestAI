@@ -8,7 +8,7 @@ const fields = [
 
 describe('useFileUploadManager', () => {
   beforeEach(() => {
-    jest.spyOn(URL, 'createObjectURL').mockReturnValue('mock-url')
+    global.URL.createObjectURL = jest.fn(() => 'mock-url')
   })
 
   test('initializes with empty files', () => {

@@ -1,6 +1,12 @@
+import 'whatwg-fetch'
 import { setupServer } from 'msw/node'
 import { uploadPhotos, submitSurvey, getReportStatus } from '../api'
 import { handlers } from '../../mocks/handlers'
+
+beforeAll(() => {
+  global.URL.createObjectURL = jest.fn(() => 'mock-url')
+  global.URL.revokeObjectURL = jest.fn()
+})
 
 const server = setupServer(...handlers)
 
